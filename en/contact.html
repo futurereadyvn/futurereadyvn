@@ -1,22 +1,30 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Contact — Future Ready Vietnam</title>
-<link rel="stylesheet" href="../style.css"/>
-</head><body>
-<header class="nav"><div class="container nav-inner"><div class="brand">FUTURE READY VIETNAM</div>
-<nav class="menu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="programs.html">Programs</a>
-  <a href="blog.html">Journey</a>
-  <a class="active" href="contact.html">Contact</a>
-  <a href="donation.html">Support</a>
-</nav></div></header>
-<main class="hero"><div class="container">
-  <h1>Contact</h1>
-  <p class="lede">Email: futurereadyvn@gmail.com</p>
-</div></main>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contact — FRV</title><link rel="stylesheet" href="../style.css"/><script defer src="../app.js"></script></head><body>
+
+<header class="nav"><div class="container nav-inner">
+  <a class="brand" href="index.html"><svg viewBox="0 0 120 24"><text x="0" y="18" font-size="18" font-family="Arial Black, Arial" fill="#0f172a">FRV</text></svg><span>FUTURE READY VIETNAM</span></a>
+  <nav class="menu"><a href="index.html">Home</a><a class="active" href="contact.html">Contact</a></nav>
+</div></header>
+
+<main class="hero"><div class="container"><h1>Contact</h1><p class="lede">We’ll reply via futurereadyvn@gmail.com</p></div></main>
+
+<section><div class="container">
+  <form class="form" onsubmit="sendMail(event)">
+    <label>Your name</label><input id="name" required>
+    <label>Message</label><textarea id="msg" rows="6" required></textarea>
+    <button class="btn primary" type="submit">Send</button>
+  </form>
+</div></section>
+
 <footer><div class="container footer-inner"><div>FUTURE READY VIETNAM</div><div>© 2025</div></div></footer>
-<script src="../app.js"></script>
+
+<script>
+function sendMail(e){
+  e.preventDefault();
+  const n = encodeURIComponent(document.getElementById('name').value.trim());
+  const m = encodeURIComponent(document.getElementById('msg').value.trim());
+  window.location.href=`mailto:futurereadyvn@gmail.com?subject=FRV%20Message%20from%20${n}&body=${m}`;
+}
+</script>
 </body></html>
