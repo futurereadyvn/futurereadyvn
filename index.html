@@ -1,34 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Future Ready Vietnam</title>
-<link rel="stylesheet" href="style.css"/>
-<script defer src="app.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Future Ready Vietnam — Choose language</title>
+  <link rel="icon" href="/assets/favicon.png" />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <style>
+    .lang-wrap{min-height:100svh;display:grid;place-items:center;background:var(--bg)}
+    .lang-card{width:min(720px,92vw);padding:48px;border:1px solid var(--line);border-radius:24px;background:var(--card);box-shadow:0 10px 30px rgba(0,0,0,.06)}
+    .brand{font-weight:800;letter-spacing:.06em;color:var(--text);opacity:.7;margin-bottom:12px}
+    h1{font-size:clamp(24px,3.2vw,36px);margin:0 0 18px;color:var(--text)}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:14px 22px;border-radius:12px;border:1px solid var(--line);background:var(--btn);color:var(--btn-text);font-weight:600}
+    .btn.secondary{background:transparent;color:var(--text)}
+    .note{margin-top:14px;font-size:12px;color:var(--muted)}
+  </style>
 </head>
 <body>
-<header class="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="#">
-      <!-- Logo FRV (SVG chữ) -->
-      <svg viewBox="0 0 120 24" aria-hidden="true"><text x="0" y="18" font-size="18" font-family="Arial Black, Arial" fill="#0f172a">FRV</text></svg>
-      <span>FUTURE READY VIETNAM</span>
-    </a>
-  </div>
-</header>
-
-<main class="hero">
-  <div class="container">
-    <h1>Choose your language</h1>
-    <div class="lang-choices">
-      <a class="btn primary" href="en/index.html">English</a>
-      <a class="btn" href="vi/index.html">Tiếng Việt</a>
+  <div class="lang-wrap">
+    <div class="lang-card">
+      <div class="brand">FUTURE READY VIETNAM</div>
+      <h1>Choose your language</h1>
+      <div class="actions">
+        <a class="btn" href="/en/home.html">English</a>
+        <a class="btn secondary" href="/vi/home.html">Tiếng Việt</a>
+      </div>
+      <div class="note">You can switch languages later from the menu.</div>
     </div>
   </div>
-</main>
-
-<footer>
-  <div class="container footer-inner"><div>FUTURE READY VIETNAM</div><div>© 2025</div></div>
-</footer>
 </body>
 </html>
