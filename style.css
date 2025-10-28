@@ -1,35 +1,59 @@
 :root{
-  --bg:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb; --card:#f9fafb;
-  --accent:#2563eb; --ink:#0f172a;
+  --bg:#f7f7f8;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --accent:#2563eb;        /* xanh chủ đạo */
+  --accent-2:#10b981;      /* xanh ngọc phụ */
+  --btn:var(--accent);
+  --btn-text:#fff;
 }
-*{box-sizing:border-box}html,body{margin:0;padding:0}
-body{font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;color:var(--text);background:var(--bg)}
-.container{max-width:1140px;margin:0 auto;padding:28px 20px}
-.nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(8px);z-index:10}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:900;letter-spacing:.6px;text-decoration:none}
-.brand svg{height:26px}
-.menu{display:flex;gap:14px;flex-wrap:wrap}
-.menu a{padding:8px 12px;border-radius:999px;color:var(--ink);text-decoration:none}
-.menu a.active{background:var(--accent);color:#fff}
-.hero{padding:72px 0}
-h1{font-size:42px;line-height:1.12;margin:0 0 12px;color:var(--ink)}
-.lede{font-size:18px;color:var(--muted);margin:0 0 22px;max-width:820px}
-.lang-choices,.actions{display:flex;flex-wrap:wrap;gap:14px}
-.btn{display:inline-block;padding:12px 16px;border-radius:14px;border:1px solid var(--line);text-decoration:none;color:var(--ink)}
-.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.lang-choices .btn{padding:16px 22px;font-size:18px}
-.grid{display:grid;gap:18px}
-.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (max-width:900px){.grid-2{grid-template-columns:1fr}h1{font-size:34px}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;transition:transform .15s ease}
-.card:hover{transform:translateY(-2px)}
-.card h3{margin:0 0 6px;color:var(--ink)}
-.pill{display:inline-block;font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;margin-bottom:8px}
-.muted{color:var(--muted);font-size:14px;margin:0}
-footer{border-top:1px solid var(--line);margin-top:56px}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted)}
-.form{display:grid;gap:12px;max-width:560px}
-input,textarea,select,button{padding:12px;border:1px solid var(--line);border-radius:12px;font:inherit}
-button.btn{cursor:pointer}
-img.resp{width:100%;border-radius:12px;margin-top:8px}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji",sans-serif;
+  line-height:1.55;
+}
+
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.container{width:min(1080px,92vw);margin:28px auto}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+.nav{
+  display:flex;gap:10px;align-items:center;
+  width:min(1080px,92vw);margin:14px auto 0;flex-wrap:wrap
+}
+.nav a{
+  padding:8px 12px;border-radius:999px;border:1px solid var(--line);
+  background:#fff;color:var(--text);text-decoration:none
+}
+.nav a.active{background:var(--text);color:#fff}
+.nav .badge{border-color:var(--accent);color:var(--accent);background:transparent}
+
+h1{font-size:clamp(22px,3.2vw,32px);margin:8px 0 14px}
+h3{margin:8px 0 6px}
+
+.card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:16px;padding:18px
+}
+.badge{
+  display:inline-block;padding:6px 10px;border:1px solid var(--line);
+  border-radius:999px;font-size:12px;color:var(--muted);margin-bottom:8px
+}
+
+.btn{display:inline-block;padding:12px 18px;border-radius:12px;background:var(--btn);color:var(--btn-text);font-weight:600}
+.btn.outline{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+label{display:block;margin:10px 0 6px;font-weight:600}
+input,textarea{
+  width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff
+}
+textarea{min-height:120px;resize:vertical}
+footer.container{margin:28px auto;color:var(--muted);font-size:14px}
