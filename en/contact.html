@@ -1,30 +1,22 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Contact — FRV</title><link rel="stylesheet" href="../style.css"/><script defer src="../app.js"></script></head><body>
-
-<header class="nav"><div class="container nav-inner">
-  <a class="brand" href="index.html"><svg viewBox="0 0 120 24"><text x="0" y="18" font-size="18" font-family="Arial Black, Arial" fill="#0f172a">FRV</text></svg><span>FUTURE READY VIETNAM</span></a>
-  <nav class="menu"><a href="index.html">Home</a><a class="active" href="contact.html">Contact</a></nav>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — FRV</title>
+<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../assets/style.css">
+</head><body>
+<header class="nav"><div class="nav-inner">
+  <div class="brand">FUTURE READY VIETNAM</div>
+  <nav class="menu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+    <a href="journey.html">Journey</a><a href="help.html">Help</a><a href="contact.html" class="active">Contact</a>
+    <a href="support.html">Support</a><a class="badge" href="../vi/contact.html">VI</a>
+  </nav>
 </div></header>
 
-<main class="hero"><div class="container"><h1>Contact</h1><p class="lede">We’ll reply via futurereadyvn@gmail.com</p></div></main>
+<main class="section"><div class="container card">
+  <h1>Contact</h1>
+  <p>Send us an email: <a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></p>
+</div></main>
 
-<section><div class="container">
-  <form class="form" onsubmit="sendMail(event)">
-    <label>Your name</label><input id="name" required>
-    <label>Message</label><textarea id="msg" rows="6" required></textarea>
-    <button class="btn primary" type="submit">Send</button>
-  </form>
-</div></section>
-
-<footer><div class="container footer-inner"><div>FUTURE READY VIETNAM</div><div>© 2025</div></div></footer>
-
-<script>
-function sendMail(e){
-  e.preventDefault();
-  const n = encodeURIComponent(document.getElementById('name').value.trim());
-  const m = encodeURIComponent(document.getElementById('msg').value.trim());
-  window.location.href=`mailto:futurereadyvn@gmail.com?subject=FRV%20Message%20from%20${n}&body=${m}`;
-}
-</script>
+<footer><div class="container">© 2025 FUTURE READY VIETNAM</div>
+  <div class="page-transition"></div><script src="../assets/app.js"></script></footer>
 </body></html>
