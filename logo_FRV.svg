@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 60" role="img" aria-label="FRV">
-  <rect width="210" height="60" rx="12" fill="white"/>
-  <g transform="translate(12,8)">
-    <text x="0" y="36" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="40" fill="#6fd8b5" letter-spacing="6">FRV</text>
-    <rect x="0" y="44" width="186" height="3" rx="1.5" fill="#a8e6cf"/>
-  </g>
-</svg>
