@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Future Ready Vietnam — English</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="page-wrap">
+  <header class="header">
+  <a href="#" class="brand" data-modal-link data-title="About Us" href="about.html" aria-label="FRV">
+    <img src="assets/logo_FRV.svg" alt="FRV logo">
+    <span>Future Ready Vietnam</span>
+  </a>
+  <nav class="nav">
+    <a href="about.html" data-modal-link data-title="About Us">About Us</a>
+    <a href="journey.html" data-modal-link data-title="Journey">Journey</a>
+    <div class="dropdown" data-dropdown>
+      <button type="button">Program ▾</button>
+      <div class="dropdown-menu">
+        <a href="program_music.html" data-modal-link data-title="Program — Music">Music</a>
+        <a href="program_science.html" data-modal-link data-title="Program — Science">Science</a>
+        <a href="program_math.html" data-modal-link data-title="Program — Math">Math</a>
+        <a href="program_vietnamese.html" data-modal-link data-title="Program — Vietnamese">Vietnamese</a>
+        <a href="program_english.html" data-modal-link data-title="Program — English">English</a>
+        <a href="program_compsci.html" data-modal-link data-title="Program — Computer Science">Computer Science</a>
+      </div>
+    </div>
+    <a href="join.html" data-modal-link data-title="Become a Part of Us">Become a Part of Us</a>
+    <div class="dropdown" data-dropdown>
+      <button type="button">Help Us ▾</button>
+      <div class="dropdown-menu">
+        <a href="help_financial.html" data-modal-link data-title="Help Us — Financially">Help Us Financially</a>
+        <a href="help_supplies.html" data-modal-link data-title="Help Us — Study Supplies">Help Us with Study Supplies</a>
+      </div>
+    </div>
+  </nav>
+</header>
+  <section class="hero">
+    <h1 class="title">FUTURE READY VIETNAM</h1>
+    <p class="slogan">A Charity of Knowledge. <br/>A student-led non-profit organization dedicated to giving by teaching.</p>
+    <div class="cta">
+      <a class="btn" href="join.html" data-cta data-title="Become a Part of Us">Join Us</a>
+      <a class="btn" href="journey.html" data-cta data-title="Journey">Explore Journeys</a>
+    </div>
+  </section>
+  <footer class="footer">
+  <div class="frv">
+    <img src="assets/logo_FRV.svg" alt="FRV logo small">
+    <strong>FRV</strong>
+  </div>
+  <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+</footer>
+</div>
+
+<div class="pastel-film"></div>
+<div class="floating">
+  <img class="float-1" src="assets/flowers.svg" alt="flower"/>
+  <img class="float-2" src="assets/leaves.svg" alt="leaf"/>
+  <img class="float-3" src="assets/flowers.svg" alt="flower"/>
+</div>
+
+<!-- Modal -->
+<div class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card" role="document">
+    <div class="modal-header">
+      <div class="modal-title">Modal</div>
+      <button class="modal-close" aria-label="Close">Close</button>
+    </div>
+    <div class="modal-body"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
