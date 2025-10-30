@@ -4,16 +4,20 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Future Ready Vietnam — Choose Your Language</title>
-  <meta name="description" content="Future Ready Vietnam — A Charity of Knowledge. Choose your language to begin.">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"/>
 </head>
+
 <body>
   <div class="page-wrap">
+    <!-- Header -->
     <header class="header">
-      <a class="brand" href="#"><img src="assets/logo_FRV.svg" alt="FRV logo"><span>Future Ready Vietnam</span></a>
+      <a class="brand" href="#">
+        <img data-asset="logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam logo" style="height:40px;">
+      </a>
     </header>
 
+    <!-- Main -->
     <main class="lang-shell">
       <div class="lang-box reveal in">
         <h1 class="lang-title">FUTURE READY VIETNAM</h1>
@@ -25,41 +29,25 @@
       </div>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
-      <div class="frv"><img src="assets/logo_FRV.svg" alt="FRV"><strong>FRV</strong></div>
+      <div class="frv">
+        <img data-asset="logo_FRV.svg" alt="FRV logo small" style="height:28px;">
+        <strong>FRV</strong>
+      </div>
       <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
     </footer>
     <div class="footer copyright">© Future Ready Vietnam 2025 – All rights reserved.</div>
   </div>
 
-  <!-- pastel overlay + floating elements (path auto-set by script) -->
+  <!-- Floating visuals -->
   <div class="pastel-film"></div>
   <div class="floating">
     <img class="float-1" data-asset="flowers.svg" alt="flower"/>
-    <img class="float-2" data-asset="leaves.svg"  alt="leaf"/>
+    <img class="float-2" data-asset="leaves.svg" alt="leaf"/>
     <img class="float-3" data-asset="flowers.svg" alt="flower"/>
   </div>
 
   <script src="app.js"></script>
-  <script>
-    // ensure no blur after back/forward
-    function resetVisual(){ document.body.classList.remove('blur','fade-out'); }
-    document.addEventListener('DOMContentLoaded', resetVisual);
-    window.addEventListener('pageshow', function(e){ if(e.persisted) resetVisual(); });
-
-    // auto asset path resolver
-    (function fixAssetPaths(){
-      var inVi = location.pathname.indexOf('/vietnamese/') !== -1;
-      var ASSETS = inVi ? '../assets/' : 'assets/';
-      document.querySelectorAll('img[data-asset]').forEach(function(img){
-        var file = img.getAttribute('data-asset');
-        if (!img.getAttribute('src')) img.src = ASSETS + file;
-        img.onerror = function(){
-          img.onerror = null;
-          img.src = (inVi ? 'assets/' : '../assets/') + file;
-        };
-      });
-    })();
-  </script>
 </body>
 </html>
