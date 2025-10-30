@@ -1,30 +1,36 @@
-// ===== SAFETY RESET =====
-document.addEventListener('DOMContentLoaded', () => {
-  // 1) Gỡ mọi blur nếu lỡ dính
+// ====== RESET VISUAL STATE (load lần đầu) ======
+function resetVisualState() {
   document.body.classList.remove('blur', 'fade-out');
-
-  // 2) Đảm bảo không modal nào mở sẵn
   document.querySelectorAll('.modal').forEach(m => m.classList.remove('show'));
-
-  // 3) Kick-off reveal đầu trang
+  document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+  // kick-off reveal đầu trang
   document.querySelectorAll('.reveal').forEach(el => {
-    // cho phần đầu hiện luôn
     if (el.classList.contains('in')) return;
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight - 80) el.classList.add('in');
   });
+}
+
+document.addEventListener('DOMContentLoaded', resetVisualState);
+
+// ====== HANDLE BFCACHE / BACK-FORWARD ======
+window.addEventListener('pageshow', (e) => {
+  // nếu trang được khôi phục từ cache hoặc là back/forward, reset lại
+  const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+  const isBackForward = nav && nav.type === 'back_forward';
+  if (e.persisted || isBackForward) {
+    resetVisualState();
+  }
 });
 
 // ===== DROPDOWN =====
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('[data-dropdown] > button');
   const dropdown = e.target.closest('[data-dropdown]');
-  // toggle dropdown đang click
   if (btn && dropdown) {
     e.preventDefault();
     dropdown.classList.toggle('open');
   }
-  // đóng các dropdown khác nếu click ra ngoài
   document.querySelectorAll('.dropdown.open').forEach(d => {
     if (!d.contains(e.target)) d.classList.remove('open');
   });
@@ -49,7 +55,6 @@ document.addEventListener('click', (e) => {
     if (m && m.id) closeModal(m.id);
   }
   if (e.target.classList.contains('modal')) {
-    // click nền modal để đóng
     const m = e.target;
     if (m && m.id) closeModal(m.id);
   }
@@ -72,19 +77,19 @@ window.addEventListener('scroll', onScrollReveal, {passive:true});
 
 // ===== NAV LINKS FADE-OUT TRANSITION =====
 document.addEventListener('click', (e) => {
-  const a = e.target.closest('a.nav-link, .nav a, .dropdown-menu a, .btn.nav-link');
+  const a = e.target.closest('a.nav-link, .nav a, .dropdown-menu a, .btn.nav-link, .btn[href]');
   if (!a) return;
   const href = a.getAttribute('href');
   if (!href || href.startsWith('#') || href.startsWith('mailto:')) return;
 
-  // Cho phép mở tab mới nếu giữ Ctrl/Cmd/Mid-click
+  // Cho phép mở tab mới (Ctrl/Cmd/Middle)
   if (e.metaKey || e.ctrlKey || e.button === 1) return;
 
   e.preventDefault();
+  // tránh fade khi link là anchor nội trang
+  if (href.startsWith('#')) { window.location.hash = href; return; }
   document.body.classList.add('fade-out');
-  setTimeout(() => {
-    window.location.href = href;
-  }, 180);
+  setTimeout(() => { window.location.href = href; }, 180);
 });
 
 // ===== FORM ASYNC (Formspree) — optional an toàn =====
@@ -105,3 +110,16 @@ document.addEventListener('submit', async (e) => {
     alert('Mạng không ổn định. Vui lòng thử lại!');
   }
 });
+
+// ===== ASSET PATH FIX (auto root vs /vietnamese/) =====
+(function fixAssetPaths(){
+  const inVi = location.pathname.includes('/vietnamese/');
+  const ASSETS = inVi ? '../assets/' : 'assets/';
+  document.querySelectorAll('img[data-asset]').forEach(img=>{
+    if (!img.getAttribute('src')) img.src = ASSETS + img.getAttribute('data-asset');
+    img.onerror = () => {
+      img.onerror = null;
+      img.src = (inVi ? 'assets/' : '../assets/') + img.getAttribute('data-asset');
+    };
+  });
+})();
