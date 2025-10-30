@@ -11,16 +11,13 @@
 
 <body>
   <div class="page-wrap">
-
-    <!-- HEADER -->
     <header class="header">
       <a class="brand" href="#">
-        <img src="assets/logo_FRV.svg" alt="FRV logo">
+        <img src="/assets/logo_FRV.svg" alt="FRV logo">
         <span>Future Ready Vietnam</span>
       </a>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="lang-shell">
       <div class="lang-box reveal in">
         <h1 class="lang-title">FUTURE READY VIETNAM</h1>
@@ -32,24 +29,29 @@
       </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
       <div class="frv">
-        <img src="assets/logo_FRV.svg" alt="FRV"><strong>FRV</strong>
+        <img src="/assets/logo_FRV.svg" alt="FRV"><strong>FRV</strong>
       </div>
       <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
     </footer>
     <div class="footer copyright">© Future Ready Vietnam 2025 – All rights reserved.</div>
   </div>
 
-  <!-- PASTEL OVERLAY & FLOATING ELEMENTS -->
+  <!-- pastel overlay + floating elements (absolute paths from root) -->
   <div class="pastel-film"></div>
   <div class="floating">
-    <img class="float-1" data-asset="flowers.svg" alt="flower"/>
-    <img class="float-2" data-asset="leaves.svg" alt="leaf"/>
-    <img class="float-3" data-asset="flowers.svg" alt="flower"/>
+    <img class="float-1" src="/assets/flowers.svg" alt="flower"/>
+    <img class="float-2" src="/assets/leaves.svg"  alt="leaf"/>
+    <img class="float-3" src="/assets/flowers.svg" alt="flower"/>
   </div>
 
+  <script>
+    // bảo đảm không bị blur khi back/forward
+    function resetVisual(){ document.body.classList.remove('blur','fade-out'); }
+    document.addEventListener('DOMContentLoaded', resetVisual);
+    window.addEventListener('pageshow', (e)=>{ if(e.persisted) resetVisual(); });
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
