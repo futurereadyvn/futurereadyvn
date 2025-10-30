@@ -72,9 +72,18 @@ p.slogan{margin:0 0 24px;color:var(--soft)}
 .nav a,.nav button{font:600 14px/1 'Montserrat',sans-serif;text-decoration:none;color:var(--ink);background:none;border:none;padding:10px 8px;cursor:pointer;position:relative}
 .nav a::after,.nav button::after{content:"";position:absolute;left:8px;right:8px;bottom:6px;height:2px;background:linear-gradient(90deg,transparent,var(--mint),transparent);transform:scaleX(0);transition:transform .2s}
 .nav a:hover::after,.nav button:hover::after{transform:scaleX(1)}
+
 .dropdown{position:relative}
-.dropdown-menu{position:absolute;top:110%;left:0;min-width:220px;background:#fff;border:1px solid #eee;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.08);padding:8px;display:none;z-index:12}
-.dropdown.open .dropdown-menu{display:block}
+.dropdown-menu{
+  position:absolute;top:110%;left:0;min-width:220px;background:#fff;border:1px solid #eee;border-radius:10px;
+  box-shadow:0 12px 28px rgba(0,0,0,.08);padding:8px;display:none;z-index:12;
+
+  /* xổ dọc xuống dưới */
+  display:flex;flex-direction:column;align-items:flex-start;
+}
+.dropdown.open .dropdown-menu{display:flex}
+.dropdown-menu a{display:block;padding:10px 12px;border-radius:8px;color:var(--ink)}
+.dropdown-menu a:hover{background:#f7fffb}
 
 /* Modal (optional) */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:20}
