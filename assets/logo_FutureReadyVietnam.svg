@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200">
+  <rect width="900" height="200" fill="none"/>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Montserrat, sans-serif" font-weight="800" font-size="56" letter-spacing="2" fill="#2f2f2f">
+    FUTURE READY VIETNAM
+  </text>
+  <rect x="140" y="148" width="620" height="8" rx="4" fill="#6fd8b5"/>
+</svg>
