@@ -3,36 +3,49 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Future Ready Vietnam — Choose Language</title>
-
-  <meta property="og:title" content="Future Ready Vietnam — A Charity of Knowledge"/>
-  <meta property="og:description" content="A student-led non-profit movement that shares education, compassion, and purpose."/>
-  <meta property="og:image" content="assets/logo_FRV.svg"/>
-  <meta property="og:type" content="website"/>
-
+  <title>Future Ready Vietnam — Choose Your Language</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
   <div class="page-wrap">
-    <section class="lang-shell reveal">
-      <div class="lang-box">
+    <header class="header">
+      <a class="brand" href="#">
+        <img src="assets/logo_FRV.svg" alt="FRV logo">
+        <span>Future Ready Vietnam</span>
+      </a>
+      <nav class="nav">
+        <!-- để trống nav ở gateway cho gọn -->
+      </nav>
+    </header>
+
+    <main class="lang-shell">
+      <div class="lang-box reveal in">
         <h1 class="lang-title">FUTURE READY VIETNAM</h1>
-        <p class="lang-sub">Choose Your Language</p>
+        <p class="lang-sub">Choose your language:</p>
         <div class="lang-actions">
-          <a class="btn" href="english.html">English 🇬🇧</a>
-          <a class="btn" href="vietnamese.html">Tiếng Việt 🇻🇳</a>
+          <a class="btn nav-link" href="english.html">English</a>
+          <a class="btn nav-link" href="vietnamese/index.html">Tiếng Việt</a>
         </div>
       </div>
-    </section>
+    </main>
 
-    <div class="pastel-film"></div>
-    <div class="floating">
-      <img class="float-1" src="assets/flowers.svg" alt="flower"/>
-      <img class="float-2" src="assets/leaves.svg" alt="leaf"/>
-      <img class="float-3" src="assets/flowers.svg" alt="flower"/>
-    </div>
+    <footer class="footer">
+      <div class="frv">
+        <img src="assets/logo_FRV.svg" alt="FRV"><strong>FRV</strong>
+      </div>
+      <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+    </footer>
+    <div class="footer copyright">© Future Ready Vietnam 2025 – All rights reserved.</div>
+  </div>
+
+  <!-- nền pastel + hoa lá (không chặn click) -->
+  <div class="pastel-film"></div>
+  <div class="floating">
+    <img class="float-1" src="assets/flowers.svg" alt="flower"/>
+    <img class="float-2" src="assets/leaves.svg" alt="leaf"/>
+    <img class="float-3" src="assets/flowers.svg" alt="flower"/>
   </div>
 
   <script src="app.js"></script>
