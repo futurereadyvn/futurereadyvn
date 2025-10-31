@@ -102,3 +102,6 @@ p.slogan{margin:0 0 24px;color:var(--soft)}
 /* Reveal */
 .reveal{opacity:0;transform:translateY(16px);transition:.6s}
 .reveal.in{opacity:1;transform:none}
+/* Hotfix click-through */
+.pastel-film, .floating { pointer-events: none; }
+.lang-shell, .lang-box, .lang-actions a { pointer-events: auto; }
