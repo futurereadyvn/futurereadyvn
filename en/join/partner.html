@@ -12,23 +12,25 @@
     .form-wrap{padding:120px 10% 60px;max-width:980px;margin:auto}
     form{background:#fff;border:1px solid #eee;border-radius:16px;padding:22px 18px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
     .row{display:grid;gap:14px;grid-template-columns:1fr 1fr}
-    .row-1{grid-template-columns:1fr}
+    .row-1{display:grid;gap:14px;grid-template-columns:1fr}
     label{font-weight:600;margin-top:8px;display:block}
     input,select,textarea{
       width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:12px;font:500 14px/1.4 'Montserrat',sans-serif;color:#333;background:#fff
     }
     textarea{min-height:120px;resize:vertical}
-    .hint{color:var(--soft);font-size:12px;margin-top:4px}
     .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
     .note{margin-top:8px;color:var(--soft);font-size:13px}
     .ok{color:#19764b}
+    .form-banner{width:100%;height:140px;object-fit:cover;border-radius:12px;opacity:.9;margin:0 0 12px 0;display:block}
+    .logo{height:40px}
+    .logo-frv{height:28px}
   </style>
 </head>
 <body>
   <div class="page-wrap">
     <header class="header">
       <a class="brand" href="../../english.html">
-        <img data-asset="logo_FutureReadyVietnam.svg" alt="FRV" style="height:40px">
+        <img data-key="logo_main" class="logo" alt="Future Ready Vietnam">
       </a>
       <nav class="nav">
         <a class="nav-link" href="../about.html">About Us</a>
@@ -58,6 +60,9 @@
     <main class="form-wrap">
       <h1 class="title">Become a Partner</h1>
       <p class="slogan reveal">Individuals, schools, clubs, and companies — let’s collaborate for impact.</p>
+
+      <!-- banner lá -->
+      <img data-key="leaves_banner" class="form-banner" alt="leaves banner">
 
       <form id="parForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" data-mailto="futurereadyvn@gmail.com" novalidate>
         <div class="row">
@@ -106,7 +111,7 @@
 
     <footer class="footer">
       <div class="frv">
-        <img data-asset="logo_FRV.svg" alt="FRV" style="height:28px">
+        <img data-key="logo_frv" class="logo-frv" alt="FRV">
         <strong>FRV</strong>
       </div>
       <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
@@ -116,15 +121,55 @@
 
   <div class="pastel-film"></div>
   <div class="floating">
-    <img class="float-1" data-asset="flowers.svg" alt="">
-    <img class="float-2" data-asset="leaves.svg"  alt="">
-    <img class="float-3" data-asset="flowers.svg" alt="">
+    <img data-key="flower_floating_1" class="float-1" alt="">
+    <img data-key="leaves_floating" class="float-2"  alt="">
+    <img data-key="flower_floating_2" class="float-3" alt="">
   </div>
 
   <script src="../../app.js"></script>
   <script>
-  (function(){const A='../../assets/';document.querySelectorAll('img[data-asset]').forEach(i=>{const f=i.getAttribute('data-asset');if(f&&!i.src)i.src=A+f;});})();
+  // Loader giống Volunteer
+  (function(){
+    const baseCandidates = ['../../assets/','../assets/','../../../assets/','/assets/'];
+    const files = {
+      logo_main: ['logo_FutureReadyVietnam.svg','logo_future_ready_vietnam.svg','FutureReadyVietnam.svg','future.svg','logo_main.png','logo_main.svg'],
+      logo_frv:  ['logo_FRV.svg','frv.svg','FRV.svg','logo_frv.png'],
+      leaves_banner: ['leaves.svg','leaf.svg','leaves.png','leaf.png'],
+      flower_floating_1: ['flowers.svg','flower.svg','flowers.png'],
+      flower_floating_2: ['flowers.svg','flower.svg','flowers.png'],
+      leaves_floating:  ['leaves.svg','leaf.svg','leaves.png','leaf.png']
+    };
+    function setFallbackSVG(img, type){
+      const svgMap = {
+        logo_main:'<svg width="160" height="40" xmlns="http://www.w3.org/2000/svg"><rect rx="8" ry="8" width="160" height="40" fill="#a8e6cf"/><text x="80" y="26" font-family="Montserrat,Arial" font-size="14" text-anchor="middle" fill="#2f2f2f">FUTURE READY VIETNAM</text></svg>',
+        logo_frv:'<svg width="60" height="28" xmlns="http://www.w3.org/2000/svg"><rect rx="6" ry="6" width="60" height="28" fill="#a8e6cf"/><text x="30" y="19" font-family="Montserrat,Arial" font-size="12" text-anchor="middle" fill="#2f2f2f">FRV</text></svg>',
+        flowers:'<svg width="200" height="140" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="140" fill="#ffd1dc"/><circle cx="40" cy="70" r="16" fill="#fff"/><circle cx="90" cy="55" r="14" fill="#fff"/><circle cx="140" cy="80" r="18" fill="#fff"/></svg>',
+        leaves:'<svg width="200" height="140" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="140" fill="#a8e6cf"/><path d="M20,120 C60,20 140,20 180,120" stroke="#fff" stroke-width="12" fill="none"/></svg>'
+      };
+      let svg = (type==='leaves' || type==='leaves_banner' || type==='leaves_floating') ? svgMap.leaves :
+                (type?.startsWith('flower_')) ? svgMap.flowers :
+                (type==='logo_frv') ? svgMap.logo_frv : svgMap.logo_main;
+      const blob = new Blob([svg], {type:'image/svg+xml'});
+      img.src = URL.createObjectURL(blob);
+    }
+    document.querySelectorAll('img[data-key]').forEach(img=>{
+      const key = img.getAttribute('data-key');
+      const list = files[key] || [];
+      let done = false;
+      (function tryNextFile(fi=0, bi=0){
+        if(done) return;
+        if(fi>=list.length){ setFallbackSVG(img, key); return; }
+        if(bi>=baseCandidates.length){ tryNextFile(fi+1,0); return; }
+        const url = baseCandidates[bi] + list[fi];
+        const test = new Image();
+        test.onload = ()=>{ img.src=url; done=true; };
+        test.onerror = ()=>{ tryNextFile(fi, bi+1); };
+        test.src = url;
+      })();
+    });
+  })();
 
+  // Submit: Formspree ưu tiên, mailto fallback
   document.getElementById('parForm').addEventListener('submit', async (e)=>{
     e.preventDefault();
     const form = e.currentTarget;
@@ -141,7 +186,7 @@
         const res = await fetch(endpoint, { method:'POST', body: fd, headers: { 'Accept':'application/json' }});
         if(res.ok){ status.innerHTML='<span class="ok">✔ Sent! Thank you — we will email you soon.</span>'; form.reset(); return; }
         throw new Error('Formspree error');
-      }catch(err){ /* fallback below */ }
+      }catch(err){}
     }
     const mail = form.dataset.mailto || 'futurereadyvn@gmail.com';
     const subject = encodeURIComponent('FRV — New Partner Proposal');
