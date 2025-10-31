@@ -9,7 +9,6 @@
   <!-- từ /en/join/ đi lên 2 cấp để lấy CSS chung -->
   <link rel="stylesheet" href="../../style.css"/>
   <style>
-    /* đảm bảo nội dung nằm trên overlay để không bị “chỉ thấy chữ” */
     .page-wrap{position:relative; z-index:5;}
     .join-hero{position:relative;z-index:1;padding:120px 10% 40px}
     .join-grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:14px}
@@ -21,11 +20,11 @@
 </head>
 <body>
   <div class="page-wrap">
-    <!-- HEADER (đường dẫn tương đối đúng từ /en/join/) -->
+    <!-- HEADER -->
     <header class="header">
-      <!-- quay về trang English ở root: /en/join/ -> ../english.html -->
+      <!-- từ /en/join/ quay lại english ở root -->
       <a class="brand" href="../english.html">
-        <img data-asset="logo_FutureReadyVietnam.svg" alt="FRV" style="height:40px">
+        <img data-asset="logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam Logo" style="height:40px">
       </a>
       <nav class="nav">
         <a class="nav-link" href="../about.html">About Us</a>
@@ -65,7 +64,7 @@
       <section class="join-grid reveal">
         <!-- Card 1: Volunteer -->
         <article class="join-card">
-          <div style="height:140px;border-radius:12px;background:linear-gradient(135deg,var(--mint) 0%, #fff 60%);opacity:.9"></div>
+          <img data-asset="flowers.svg" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:12px;opacity:.8;margin-bottom:8px">
           <h3>Become a Volunteer</h3>
           <p>Share your skills in Music, Science, Math, Vietnamese, English, or Computer Science — free classes, big impact.</p>
           <div class="join-cta">
@@ -75,7 +74,7 @@
 
         <!-- Card 2: Partner -->
         <article class="join-card">
-          <div style="height:140px;border-radius:12px;background:linear-gradient(135deg,#ffd1dc 0%, #fff 60%);opacity:.9"></div>
+          <img data-asset="leaves.svg" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:12px;opacity:.8;margin-bottom:8px">
           <h3>Become a Partner</h3>
           <p>Individuals, schools, clubs, and companies — let’s co-host workshops or provide study resources together.</p>
           <div class="join-cta">
@@ -88,7 +87,7 @@
     <!-- FOOTER -->
     <footer class="footer">
       <div class="frv">
-        <img data-asset="logo_FRV.svg" alt="FRV" style="height:28px">
+        <img data-asset="logo_FRV.svg" alt="FRV logo" style="height:28px">
         <strong>FRV</strong>
       </div>
       <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
@@ -96,15 +95,15 @@
     <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
   </div>
 
-  <!-- NỀN (đặt sau, không nhận click) -->
+  <!-- NỀN vector -->
   <div class="pastel-film"></div>
   <div class="floating">
     <img class="float-1" data-asset="flowers.svg" alt="">
-    <img class="float-2" data-asset="leaves.svg"  alt="">
+    <img class="float-2" data-asset="leaves.svg" alt="">
     <img class="float-3" data-asset="flowers.svg" alt="">
   </div>
 
-  <!-- từ /en/join/ đi lên 2 cấp để lấy JS chung -->
+  <!-- từ /en/join/ đi lên 2 cấp -->
   <script src="../../app.js"></script>
 </body>
 </html>
