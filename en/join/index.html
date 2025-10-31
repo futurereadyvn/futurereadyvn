@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>FRV — Join</title>
+  <meta name="description" content="Become a part of Future Ready Vietnam — volunteer or partner with us."/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- từ /en/join/ đi lên 2 cấp để lấy CSS chung -->
+  <link rel="stylesheet" href="../../bigstar.css"/>
+  <style>
+    /* Style nhỏ cho trang Join (không đụng CSS chung) */
+    .join-hero{position:relative;z-index:1;padding:120px 10% 40px}
+    .join-grid{
+      display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      margin-top:14px
+    }
+    .join-card{
+      background:#fff; border:1px solid #eee; border-radius:16px; padding:20px;
+      box-shadow:0 10px 24px rgba(0,0,0,.06)
+    }
+    .join-card h3{margin:10px 0 6px}
+    .join-card p{margin:0 0 12px; color:var(--soft)}
+    .join-cta{display:flex; gap:12px; flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- HEADER (giữ đúng cấu trúc & link tương đối trong /en/) -->
+    <header class="header">
+      <!-- từ /en/join/ quay về /en/ -->
+      <a class="brand" href="../english.html">
+        <img data-asset="logo_FutureReadyVietnam.svg" alt="FRV" style="height:40px">
+      </a>
+      <nav class="nav">
+        <a class="nav-link" href="../about.html">About Us</a>
+        <a class="nav-link" href="../journey.html">Journey</a>
+
+        <div class="dropdown" data-dropdown>
+          <button type="button">Programs ▾</button>
+          <div class="dropdown-menu">
+            <a class="nav-link" href="../program_music.html">Music</a>
+            <a class="nav-link" href="../program_science.html">Science</a>
+            <a class="nav-link" href="../program_math.html">Math</a>
+            <a class="nav-link" href="../program_vietnamese.html">Vietnamese</a>
+            <a class="nav-link" href="../program_english.html">English</a>
+            <a class="nav-link" href="../program_compsci.html">Computer Science</a>
+          </div>
+        </div>
+
+        <a class="nav-link" href="./">Join</a>
+
+        <div class="dropdown align-right" data-dropdown>
+          <button type="button">Support ▾</button>
+          <div class="dropdown-menu">
+            <a class="nav-link" href="../help/financial.html">Support Financially</a>
+            <a class="nav-link" href="../help/supplies.html">Support with Study Supplies</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="join-hero">
+      <h1 class="title">Become a part of us</h1>
+      <p class="slogan reveal">
+        Choose how you’d like to support <strong>Future Ready Vietnam</strong> — teach with us, or collaborate as a partner.
+      </p>
+
+      <section class="join-grid reveal">
+        <!-- Card 1: Volunteer -->
+        <article class="join-card">
+          <div style="height:140px;border-radius:12px;background:linear-gradient(135deg,var(--mint) 0%, #fff 60%);opacity:.9"></div>
+          <h3>Become a Volunteer</h3>
+          <p>Share your skills in Music, Science, Math, Vietnamese, English, or Computer Science — free classes, big impact.</p>
+          <div class="join-cta">
+            <!-- trỏ tới form volunteer (sẽ làm ở bước kế tiếp) -->
+            <a class="btn nav-link" href="volunteer.html">Continue</a>
+          </div>
+        </article>
+
+        <!-- Card 2: Partner -->
+        <article class="join-card">
+          <div style="height:140px;border-radius:12px;background:linear-gradient(135deg,#ffd1dc 0%, #fff 60%);opacity:.9"></div>
+          <h3>Become a Partner</h3>
+          <p>Individuals, schools, clubs, and companies — let’s co-host workshops or provide study resources together.</p>
+          <div class="join-cta">
+            <!-- trỏ tới form partner (sẽ làm ở bước kế tiếp) -->
+            <a class="btn nav-link" href="partner.html">Continue</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="frv">
+        <img data-asset="logo_FRV.svg" alt="FRV" style="height:28px">
+        <strong>FRV</strong>
+      </div>
+      <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+    </footer>
+    <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
+  </div>
+
+  <!-- BG deco (không bắt sự kiện) -->
+  <div class="pastel-film"></div>
+  <div class="floating">
+    <img class="float-1" data-asset="flowers.svg" alt="">
+    <img class="float-2" data-asset="leaves.svg"  alt="">
+    <img class="float-3" data-asset="flowers.svg" alt="">
+  </div>
+
+  <!-- từ /en/join/ đi lên 2 cấp để lấy JS chung -->
+  <script src="../../app.js"></script>
+</body>
+</html>
