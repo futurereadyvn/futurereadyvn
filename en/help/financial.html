@@ -8,22 +8,49 @@
   <link rel="stylesheet" href="../../style.css"/>
   <style>
     .page-wrap{position:relative;z-index:5}
-    /* FIX dropdown menu alignment */
+
+    /* Fix dropdown không tràn màn hình (align-right) */
     .dropdown.align-right .dropdown-menu{
       left:auto; right:0; margin-right:10px; transform-origin:top right;
     }
 
-    .help-wrap{padding:120px 10% 60px;max-width:960px;margin:auto}
-    form{background:#fff;border:1px solid #eee;border-radius:16px;padding:22px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
-    label{font-weight:600;margin-top:8px;display:block}
+    /* Fade-in utility */
+    .reveal{opacity:0; transform:translateY(16px); transition:.6s}
+    .reveal.in{opacity:1; transform:none}
+
+    /* Layout */
+    .help-wrap{padding:120px 10% 60px; max-width:960px; margin:auto}
+    .lead{color:var(--soft); max-width:780px}
+    form{background:#fff; border:1px solid #eee; border-radius:16px; padding:22px; box-shadow:0 10px 24px rgba(0,0,0,.06)}
+    label{font-weight:600; margin-top:8px; display:block}
     input,textarea{
-      width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:10px;
-      font:500 14px/1.4 'Montserrat',sans-serif;color:#333;background:#fff
+      width:100%; padding:12px 14px; border:1px solid #e6e6e6; border-radius:10px;
+      font:500 14px/1.4 'Montserrat',sans-serif; color:#333; background:#fff
     }
-    textarea{min-height:100px}
+    textarea{min-height:100px; resize:vertical}
     .actions{margin-top:16px}
-    .actions button{cursor:pointer}
-    .note{color:var(--soft);font-size:13px;margin-top:6px}
+    .actions .btn{cursor:pointer}
+
+    .note{color:var(--soft); font-size:13px; margin-top:6px}
+
+    /* Footer logo FRV đẹp hơn + hover mint */
+    .footer .frv img{
+      height:32px; width:auto; vertical-align:middle;
+      filter:drop-shadow(0 0 4px rgba(168,230,207,.3));
+      transition:transform .25s ease, filter .25s ease;
+    }
+    .footer .frv strong{
+      margin-left:6px; letter-spacing:1px; font-weight:700; font-size:15px; color:#2f2f2f; vertical-align:middle;
+    }
+    .footer .frv:hover img{
+      transform:translateY(-2px);
+      filter:drop-shadow(0 0 8px rgba(168,230,207,.45));
+    }
+
+    @media (max-width:640px){
+      .help-wrap{padding:100px 16px 40px}
+      .dropdown-menu{min-width:200px}
+    }
   </style>
 </head>
 <body>
@@ -31,7 +58,7 @@
     <!-- HEADER -->
     <header class="header">
       <a class="brand" href="../../english.html">
-        <img data-key="logo_main" alt="FRV" style="height:40px">
+        <img data-key="logo_main" alt="Future Ready Vietnam" style="height:40px">
       </a>
       <nav class="nav">
         <a class="nav-link" href="../about.html">About Us</a>
@@ -47,7 +74,7 @@
             <a href="../program_compsci.html">Computer Science</a>
           </div>
         </div>
-        <a href="../join/">Join</a>
+        <a class="nav-link" href="../join/">Join</a>
         <div class="dropdown align-right" data-dropdown>
           <button type="button">Support ▾</button>
           <div class="dropdown-menu">
@@ -61,9 +88,9 @@
     <!-- MAIN -->
     <main class="help-wrap">
       <h1 class="title reveal">Support Financially</h1>
-      <p class="slogan reveal">Your donations help keep all FRV classes free and full of hope.</p>
+      <p class="lead reveal">Your donations help keep all FRV classes free and full of hope.</p>
 
-      <form id="financeForm" action="mailto:futurereadyvn@gmail.com" method="POST">
+      <form id="financeForm" class="reveal" action="mailto:futurereadyvn@gmail.com" method="POST">
         <label>Your Full Name *</label>
         <input name="name" required placeholder="Your name">
         <label>Your Email *</label>
@@ -81,13 +108,16 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <div class="frv"><img data-key="logo_frv" alt="FRV" style="height:28px"><strong>FRV</strong></div>
+      <div class="frv">
+        <img data-key="logo_frv" alt="FRV logo">
+        <strong>FRV</strong>
+      </div>
       <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
     </footer>
     <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
   </div>
 
-  <!-- background -->
+  <!-- Nền pastel + hoa lá -->
   <div class="pastel-film"></div>
   <div class="floating">
     <img data-key="flower_floating_1" class="float-1" alt="">
@@ -96,5 +126,14 @@
   </div>
 
   <script src="../../app.js"></script>
+  <script>
+    // Fade-in on scroll (nếu app.js đã có thì vẫn ok, cái này safe)
+    (function(){
+      const io=new IntersectionObserver(es=>es.forEach(e=>{
+        if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target);}
+      }),{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+    })();
+  </script>
 </body>
 </html>
