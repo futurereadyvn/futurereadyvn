@@ -1,137 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>FRV — Support with Study Supplies</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css"/>
-  <style>
-    .page-wrap{position:relative;z-index:5}
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FRV — Support with Study Supplies</title>
 
-    /* Fix dropdown align phải */
-    .dropdown.align-right .dropdown-menu{
-      left:auto; right:0; margin-right:10px; transform-origin:top right;
-    }
+<link rel="stylesheet" href="../../style.css"/>
 
-    /* Fade-in */
-    .reveal{opacity:0; transform:translateY(16px); transition:.6s}
-    .reveal.in{opacity:1; transform:none}
+<style>
+  :root{--mint:#a8e6cf;--mint-strong:#6fd8b5;--pink:#ffd1dc;--cream:#fffaf5;--ink:#2f2f2f;--soft:#6b6b6b;--white:#ffffff;}
+  *{box-sizing:border-box} html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:linear-gradient(135deg,#fbe9e7 0%,var(--cream) 40%,#d9f7ec 100%);
+    overflow-x:hidden;
+  }
 
-    /* Layout */
-    .help-wrap{padding:120px 10% 60px; max-width:960px; margin:auto}
-    .lead{color:var(--soft); max-width:780px}
-    form{background:#fff; border:1px solid #eee; border-radius:16px; padding:22px; box-shadow:0 10px 24px rgba(0,0,0,.06)}
-    label{font-weight:600; margin-top:8px; display:block}
-    input,textarea{
-      width:100%; padding:12px 14px; border:1px solid #e6e6e6; border-radius:10px;
-      font:500 14px/1.4 'Montserrat',sans-serif; color:#333; background:#fff
-    }
-    textarea{min-height:100px; resize:vertical}
-    .actions{margin-top:16px}
-    .actions .btn{cursor:pointer}
-    .note{color:var(--soft); font-size:13px; margin-top:6px}
+  /* ===== HEADER (no vrg, more-left, safe dropdown) ===== */
+  .header{
+    position:fixed;top:0;left:0;right:0;height:64px;
+    display:flex;align-items:center;gap:20px;
+    padding:0 16px 0 10px; /* shift more left */
+    background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);
+    z-index:99999;overflow:visible;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);
+    flex:0 0 auto;min-width:0;margin-left:0;
+  }
+  .brand img.logo-top{height:40px;width:auto;display:block;image-rendering:auto}
 
-    /* Footer FRV logo (đẹp & hover) */
-    .footer .frv img{
-      height:32px; width:auto; vertical-align:middle;
-      filter:drop-shadow(0 0 4px rgba(168,230,207,.3));
-      transition:transform .25s ease, filter .25s ease;
-    }
-    .footer .frv strong{
-      margin-left:6px; letter-spacing:1px; font-weight:700; font-size:15px; color:#2f2f2f; vertical-align:middle;
-    }
-    .footer .frv:hover img{
-      transform:translateY(-2px);
-      filter:drop-shadow(0 0 8px rgba(168,230,207,.45));
-    }
+  .nav{margin-left:auto;display:flex;align-items:center;gap:18px;flex:0 1 auto}
+  .nav a,.nav button{
+    font:600 14px/1 Montserrat,Arial;text-decoration:none;color:var(--ink);
+    background:none;border:0;padding:10px 6px;cursor:pointer;position:relative;white-space:nowrap;
+  }
+  .nav a::after,.nav button::after{
+    content:"";position:absolute;left:6px;right:6px;bottom:6px;height:2px;
+    background:linear-gradient(90deg,transparent,var(--mint),transparent);
+    transform:scaleX(0);transition:transform .25s;
+  }
+  .nav a:hover::after,.nav button:hover::after{transform:scaleX(1)}
 
-    @media (max-width:640px){
-      .help-wrap{padding:100px 16px 40px}
-      .dropdown-menu{min-width:200px}
-    }
-  </style>
+  .dropdown{position:relative}
+  .dropdown-menu{
+    position:absolute;top:110%;left:0;min-width:220px;max-width:min(92vw,320px);
+    background:#fff;border:1px solid #eee;border-radius:10px;
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+    padding:8px;display:none;z-index:100000;overflow-wrap:anywhere;
+  }
+  @media (hover:hover){ .dropdown:hover .dropdown-menu{display:block} } /* desktop hover */
+  .dropdown.align-right .dropdown-menu{left:auto;right:8px;transform-origin:top right}
+  .dropdown-menu a{display:block;padding:10px 12px;border-radius:8px;color:var(--ink);text-decoration:none}
+  .dropdown-menu a:hover{background:#f7fffb}
+
+  /* ===== MAIN ===== */
+  .help-wrap{padding:120px 10% 60px;max-width:960px;margin:auto}
+  .title{margin:0 0 6px;font-size:clamp(28px,5vw,40px);letter-spacing:1px}
+  .lead{color:var(--soft);max-width:780px;margin:0 0 18px}
+  form{
+    background:#fff;border:1px solid #eee;border-radius:16px;
+    padding:22px;box-shadow:0 10px 24px rgba(0,0,0,.06)
+  }
+  label{font-weight:600;margin-top:8px;display:block}
+  input,textarea{
+    width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:10px;
+    font:500 14px/1.4 Montserrat,Arial;color:#333;background:#fff
+  }
+  textarea{min-height:100px;resize:vertical}
+  .actions{margin-top:16px}
+  .btn{
+    text-decoration:none;color:#2f2f2f;background:#fff;padding:12px 18px;
+    border:1px solid #e8e8e8;border-radius:30px;transition:.25s;font-weight:600;
+    box-shadow:0 8px 18px rgba(168,230,207,.18);cursor:pointer
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(168,230,207,.28);background:#fafffd}
+  .note{color:var(--soft);font-size:13px;margin-top:6px}
+
+  /* ===== FOOTER ===== */
+  .footer{
+    position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;
+    gap:12px;padding:32px 10%;color:var(--soft)
+  }
+  .footer .frv{display:flex;gap:8px;align-items:center}
+  .footer .frv img{height:32px;width:auto;display:block}
+  .footer .frv strong{margin-left:6px;letter-spacing:1px;font-weight:700;font-size:15px;color:#2f2f2f;vertical-align:middle}
+  .copyright{flex-basis:100%;text-align:center;font-size:12px;opacity:.65;margin-top:8px}
+
+  /* ===== Flowers from assets (NO blur) ===== */
+  .pastel-film{display:none !important;}
+  .floating{position:fixed;inset:0;pointer-events:none;z-index:0}
+  .floating img{position:absolute;opacity:.65;animation:float 7s ease-in-out infinite}
+  .f1{top:8%;left:5%;width:90px;animation-delay:0s}
+  .f2{bottom:6%;right:10%;width:140px;animation-delay:2s}
+  .f3{top:62%;left:78%;width:110px;animation-delay:4s}
+  @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
+
+  /* Fade-in utility */
+  .reveal{opacity:0;transform:translateY(16px);transition:.6s}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Kill any legacy blur/fade from old CSS */
+  body.blur .page-wrap{filter:none !important;transform:none !important}
+  body.fade-out{opacity:1 !important}
+
+  @media (max-width:640px){
+    .help-wrap{padding:100px 16px 40px}
+    .dropdown-menu{min-width:200px}
+  }
+</style>
 </head>
 <body>
-  <div class="page-wrap">
-    <!-- HEADER -->
-    <header class="header">
-      <a class="brand" href="../../english.html">
-        <img data-key="logo_main" alt="Future Ready Vietnam" style="height:40px">
-      </a>
-      <nav class="nav">
-        <a class="nav-link" href="../about.html">About Us</a>
-        <a class="nav-link" href="../journey.html">Journey</a>
-        <div class="dropdown" data-dropdown>
-          <button type="button">Programs ▾</button>
-          <div class="dropdown-menu">
-            <a href="../program_music.html">Music</a>
-            <a href="../program_science.html">Science</a>
-            <a href="../program_math.html">Math</a>
-            <a href="../program_vietnamese.html">Vietnamese</a>
-            <a href="../program_english.html">English</a>
-            <a href="../program_compsci.html">Computer Science</a>
-          </div>
-        </div>
-        <a class="nav-link" href="../join/">Join</a>
-        <div class="dropdown align-right" data-dropdown>
-          <button type="button">Support ▾</button>
-          <div class="dropdown-menu">
-            <a href="financial.html">Support Financially</a>
-            <a href="supplies.html">Support with Study Supplies</a>
-          </div>
-        </div>
-      </nav>
-    </header>
+  <!-- ===== HEADER (logo moved left, no vrg) ===== -->
+  <header class="header">
+    <a class="brand" href="../../english.html">
+      <img class="logo-top" src="../../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam">
+    </a>
 
-    <!-- MAIN -->
-    <main class="help-wrap">
-      <h1 class="title reveal">Support with Study Supplies</h1>
-      <p class="lead reveal">Your kindness helps provide books, notebooks, and materials to children in need.</p>
+    <nav class="nav">
+      <a href="../about.html">About Us</a>
+      <a href="../journey.html">Journey</a>
 
-      <form id="supplyForm" class="reveal" action="mailto:futurereadyvn@gmail.com" method="POST">
-        <label>Your Full Name *</label>
-        <input name="name" required placeholder="Your name">
-        <label>Your Email *</label>
-        <input type="email" name="email" required placeholder="you@example.com">
-        <label>What would you like to donate? *</label>
-        <textarea name="items" required placeholder="Example: 10 notebooks, 3 boxes of pencils, etc."></textarea>
-        <label>Message (optional)</label>
-        <textarea name="message" placeholder="Add a short message or notes…"></textarea>
-        <div class="actions">
-          <button class="btn" type="submit">Send Support</button>
+      <div class="dropdown" data-dropdown>
+        <button type="button" aria-haspopup="true" aria-expanded="false">Programs ▾</button>
+        <div class="dropdown-menu" role="menu">
+          <a href="../program_music.html">Music</a>
+          <a href="../program_science.html">Science</a>
+          <a href="../program_math.html">Math</a>
+          <a href="../program_vietnamese.html">Vietnamese</a>
+          <a href="../program_english.html">English</a>
+          <a href="../program_compsci.html">Computer Science</a>
         </div>
-        <p class="note">This will be sent directly to <strong>futurereadyvn@gmail.com</strong>.</p>
-      </form>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="frv">
-        <img data-key="logo_frv" alt="FRV logo">
-        <strong>FRV</strong>
       </div>
-      <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
-    </footer>
-    <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
-  </div>
 
-  <!-- Nền pastel + hoa lá -->
-  <div class="pastel-film"></div>
+      <a href="../join/">Join</a>
+
+      <div class="dropdown align-right" data-dropdown>
+        <button type="button" aria-haspopup="true" aria-expanded="false">Support ▾</button>
+        <div class="dropdown-menu" role="menu">
+          <a href="financial.html">Support Financially</a>
+          <a href="supplies.html">Support with Study Supplies</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="help-wrap">
+    <h1 class="title reveal">Support with Study Supplies</h1>
+    <p class="lead reveal">Your kindness helps provide books, notebooks, and materials to children in need.</p>
+
+    <form class="reveal" action="mailto:futurereadyvn@gmail.com" method="POST">
+      <label>Your Full Name *</label>
+      <input name="name" required placeholder="Your name">
+      <label>Your Email *</label>
+      <input type="email" name="email" required placeholder="you@example.com">
+      <label>What would you like to donate? *</label>
+      <textarea name="items" required placeholder="Example: 10 notebooks, 3 boxes of pencils, etc."></textarea>
+      <label>Message (optional)</label>
+      <textarea name="message" placeholder="Add a short message or notes…"></textarea>
+      <div class="actions"><button class="btn" type="submit">Send Support</button></div>
+      <p class="note">This will be sent directly to <strong>futurereadyvn@gmail.com</strong>.</p>
+    </form>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="frv">
+      <img src="../../assets/logo_FRV.svg" alt="FRV"><strong>FRV</strong>
+    </div>
+    <div><a href="mailto:futurereadyvn@gmail.com" style="color:inherit;text-decoration:none">futurereadyvn@gmail.com</a></div>
+  </footer>
+  <div class="copyright">© Future Ready Vietnam — A Charity of Knowledge.</div>
+
+  <!-- Background flowers from assets -->
   <div class="floating">
-    <img data-key="flower_floating_1" class="float-1" alt="">
-    <img data-key="leaves_floating" class="float-2" alt="">
-    <img data-key="flower_floating_2" class="float-3" alt="">
+    <img class="f1" src="../../assets/flowers.svg" alt="">
+    <img class="f2" src="../../assets/leaves.svg" alt="">
+    <img class="f3" src="../../assets/flowers.svg" alt="">
   </div>
 
-  <script src="../../app.js"></script>
-  <script>
-    (function(){
-      const io=new IntersectionObserver(es=>es.forEach(e=>{
-        if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target);}
-      }),{threshold:.12});
-      document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
-    })();
-  </script>
+<script>
+  // Fade-in
+  (function(){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    }),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+  })();
+
+  // Dropdown click for mobile (hover handled by CSS for desktop)
+  document.querySelectorAll('[data-dropdown] > button').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const wrap=e.currentTarget.closest('[data-dropdown]');
+      const open=wrap.classList.contains('open');
+      document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
+      if(!open){wrap.classList.add('open');safePlace(wrap.querySelector('.dropdown-menu'),wrap);}
+    });
+  });
+  document.addEventListener('click', e=>{
+    if(!e.target.closest('[data-dropdown]'))
+      document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
+  });
+
+  // Keep dropdown inside viewport
+  function safePlace(menu, holder){
+    if(!menu) return;
+    menu.style.left=''; menu.style.right='';
+    const vw=window.innerWidth;
+    const r=menu.getBoundingClientRect();
+    if(holder && holder.classList.contains('align-right')){
+      menu.style.left='auto'; menu.style.right='8px';
+    }else{
+      const overRight=r.right - vw;
+      if(overRight>0) menu.style.left=Math.max(8, r.left - overRight - 8)+'px';
+      if(menu.getBoundingClientRect().left<8) menu.style.left='8px';
+    }
+  }
+  window.addEventListener('resize', ()=>{
+    document.querySelectorAll('.dropdown-menu').forEach(m=> safePlace(m, m.closest('.dropdown')));
+  });
+
+  // Ensure no legacy blur/fade comes back
+  window.addEventListener('pageshow', ()=>document.body.classList.remove('blur','fade-out'));
+  document.addEventListener('DOMContentLoaded', ()=>document.body.classList.remove('blur','fade-out'));
+</script>
 </body>
 </html>
