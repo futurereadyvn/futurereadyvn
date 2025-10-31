@@ -9,26 +9,21 @@
   <!-- từ /en/join/ đi lên 2 cấp để lấy CSS chung -->
   <link rel="stylesheet" href="../../bigstar.css"/>
   <style>
-    /* Style nhỏ cho trang Join (không đụng CSS chung) */
+    /* đảm bảo nội dung nằm trên overlay để không bị “chỉ thấy chữ” */
+    .page-wrap{position:relative; z-index:5;}
     .join-hero{position:relative;z-index:1;padding:120px 10% 40px}
-    .join-grid{
-      display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      margin-top:14px
-    }
-    .join-card{
-      background:#fff; border:1px solid #eee; border-radius:16px; padding:20px;
-      box-shadow:0 10px 24px rgba(0,0,0,.06)
-    }
+    .join-grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:14px}
+    .join-card{background:#fff;border:1px solid #eee;border-radius:16px;padding:20px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
     .join-card h3{margin:10px 0 6px}
-    .join-card p{margin:0 0 12px; color:var(--soft)}
-    .join-cta{display:flex; gap:12px; flex-wrap:wrap}
+    .join-card p{margin:0 0 12px;color:var(--soft)}
+    .join-cta{display:flex;gap:12px;flex-wrap:wrap}
   </style>
 </head>
 <body>
   <div class="page-wrap">
-    <!-- HEADER (giữ đúng cấu trúc & link tương đối trong /en/) -->
+    <!-- HEADER (đường dẫn tương đối đúng từ /en/join/) -->
     <header class="header">
-      <!-- từ /en/join/ quay về /en/ -->
+      <!-- quay về trang English ở root: /en/join/ -> ../english.html -->
       <a class="brand" href="../english.html">
         <img data-asset="logo_FutureReadyVietnam.svg" alt="FRV" style="height:40px">
       </a>
@@ -74,7 +69,6 @@
           <h3>Become a Volunteer</h3>
           <p>Share your skills in Music, Science, Math, Vietnamese, English, or Computer Science — free classes, big impact.</p>
           <div class="join-cta">
-            <!-- trỏ tới form volunteer (sẽ làm ở bước kế tiếp) -->
             <a class="btn nav-link" href="volunteer.html">Continue</a>
           </div>
         </article>
@@ -85,7 +79,6 @@
           <h3>Become a Partner</h3>
           <p>Individuals, schools, clubs, and companies — let’s co-host workshops or provide study resources together.</p>
           <div class="join-cta">
-            <!-- trỏ tới form partner (sẽ làm ở bước kế tiếp) -->
             <a class="btn nav-link" href="partner.html">Continue</a>
           </div>
         </article>
@@ -103,7 +96,7 @@
     <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
   </div>
 
-  <!-- BG deco (không bắt sự kiện) -->
+  <!-- NỀN (đặt sau, không nhận click) -->
   <div class="pastel-film"></div>
   <div class="floating">
     <img class="float-1" data-asset="flowers.svg" alt="">
