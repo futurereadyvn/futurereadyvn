@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>FRV — Support Financially</title>
 
-<!-- (Optional) your global css; inline rules below will override if needed -->
 <link rel="stylesheet" href="../../style.css"/>
 
 <style>
@@ -19,24 +18,29 @@
     overflow-x:hidden;
   }
 
-  /* ===== HEADER (no blur, fixed, safe dropdown) ===== */
+  /* ===== HEADER (no vrg, more-left, safe dropdown) ===== */
   .header{
     position:fixed;top:0;left:0;right:0;height:64px;
-    display:flex;align-items:center;gap:24px;padding:0 24px;
+    display:flex;align-items:center;gap:20px;
+    /* padding-left giảm để sát trái hơn, tránh bị cắt */
+    padding:0 16px 0 10px;
     background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);
     z-index:99999;overflow:visible;
   }
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-  .brand .sig{font:700 13px/1 Montserrat,Arial;letter-spacing:2px;text-transform:lowercase;color:var(--mint-strong)}
-  .brand img.logo-top{height:40px;width:auto;display:block}
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    text-decoration:none;color:var(--ink);
+    flex:0 0 auto;min-width:0;margin-left:0;
+  }
+  .brand img.logo-top{height:40px;width:auto;display:block;image-rendering:auto}
 
-  .nav{margin-left:auto;display:flex;align-items:center;gap:20px}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:18px;flex:0 1 auto}
   .nav a,.nav button{
     font:600 14px/1 Montserrat,Arial;text-decoration:none;color:var(--ink);
-    background:none;border:0;padding:10px 8px;cursor:pointer;position:relative;white-space:nowrap;
+    background:none;border:0;padding:10px 6px;cursor:pointer;position:relative;white-space:nowrap;
   }
   .nav a::after,.nav button::after{
-    content:"";position:absolute;left:8px;right:8px;bottom:6px;height:2px;
+    content:"";position:absolute;left:6px;right:6px;bottom:6px;height:2px;
     background:linear-gradient(90deg,transparent,var(--mint),transparent);
     transform:scaleX(0);transition:transform .25s;
   }
@@ -87,8 +91,8 @@
   .footer .frv strong{margin-left:6px;letter-spacing:1px;font-weight:700;font-size:15px;color:#2f2f2f;vertical-align:middle}
   .copyright{flex-basis:100%;text-align:center;font-size:12px;opacity:.65;margin-top:8px}
 
-  /* ===== Background flowers from assets (NO blur at all) ===== */
-  .pastel-film{display:none !important;} /* kill any film blur */
+  /* ===== Background flowers from assets (NO blur) ===== */
+  .pastel-film{display:none !important;}
   .floating{position:fixed;inset:0;pointer-events:none;z-index:0}
   .floating img{position:absolute;opacity:.65;animation:float 7s ease-in-out infinite}
   .f1{top:8%;left:5%;width:90px;animation-delay:0s}
@@ -96,11 +100,11 @@
   .f3{top:62%;left:78%;width:110px;animation-delay:4s}
   @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
 
-  /* Fade-in utility (kept light) */
+  /* Fade-in utility */
   .reveal{opacity:0;transform:translateY(16px);transition:.6s}
   .reveal.in{opacity:1;transform:none}
 
-  /* Force-disable any legacy blur/fade classes from old JS/CSS */
+  /* Kill any legacy blur/fade from old CSS */
   body.blur .page-wrap{filter:none !important;transform:none !important}
   body.fade-out{opacity:1 !important}
 
@@ -111,10 +115,9 @@
 </style>
 </head>
 <body>
-  <!-- ===== HEADER (correct underline logo) ===== -->
+  <!-- ===== HEADER (logo moved left, no vrg) ===== -->
   <header class="header">
     <a class="brand" href="../../english.html">
-      <span class="sig">vrg</span>
       <img class="logo-top" src="../../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam">
     </a>
 
@@ -181,7 +184,6 @@
     <img class="f3" src="../../assets/flowers.svg" alt="">
   </div>
 
-<!-- ===== Inline JS: fade-in + dropdown safe + kill any blur ===== -->
 <script>
   // Fade-in
   (function(){
