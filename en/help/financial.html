@@ -4,52 +4,57 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>FRV — Support Financially</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- style chung nếu em có, vẫn dùng được -->
 <link rel="stylesheet" href="../../style.css"/>
+
+<!-- HOTFIX: tự chứa để đảm bảo đúng ngay cả khi style.css cũ còn blur -->
 <style>
   :root{--mint:#a8e6cf;--mint-strong:#6fd8b5;--pink:#ffd1dc;--cream:#fffaf5;--ink:#2f2f2f;--soft:#6b6b6b;--white:#ffffff;}
-  *{box-sizing:border-box} html,body{height:100%} body{margin:0;font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,#fbe9e7 0%,var(--cream) 40%,#d9f7ec 100%);overflow-x:hidden}
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,#fbe9e7 0%,var(--cream) 40%,#d9f7ec 100%);overflow-x:hidden}
 
-  /* Header (no blur, no filters) */
-  .header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:24px;padding:0 24px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);z-index:999}
+  /* ===== HEADER (không blur) ===== */
+  .header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:24px;padding:0 24px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);z-index:9999}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-  .brand .sig{font:700 13px/1 'Montserrat',sans-serif;letter-spacing:2px;text-transform:lowercase;color:var(--mint-strong)}
+  .brand .sig{font:700 13px/1 Montserrat,Arial;letter-spacing:2px;text-transform:lowercase;color:var(--mint-strong)}
   .brand img{height:40px;width:auto;display:block}
 
   .nav{margin-left:auto;display:flex;align-items:center;gap:20px}
-  .nav a,.nav button{font:600 14px/1 'Montserrat',sans-serif;text-decoration:none;color:var(--ink);background:none;border:none;padding:10px 8px;cursor:pointer;position:relative}
+  .nav a,.nav button{font:600 14px/1 Montserrat,Arial;text-decoration:none;color:var(--ink);background:none;border:none;padding:10px 8px;cursor:pointer;position:relative}
   .nav a::after,.nav button::after{content:"";position:absolute;left:8px;right:8px;bottom:6px;height:2px;background:linear-gradient(90deg,transparent,var(--mint),transparent);transform:scaleX(0);transition:transform .25s}
   .nav a:hover::after,.nav button:hover::after{transform:scaleX(1)}
 
+  /* ===== DROPDOWN: không tràn / không bị cắt ===== */
   .dropdown{position:relative}
-  .dropdown-menu{position:absolute;top:110%;left:0;min-width:220px;background:#fff;border:1px solid #eee;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.08);padding:8px;display:none;z-index:1000;max-width:min(92vw,320px);overflow-wrap:anywhere}
+  .dropdown-menu{position:absolute;top:110%;left:0;min-width:220px;background:#fff;border:1px solid #eee;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.08);padding:8px;display:none;z-index:10000;max-width:min(92vw,320px);overflow-wrap:anywhere}
   .dropdown.align-right .dropdown-menu{left:auto;right:8px;transform-origin:top right}
-  @media(hover:hover){ .dropdown:hover .dropdown-menu{display:block} } /* hover desktop */
+  @media(hover:hover){ .dropdown:hover .dropdown-menu{display:block} }
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:8px;color:var(--ink);text-decoration:none}
   .dropdown-menu a:hover{background:#f7fffb}
 
-  /* Main */
+  /* ===== MAIN ===== */
   .help-wrap{padding:120px 10% 60px;max-width:960px;margin:auto}
   .title{margin:0 0 6px;font-size:clamp(28px,5vw,40px);letter-spacing:1px}
   .lead{color:var(--soft);max-width:780px;margin:0 0 18px}
   form{background:#fff;border:1px solid #eee;border-radius:16px;padding:22px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
   label{font-weight:600;margin-top:8px;display:block}
-  input,textarea{width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:10px;font:500 14px/1.4 'Montserrat',sans-serif;color:#333;background:#fff}
+  input,textarea{width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:10px;font:500 14px/1.4 Montserrat,Arial;color:#333;background:#fff}
   textarea{min-height:100px;resize:vertical}
   .actions{margin-top:16px}
   .btn{text-decoration:none;color:#2f2f2f;background:#fff;padding:12px 18px;border:1px solid #e8e8e8;border-radius:30px;transition:.25s;font-weight:600;box-shadow:0 8px 18px rgba(168,230,207,.18);cursor:pointer}
   .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(168,230,207,.28);background:#fafffd}
   .note{color:var(--soft);font-size:13px;margin-top:6px}
 
-  /* Footer (no blur filters) */
+  /* ===== FOOTER ===== */
   .footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:32px 10%;color:var(--soft)}
   .footer .frv{display:flex;gap:8px;align-items:center}
   .footer .frv img{height:32px;width:auto;display:block}
   .footer .frv strong{margin-left:6px;letter-spacing:1px;font-weight:700;font-size:15px;color:#2f2f2f;vertical-align:middle}
   .copyright{flex-basis:100%;text-align:center;font-size:12px;opacity:.65;margin-top:8px}
 
-  /* Pastel film + flowers (no backdrop blur) */
-  .pastel-film{position:fixed;inset:0;background:rgba(255,255,255,.22);pointer-events:none;z-index:0} /* bỏ backdrop-filter */
+  /* ===== Hoa lá dùng assets, KHÔNG BLUR ===== */
+  .pastel-film{display:none !important;}   /* tắt film mờ */
   .floating{position:fixed;inset:0;pointer-events:none;z-index:0}
   .floating img{position:absolute;opacity:.65;animation:float 7s ease-in-out infinite}
   .f1{top:8%;left:5%;width:90px;animation-delay:0s}
@@ -57,9 +62,13 @@
   .f3{top:62%;left:78%;width:110px;animation-delay:4s}
   @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
 
-  /* Fade-in (giữ nhẹ) */
+  /* Fade-in nhẹ */
   .reveal{opacity:0;transform:translateY(16px);transition:.6s}
   .reveal.in{opacity:1;transform:none}
+
+  /* Nếu style cũ từng thêm blur/fade body → vô hiệu hóa */
+  body.blur .page-wrap{filter:none !important;transform:none !important}
+  body.fade-out{opacity:1 !important}
 
   @media (max-width:640px){
     .help-wrap{padding:100px 16px 40px}
@@ -72,7 +81,8 @@
   <header class="header">
     <a class="brand" href="../../english.html">
       <span class="sig">vrg</span>
-      <img src="../../assets/logo_future_ready_vietnam.svg" alt="Future Ready Vietnam">
+      <!-- ⬇️ logo header có GẠCH (đặt đúng tên file trong /assets) -->
+      <img src="../../assets/logo_header_underline.svg" alt="Future Ready Vietnam">
     </a>
     <nav class="nav">
       <a href="../about.html">About Us</a>
@@ -104,7 +114,7 @@
     <h1 class="title reveal">Support Financially</h1>
     <p class="lead reveal">Your donations help keep all FRV classes free and full of hope.</p>
 
-    <form id="financeForm" class="reveal" action="mailto:futurereadyvn@gmail.com" method="POST">
+    <form class="reveal" action="mailto:futurereadyvn@gmail.com" method="POST">
       <label>Your Full Name *</label>
       <input name="name" required placeholder="Your name">
       <label>Your Email *</label>
@@ -114,7 +124,7 @@
       <label>Message</label>
       <textarea name="message" placeholder="Leave a short message for FRV…"></textarea>
       <div class="actions"><button class="btn" type="submit">Send Support</button></div>
-      <p class="note">Your message will be sent directly to <strong>futurereadyvn@gmail.com</strong>.</p>
+      <p class="note">This will be sent directly to <strong>futurereadyvn@gmail.com</strong>.</p>
     </form>
   </main>
 
@@ -128,16 +138,15 @@
   </footer>
   <div class="copyright">© Future Ready Vietnam — A Charity of Knowledge.</div>
 
-  <!-- Background film + blossoms (dùng assets, không blur) -->
-  <div class="pastel-film"></div>
+  <!-- Hoa lá (assets) -->
   <div class="floating">
     <img class="f1" src="../../assets/flowers.svg" alt="">
     <img class="f2" src="../../assets/leaves.svg" alt="">
     <img class="f3" src="../../assets/flowers.svg" alt="">
   </div>
 
+<!-- JS nhỏ gọn: fade-in + dropdown safe + tắt blur class nếu còn -->
 <script>
-  // Fade-in on scroll
   (function(){
     const io=new IntersectionObserver(es=>es.forEach(e=>{
       if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
@@ -145,7 +154,6 @@
     document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
   })();
 
-  // Dropdown: click cho mobile (hover đã có CSS)
   document.querySelectorAll('[data-dropdown] > button').forEach(btn=>{
     btn.addEventListener('click', e=>{
       const wrap=e.currentTarget.closest('[data-dropdown]');
@@ -158,8 +166,6 @@
     if(!e.target.closest('[data-dropdown]'))
       document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
   });
-
-  // Đặt dropdown luôn trong màn hình
   function safePlace(menu, holder){
     if(!menu) return;
     menu.style.left='';menu.style.right='';
@@ -172,9 +178,10 @@
       if(menu.getBoundingClientRect().left<8) menu.style.left='8px';
     }
   }
-  window.addEventListener('resize', ()=>{
-    document.querySelectorAll('.dropdown-menu').forEach(m=> safePlace(m, m.closest('.dropdown')));
-  });
+
+  // TẮT hoàn toàn blur/fade nếu code cũ còn
+  window.addEventListener('pageshow', ()=>document.body.classList.remove('blur','fade-out'));
+  document.addEventListener('DOMContentLoaded', ()=>document.body.classList.remove('blur','fade-out'));
 </script>
 </body>
 </html>
