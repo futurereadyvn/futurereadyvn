@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>FRV — Support Financially</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css"/>
+  <style>
+    .page-wrap{position:relative;z-index:5}
+    /* FIX dropdown menu alignment */
+    .dropdown.align-right .dropdown-menu{
+      left:auto; right:0; margin-right:10px; transform-origin:top right;
+    }
+
+    .help-wrap{padding:120px 10% 60px;max-width:960px;margin:auto}
+    form{background:#fff;border:1px solid #eee;border-radius:16px;padding:22px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+    label{font-weight:600;margin-top:8px;display:block}
+    input,textarea{
+      width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:10px;
+      font:500 14px/1.4 'Montserrat',sans-serif;color:#333;background:#fff
+    }
+    textarea{min-height:100px}
+    .actions{margin-top:16px}
+    .actions button{cursor:pointer}
+    .note{color:var(--soft);font-size:13px;margin-top:6px}
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- HEADER -->
+    <header class="header">
+      <a class="brand" href="../../english.html">
+        <img data-key="logo_main" alt="FRV" style="height:40px">
+      </a>
+      <nav class="nav">
+        <a class="nav-link" href="../about.html">About Us</a>
+        <a class="nav-link" href="../journey.html">Journey</a>
+        <div class="dropdown" data-dropdown>
+          <button type="button">Programs ▾</button>
+          <div class="dropdown-menu">
+            <a href="../program_music.html">Music</a>
+            <a href="../program_science.html">Science</a>
+            <a href="../program_math.html">Math</a>
+            <a href="../program_vietnamese.html">Vietnamese</a>
+            <a href="../program_english.html">English</a>
+            <a href="../program_compsci.html">Computer Science</a>
+          </div>
+        </div>
+        <a href="../join/">Join</a>
+        <div class="dropdown align-right" data-dropdown>
+          <button type="button">Support ▾</button>
+          <div class="dropdown-menu">
+            <a href="financial.html">Support Financially</a>
+            <a href="supplies.html">Support with Study Supplies</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="help-wrap">
+      <h1 class="title reveal">Support Financially</h1>
+      <p class="slogan reveal">Your donations help keep all FRV classes free and full of hope.</p>
+
+      <form id="financeForm" action="mailto:futurereadyvn@gmail.com" method="POST">
+        <label>Your Full Name *</label>
+        <input name="name" required placeholder="Your name">
+        <label>Your Email *</label>
+        <input type="email" name="email" required placeholder="you@example.com">
+        <label>Amount or Type of Support *</label>
+        <input name="amount" required placeholder="e.g. 500,000 VND / Monthly sponsor">
+        <label>Message</label>
+        <textarea name="message" placeholder="Leave a short message for FRV…"></textarea>
+        <div class="actions">
+          <button class="btn" type="submit">Send Support</button>
+        </div>
+        <p class="note">Your message will be sent directly to <strong>futurereadyvn@gmail.com</strong>.</p>
+      </form>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="frv"><img data-key="logo_frv" alt="FRV" style="height:28px"><strong>FRV</strong></div>
+      <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+    </footer>
+    <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
+  </div>
+
+  <!-- background -->
+  <div class="pastel-film"></div>
+  <div class="floating">
+    <img data-key="flower_floating_1" class="float-1" alt="">
+    <img data-key="leaves_floating" class="float-2" alt="">
+    <img data-key="flower_floating_2" class="float-3" alt="">
+  </div>
+
+  <script src="../../app.js"></script>
+</body>
+</html>
