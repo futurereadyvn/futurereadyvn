@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>FRV — Become a Partner</title>
+  <meta name="description" content="Partner with Future Ready Vietnam — co-host workshops or provide study resources."/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css"/>
+  <style>
+    .page-wrap{position:relative;z-index:5}
+    .form-wrap{padding:120px 10% 60px;max-width:980px;margin:auto}
+    form{background:#fff;border:1px solid #eee;border-radius:16px;padding:22px 18px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+    .row{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+    .row-1{grid-template-columns:1fr}
+    label{font-weight:600;margin-top:8px;display:block}
+    input,select,textarea{
+      width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:12px;font:500 14px/1.4 'Montserrat',sans-serif;color:#333;background:#fff
+    }
+    textarea{min-height:120px;resize:vertical}
+    .hint{color:var(--soft);font-size:12px;margin-top:4px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .note{margin-top:8px;color:var(--soft);font-size:13px}
+    .ok{color:#19764b}
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="header">
+      <a class="brand" href="../../english.html">
+        <img data-asset="logo_FutureReadyVietnam.svg" alt="FRV" style="height:40px">
+      </a>
+      <nav class="nav">
+        <a class="nav-link" href="../about.html">About Us</a>
+        <a class="nav-link" href="../journey.html">Journey</a>
+        <div class="dropdown" data-dropdown>
+          <button type="button">Programs ▾</button>
+          <div class="dropdown-menu">
+            <a class="nav-link" href="../program_music.html">Music</a>
+            <a class="nav-link" href="../program_science.html">Science</a>
+            <a class="nav-link" href="../program_math.html">Math</a>
+            <a class="nav-link" href="../program_vietnamese.html">Vietnamese</a>
+            <a class="nav-link" href="../program_english.html">English</a>
+            <a class="nav-link" href="../program_compsci.html">Computer Science</a>
+          </div>
+        </div>
+        <a class="nav-link" href="./">Join</a>
+        <div class="dropdown align-right" data-dropdown>
+          <button type="button">Support ▾</button>
+          <div class="dropdown-menu">
+            <a class="nav-link" href="../help/financial.html">Support Financially</a>
+            <a class="nav-link" href="../help/supplies.html">Support with Study Supplies</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="form-wrap">
+      <h1 class="title">Become a Partner</h1>
+      <p class="slogan reveal">Individuals, schools, clubs, and companies — let’s collaborate for impact.</p>
+
+      <form id="parForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" data-mailto="futurereadyvn@gmail.com" novalidate>
+        <div class="row">
+          <div>
+            <label for="org_name">Name / Organization *</label>
+            <input id="org_name" name="Name/Organization" type="text" required placeholder="Nguyen Long Co. / Ms. Tran …">
+          </div>
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="Email" type="email" required placeholder="you@example.com">
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="type">Are you an individual or a company? *</label>
+            <select id="type" name="Type" required>
+              <option value="">Choose…</option>
+              <option>Individual</option>
+              <option>Company</option>
+              <option>School/Club</option>
+              <option>Non-profit</option>
+            </select>
+          </div>
+          <div>
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" name="Phone" type="text" placeholder="+84 …">
+          </div>
+        </div>
+
+        <div class="row-1">
+          <label for="collab">How would you like to collaborate? *</label>
+          <textarea id="collab" name="Collaboration" required placeholder="Example: co-host workshops, sponsor study supplies, venue support, mentoring …"></textarea>
+        </div>
+
+        <input type="hidden" name="_subject" value="FRV — New Partner Proposal">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="actions">
+          <button class="btn" type="submit">Send Proposal</button>
+          <a class="btn nav-link" href="./">Back</a>
+        </div>
+        <div id="status" class="note"></div>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <div class="frv">
+        <img data-asset="logo_FRV.svg" alt="FRV" style="height:28px">
+        <strong>FRV</strong>
+      </div>
+      <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+    </footer>
+    <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
+  </div>
+
+  <div class="pastel-film"></div>
+  <div class="floating">
+    <img class="float-1" data-asset="flowers.svg" alt="">
+    <img class="float-2" data-asset="leaves.svg"  alt="">
+    <img class="float-3" data-asset="flowers.svg" alt="">
+  </div>
+
+  <script src="../../app.js"></script>
+  <script>
+  (function(){const A='../../assets/';document.querySelectorAll('img[data-asset]').forEach(i=>{const f=i.getAttribute('data-asset');if(f&&!i.src)i.src=A+f;});})();
+
+  document.getElementById('parForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const form = e.currentTarget;
+    const status = document.getElementById('status');
+    status.textContent = '';
+    const endpoint = form.getAttribute('action');
+    const isPlaceholder = /YOUR_FORMSPREE_ID/i.test(endpoint);
+
+    const fd = new FormData(form);
+    const lines = []; fd.forEach((v,k)=>lines.push(`${k}: ${v}`));
+
+    if(!isPlaceholder){
+      try{
+        const res = await fetch(endpoint, { method:'POST', body: fd, headers: { 'Accept':'application/json' }});
+        if(res.ok){ status.innerHTML='<span class="ok">✔ Sent! Thank you — we will email you soon.</span>'; form.reset(); return; }
+        throw new Error('Formspree error');
+      }catch(err){ /* fallback below */ }
+    }
+    const mail = form.dataset.mailto || 'futurereadyvn@gmail.com';
+    const subject = encodeURIComponent('FRV — New Partner Proposal');
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = `mailto:${mail}?subject=${subject}&body=${body}`;
+    status.innerHTML = '<span class="ok">Opening your email app to send the form…</span>';
+  });
+  </script>
+</body>
+</html>
