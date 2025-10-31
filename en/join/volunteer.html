@@ -12,19 +12,39 @@
     .form-wrap{padding:120px 10% 60px;max-width:980px;margin:auto}
     form{background:#fff;border:1px solid #eee;border-radius:16px;padding:22px 18px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
     .row{display:grid;gap:14px;grid-template-columns:1fr 1fr}
-    .row-1{grid-template-columns:1fr}
+    .row-1{display:grid;gap:14px;grid-template-columns:1fr}
     label{font-weight:600;margin-top:8px;display:block}
     input,select,textarea{
-      width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:12px;font:500 14px/1.4 'Montserrat',sans-serif;color:#333;background:#fff
+      width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:12px;
+      font:500 14px/1.4 'Montserrat',sans-serif;color:#333;background:#fff
     }
     textarea{min-height:120px;resize:vertical}
     .hint{color:var(--soft);font-size:12px;margin-top:4px}
+
+    /* --- FIX OVERLAP CHECKBOX --- */
     .checkset{display:flex;flex-wrap:wrap;gap:10px}
-    .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #e6e6e6;border-radius:22px;padding:8px 12px;background:#fff}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid #e6e6e6;border-radius:22px;padding:8px 12px;background:#fff;
+      line-height:1; /* tránh text cao đè input */
+      user-select:none; cursor:pointer;
+    }
+    .chip input[type="checkbox"]{
+      appearance:auto; /* tránh custom reset từ css chung */
+      position:static; /* không absolute để khỏi đè chữ */
+      width:auto;height:auto;margin:0;flex:0 0 auto;
+    }
+    .chip span{white-space:nowrap;display:inline-block}
+
+    /* banner hoa trên form */
+    .form-banner{
+      width:100%;height:140px;object-fit:cover;border-radius:12px;opacity:.9;
+      margin:0 0 12px 0; display:block
+    }
+
     .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
     .note{margin-top:8px;color:var(--soft);font-size:13px}
     .ok{color:#19764b}
-    .err{color:#b22}
   </style>
 </head>
 <body>
@@ -62,7 +82,10 @@
       <h1 class="title">Become a Volunteer</h1>
       <p class="slogan reveal">Share your skills — free classes, big impact. Please fill in the form below.</p>
 
-      <!-- ACTION: Formspree trước, fallback mailto sau -->
+      <!-- banner hoa lá ngay trên form -->
+      <img class="form-banner" data-asset="flowers.svg" alt="flowers">
+
+      <!-- Form: ưu tiên Formspree, fallback mailto -->
       <form id="volForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" data-mailto="futurereadyvn@gmail.com" novalidate>
         <div class="row">
           <div>
@@ -94,12 +117,12 @@
         <div class="row-1">
           <label>Which subjects would you like to teach?</label>
           <div class="checkset">
-            <label class="chip"><input type="checkbox" name="Subjects" value="Music"> Music</label>
-            <label class="chip"><input type="checkbox" name="Subjects" value="Science"> Science</label>
-            <label class="chip"><input type="checkbox" name="Subjects" value="Math"> Math</label>
-            <label class="chip"><input type="checkbox" name="Subjects" value="Vietnamese"> Vietnamese</label>
-            <label class="chip"><input type="checkbox" name="Subjects" value="English"> English</label>
-            <label class="chip"><input type="checkbox" name="Subjects" value="Computer Science"> Computer Science</label>
+            <label class="chip"><input type="checkbox" name="Subjects" value="Music"><span>Music</span></label>
+            <label class="chip"><input type="checkbox" name="Subjects" value="Science"><span>Science</span></label>
+            <label class="chip"><input type="checkbox" name="Subjects" value="Math"><span>Math</span></label>
+            <label class="chip"><input type="checkbox" name="Subjects" value="Vietnamese"><span>Vietnamese</span></label>
+            <label class="chip"><input type="checkbox" name="Subjects" value="English"><span>English</span></label>
+            <label class="chip"><input type="checkbox" name="Subjects" value="Computer Science"><span>Computer Science</span></label>
           </div>
         </div>
 
@@ -108,7 +131,6 @@
           <textarea id="motivation" name="Motivation" required placeholder="Tell us about your reason to volunteer…"></textarea>
         </div>
 
-        <!-- optional hidden fields -->
         <input type="hidden" name="_subject" value="FRV — New Volunteer Application">
         <input type="hidden" name="_template" value="table">
 
@@ -130,6 +152,7 @@
     <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
   </div>
 
+  <!-- nền pastel + hoa lá động -->
   <div class="pastel-film"></div>
   <div class="floating">
     <img class="float-1" data-asset="flowers.svg" alt="">
@@ -139,48 +162,49 @@
 
   <script src="../../app.js"></script>
   <script>
-  // ép gán asset cho chắc
-  (function(){const A='../../assets/';document.querySelectorAll('img[data-asset]').forEach(i=>{const f=i.getAttribute('data-asset');if(f&&!i.src)i.src=A+f;});})();
+  // Ép load asset (hoa, lá, logo)
+  (function(){
+    const A='../../assets/';
+    document.querySelectorAll('img[data-asset]').forEach(i=>{
+      const f=i.getAttribute('data-asset'); if(f && !i.src) i.src=A+f;
+    });
+  })();
 
-  // đổi nhãn field theo độ tuổi
-  age_band.addEventListener('change', ()=>{
+  // Đổi nhãn field theo độ tuổi
+  const ageSel = document.getElementById('age_band');
+  ageSel.addEventListener('change', ()=>{
     const label = document.querySelector('#schoolOrWorkWrap label');
-    if(age_band.value==='Under 18'){ label.textContent='School *'; }
-    else if(age_band.value==='18 or over'){ label.textContent='University / Occupation *'; }
+    if(ageSel.value==='Under 18'){ label.textContent='School *'; }
+    else if(ageSel.value==='18 or over'){ label.textContent='University / Occupation *'; }
     else { label.textContent='School / University / Occupation *'; }
   });
 
-  // submit: ưu tiên Formspree, fallback mailto nếu chưa cấu hình
+  // Submit: Formspree ưu tiên, mailto fallback
   document.getElementById('volForm').addEventListener('submit', async (e)=>{
     e.preventDefault();
     const form = e.currentTarget;
     const status = document.getElementById('status');
-    status.textContent = '';
+    status.textContent='';
     const endpoint = form.getAttribute('action');
     const isPlaceholder = /YOUR_FORMSPREE_ID/i.test(endpoint);
 
     // gom data
     const fd = new FormData(form);
-    const entries = [];
-    fd.forEach((v,k)=>{ entries.push(`${k}: ${v}`); });
+    const lines = []; fd.forEach((v,k)=>lines.push(`${k}: ${v}`));
 
     if(!isPlaceholder){
       try{
         const res = await fetch(endpoint, { method:'POST', body: fd, headers: { 'Accept':'application/json' }});
         if(res.ok){
-          status.innerHTML = '<span class="ok">✔ Sent! Thank you — we will email you soon.</span>';
+          status.innerHTML='<span class="ok">✔ Sent! Thank you — we will email you soon.</span>';
           form.reset(); return;
         }
         throw new Error('Formspree error');
-      }catch(err){
-        // nếu fail → thử mailto
-      }
+      }catch(err){ /* fall to mailto */ }
     }
-
-    // Fallback: mailto
     const mail = form.dataset.mailto || 'futurereadyvn@gmail.com';
     const subject = encodeURIComponent('FRV — New Volunteer Application');
-    const body = encodeURIComponent(entries.join('\n'));
+    const body = encodeURIComponent(lines.join('\n'));
     window.location.href = `mailto:${mail}?subject=${subject}&body=${body}`;
     status.innerHTML = '<span class="ok">Opening your email app to send the form…</span>';
   });
