@@ -34,11 +34,11 @@
   .title{margin:0 0 10px;font-size:clamp(28px,5vw,42px);letter-spacing:1px}
   .lead{color:var(--soft);max-width:880px;margin:0 0 28px}
 
-  /* Section titles */
+  /* Sections */
   .section-title{margin:26px 0 12px;font-size:clamp(20px,3.6vw,28px)}
   .section-desc{color:var(--soft);margin:0 0 16px}
 
-  /* Mentor grid (no modal, no “open full profile”) */
+  /* Mentor cards (NO modal, NO buttons) */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   @media (max-width:960px){.grid{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:640px){.grid{grid-template-columns:1fr}}
@@ -120,7 +120,6 @@
     <section class="grid">
       <!-- Mentor 1 -->
       <article class="card reveal">
-        <!-- TODO: đổi tên ảnh đúng với file em có, ví dụ ../assets/mentor_minhanh.jpg -->
         <img class="photo" src="../assets/mentor1.jpg" alt="Mentor 1">
         <div class="body">
           <h3>Mentor Name 1</h3>
@@ -150,12 +149,11 @@
       </article>
     </section>
 
-    <!-- MARKETING TEAM (để sẵn khung, có thể thêm sau) -->
+    <!-- MARKETING TEAM -->
     <h2 class="section-title reveal" style="margin-top:28px">Marketing Team</h2>
     <p class="section-desc reveal">The storytellers who capture and share FRV’s journey.</p>
 
     <section class="grid">
-      <!-- Gợi ý 2–3 bạn team marketing khi em có ảnh -->
       <article class="card reveal">
         <img class="photo" src="../assets/marketing1.jpg" alt="Marketing Member 1">
         <div class="body">
@@ -185,7 +183,7 @@
   </footer>
   <div class="copyright">© Future Ready Vietnam — A Charity of Knowledge.</div>
 
-  <!-- Flowers from assets -->
+  <!-- Flowers -->
   <div class="floating">
     <img class="f1" src="../assets/flowers.svg" alt="">
     <img class="f2" src="../assets/leaves.svg" alt="">
@@ -193,7 +191,7 @@
   </div>
 
 <script>
-  // Fade-in reveal
+  // Fade-in
   (function(){
     const io=new IntersectionObserver(es=>es.forEach(e=>{
       if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
@@ -227,7 +225,7 @@
     }
   }
 
-  // Kill any legacy blur/fade classes if exist
+  // Kill any legacy blur/fade if exist
   window.addEventListener('pageshow', ()=>document.body.classList.remove('blur','fade-out'));
   document.addEventListener('DOMContentLoaded', ()=>document.body.classList.remove('blur','fade-out'));
 </script>
