@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="vi"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FRV — Chương Trình Toán Học</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css"/>
+<style>.page-wrap{position:relative;z-index:5}.hero{padding:120px 10% 12px}.hero .lead{color:var(--soft);max-width:900px}
+.section{padding:18px 10% 50px}.blocks{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:900px){.blocks{grid-template-columns:1fr}}
+.block{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px}.block h3{margin:0 0 10px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}.btn{background:#fff;border:1px solid #e8e8e8;border-radius:30px;padding:12px 18px;font-weight:700;text-decoration:none;color:#2f2f2f;box-shadow:0 8px 18px rgba(168,230,207,.18)}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(168,230,207,.28)}
+.reveal{opacity:0;transform:translateY(16px);transition:.6s}.reveal.in{opacity:1;transform:none}</style>
+</head><body>
+<div class="page-wrap">
+<header class="header">
+  <a class="brand" href="../index.html"><img src="../assets/logo_FutureReadyVietnam.svg" alt="FRV" style="height:40px"></a>
+  <nav class="nav">
+    <a href="about.html">Về Chúng Tôi</a><a href="journey.html">Hành Trình</a>
+    <div class="dropdown" data-dropdown><button type="button">Chương Trình ▾</button>
+      <div class="dropdown-menu">
+        <a href="program_music.html">Âm Nhạc</a><a href="program_science.html">Khoa Học</a>
+        <a href="program_math.html">Toán Học</a><a href="program_vietnamese.html">Tiếng Việt</a>
+        <a href="program_english.html">Tiếng Anh</a><a href="program_compsci.html">Tin Học</a>
+      </div>
+    </div>
+    <a href="join/">Tham Gia</a>
+    <div class="dropdown align-right" data-dropdown><button type="button">Ủng Hộ ▾</button>
+      <div class="dropdown-menu"><a href="help/financial.html">Ủng Hộ Tài Chính</a><a href="help/supplies.html">Ủng Hộ Dụng Cụ</a></div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 class="title reveal">Toán Học</h1>
+  <p class="lead reveal">Nền tảng vững, hiểu bản chất; luyện tư duy qua trò chơi & tình huống đời sống.</p>
+  <div class="cta reveal"><a class="btn" href="join/">Tham Gia</a><a class="btn" href="help/financial.html">Ủng Hộ</a><a class="btn" href="help/supplies.html">Ủng Hộ Dụng Cụ</a></div>
+</section>
+
+<section class="section">
+  <div class="blocks">
+    <div class="block reveal"><h3>Học gì?</h3><ul>
+      <li>Số học, hình học, tỷ lệ & xác suất cơ bản.</li><li>Giải bài bằng sơ đồ, mô hình, kể chuyện.</li><li>Ôn tập có nhịp, không áp lực điểm số.</li>
+    </ul></div>
+    <div class="block reveal"><h3>Dành cho ai?</h3><ul>
+      <li>Tiểu học–THCS; cần “bồi nền” hoặc tăng tự tin.</li><li>Phù hợp lớp nhóm nhỏ 6–12 bạn.</li><li>Có câu lạc bộ đố vui Toán.</li>
+    </ul></div>
+    <div class="block reveal"><h3>Hình thức</h3><ul>
+      <li>Tuần 1 buổi x 60–75’ (offline/online).</li><li>Worksheet & bài tập ngắn theo mức độ.</li><li>Mini–quiz nhẹ nhàng.</li>
+    </ul></div>
+    <div class="block reveal"><h3>Ghi chú</h3><ul>
+      <li>Có tài liệu song ngữ nếu cần.</li><li>Khuyến khích phụ huynh đồng hành ở nhà.</li>
+    </ul></div>
+  </div>
+</section>
+
+<footer class="footer"><div class="frv"><img src="../assets/logo_FRV.svg" alt="FRV" style="height:28px"><strong>FRV</strong></div><div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div></footer>
+<div class="footer copyright">© Future Ready Việt Nam — Hành trình lan tỏa tri thức.</div>
+</div>
+<div class="pastel-film"></div><div class="floating"><img class="float-1" src="../assets/flowers.svg" alt=""><img class="float-2" src="../assets/leaves.svg" alt=""><img class="float-3" src="../assets/flowers.svg" alt=""></div>
+<script src="../app.js"></script>
+<script>(function(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));})();</script>
+</body></html>
