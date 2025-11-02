@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FRV — Chương Trình</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css"/>
+<style>
+  .page-wrap{position:relative;z-index:5}
+  .hero{padding:120px 10% 10px}
+  .hero .title{margin:0 0 8px}
+  .hero .lead{color:var(--soft);max-width:900px}
+  .grid{padding:16px 10% 60px;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .card{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px;transition:.2s;text-decoration:none;color:inherit}
+  .card:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.08)}
+  .card h3{margin:6px 0 6px;font-size:18px}
+  .card p{margin:0;color:#444;font-size:14px}
+  .reveal{opacity:0;transform:translateY(16px);transition:.6s}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- HEADER -->
+  <header class="header">
+    <a class="brand" href="../index.html">
+      <img src="../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Việt Nam" style="height:40px">
+    </a>
+    <nav class="nav">
+      <a href="about.html">Về Chúng Tôi</a>
+      <a href="journey.html">Hành Trình</a>
+      <div class="dropdown" data-dropdown>
+        <button type="button">Chương Trình ▾</button>
+        <div class="dropdown-menu">
+          <a href="program_music.html">Âm Nhạc</a>
+          <a href="program_science.html">Khoa Học</a>
+          <a href="program_math.html">Toán Học</a>
+          <a href="program_vietnamese.html">Tiếng Việt</a>
+          <a href="program_english.html">Tiếng Anh</a>
+          <a href="program_compsci.html">Tin Học</a>
+        </div>
+      </div>
+      <a href="join/">Tham Gia</a>
+      <div class="dropdown align-right" data-dropdown>
+        <button type="button">Ủng Hộ ▾</button>
+        <div class="dropdown-menu">
+          <a href="help/financial.html">Ủng Hộ Tài Chính</a>
+          <a href="help/supplies.html">Ủng Hộ Dụng Cụ Học Tập</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="title reveal">Chương Trình Học</h1>
+    <p class="lead reveal">
+      FRV mang lớp học miễn phí, nhẹ nhàng và hiệu quả đến với cộng đồng.
+      Chọn 1 môn để xem nội dung, đối tượng phù hợp, và cách tham gia nhé.
+    </p>
+  </section>
+
+  <!-- GRID -->
+  <section class="grid">
+    <a class="card reveal" href="program_music.html"><h3>Âm Nhạc</h3><p>Piano, trống, cảm thụ & biểu diễn tự tin.</p></a>
+    <a class="card reveal" href="program_science.html"><h3>Khoa Học</h3><p>Thí nghiệm vui, tư duy khám phá, an toàn & ham học.</p></a>
+    <a class="card reveal" href="program_math.html"><h3>Toán Học</h3><p>Nền tảng vững, giải quyết vấn đề qua trò chơi.</p></a>
+    <a class="card reveal" href="program_vietnamese.html"><h3>Tiếng Việt</h3><p>Đọc hiểu, viết hay, giao tiếp tự tin.</p></a>
+    <a class="card reveal" href="program_english.html"><h3>Tiếng Anh</h3><p>Speaking–Listening vui, từ vựng & ngữ pháp thực tế.</p></a>
+    <a class="card reveal" href="program_compsci.html"><h3>Tin Học</h3><p>Scratch → Python, tư duy máy tính, dự án nhỏ.</p></a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="frv"><img src="../assets/logo_FRV.svg" alt="FRV" style="height:28px"><strong>FRV</strong></div>
+    <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+  </footer>
+  <div class="footer copyright">© Future Ready Việt Nam — Hành trình lan tỏa tri thức.</div>
+</div>
+
+<!-- FLOWERS -->
+<div class="pastel-film"></div>
+<div class="floating">
+  <img class="float-1" src="../assets/flowers.svg" alt="">
+  <img class="float-2" src="../assets/leaves.svg"  alt="">
+  <img class="float-3" src="../assets/flowers.svg" alt="">
+</div>
+
+<script src="../app.js"></script>
+<script>
+  (function(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));})();
+</script>
+</body>
+</html>
