@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>FRV — About Us</title>
+<title>FRV — Sally (Giảng viên Toán)</title>
 
-<link rel="stylesheet" href="../style.css"/>
+<!-- style.css ở gốc repo; từ mentors/ lên 3 cấp -->
+<link rel="stylesheet" href="../../../style.css"/>
 
 <style>
   :root{--mint:#a8e6cf;--mint-strong:#6fd8b5;--pink:#ffd1dc;--cream:#fffaf5;--ink:#2f2f2f;--soft:#6b6b6b;--white:#ffffff;}
@@ -13,51 +14,54 @@
   body{margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);
        background:linear-gradient(135deg,#fbe9e7 0%,var(--cream) 40%,#d9f7ec 100%);overflow-x:hidden}
 
-  /* HEADER (no vrg, shifted left) */
+  /* HEADER (giữ y chang site) */
   .header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:20px;
-          padding:0 16px 0 10px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);z-index:99999;overflow:visible}
+          padding:0 16px 0 10px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);z-index:99999}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-  .brand img.logo-top{height:40px;width:auto;display:block}
+  .brand img{height:40px;width:auto;display:block}
   .nav{margin-left:auto;display:flex;align-items:center;gap:18px}
   .nav a,.nav button{font:600 14px/1 Montserrat,Arial;text-decoration:none;color:var(--ink);background:none;border:0;padding:10px 6px;cursor:pointer;position:relative;white-space:nowrap}
   .nav a::after,.nav button::after{content:"";position:absolute;left:6px;right:6px;bottom:6px;height:2px;background:linear-gradient(90deg,transparent,var(--mint),transparent);transform:scaleX(0);transition:transform .25s}
   .nav a:hover::after,.nav button:hover::after{transform:scaleX(1)}
   .dropdown{position:relative}
-  .dropdown-menu{position:absolute;top:110%;left:0;min-width:220px;max-width:min(92vw,320px);background:#fff;border:1px solid #eee;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.08);padding:8px;display:none;z-index:100000;overflow-wrap:anywhere}
+  .dropdown-menu{position:absolute;top:110%;left:0;min-width:220px;max-width:min(92vw,340px);background:#fff;border:1px solid #eee;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.08);padding:8px;display:none;z-index:100000;overflow-wrap:anywhere}
   @media(hover:hover){ .dropdown:hover .dropdown-menu{display:block} }
-  .dropdown.align-right .dropdown-menu{left:auto;right:8px;transform-origin:top right}
-  .dropdown-menu a{display:block;padding:10px 12px;border-radius:8px;color:var(--ink);text-decoration:none}
-  .dropdown-menu a:hover{background:#f7fffb}
+  .dropdown.align-right .dropdown-menu{left:auto;right:8px}
 
   /* MAIN */
-  .wrap{padding:120px 10% 60px;max-width:1100px;margin:auto}
-  .title{margin:0 0 10px;font-size:clamp(28px,5vw,42px);letter-spacing:1px}
-  .lead{color:var(--soft);max-width:880px;margin:0 0 28px}
+  .wrap{padding:120px 10% 60px;max-width:1000px;margin:auto;position:relative;z-index:1}
+  .backlink{display:inline-flex;gap:8px;align-items:center;font-weight:600;text-decoration:none;color:#2f2f2f;background:#fff;border:1px solid #eee;border-radius:999px;padding:8px 12px;box-shadow:0 8px 18px rgba(168,230,207,.18)}
+  .backlink:hover{transform:translateY(-1px)}
 
-  /* Sections */
-  .section-title{margin:26px 0 12px;font-size:clamp(20px,3.6vw,28px)}
-  .section-desc{color:var(--soft);margin:0 0 16px}
+  /* CV header: ảnh nhỏ trái, info phải */
+  .cv-header{margin-top:16px;background:#fff;border:1px solid #eee;border-radius:18px;
+             box-shadow:0 12px 28px rgba(0,0,0,.08);padding:16px;display:flex;gap:16px;align-items:center}
+  .cv-photo{flex:0 0 auto;width:128px;height:128px;border-radius:12px;overflow:hidden;border:1px solid #eee}
+  .cv-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+  .cv-meta{min-width:0}
+  .cv-name{margin:0 0 6px;font-size:clamp(22px,4.5vw,28px)}
+  .cv-role{margin:0;color:#444;font-weight:700}
+  @media (max-width:520px){.cv-photo{width:100px;height:100px}}
 
-  /* Mentor cards (NO modal, NO buttons) */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media (max-width:960px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:640px){.grid{grid-template-columns:1fr}}
+  /* Content blocks */
+  .intro{color:var(--soft);margin:16px 0 18px}
+  .blocks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:900px){ .blocks{grid-template-columns:1fr} }
+  .block{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px 20px}
+  .block h3{margin:0 0 10px;font-size:18px}
+  .block ul{margin:0;padding-left:18px}
+  .block li{margin:6px 0}
+  .note{margin-top:18px;background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px 20px;color:#444}
+  .note em{color:#666}
 
-  .card{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);overflow:hidden;display:flex;flex-direction:column}
-  .card .photo{aspect-ratio:4/3;background:#fff;display:block;object-fit:cover;width:100%}
-  .card .body{padding:14px 16px}
-  .card h3{margin:0 0 6px;font-size:18px}
-  .role{font-weight:600;color:#4a4a4a;margin:0 0 8px}
-  .bio{color:#666;margin:0}
-
-  /* Footer */
+  /* FOOTER */
   .footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:32px 10%;color:var(--soft)}
   .footer .frv{display:flex;gap:8px;align-items:center}
   .footer .frv img{height:32px;width:auto;display:block}
   .footer .frv strong{margin-left:6px;letter-spacing:1px;font-weight:700;font-size:15px;color:#2f2f2f}
   .copyright{flex-basis:100%;text-align:center;font-size:12px;opacity:.65;margin-top:8px}
 
-  /* Flowers (no blur) */
+  /* Pastel flowers + reveal */
   .pastel-film{display:none !important;}
   .floating{position:fixed;inset:0;pointer-events:none;z-index:0}
   .floating img{position:absolute;opacity:.65;animation:float 7s ease-in-out infinite}
@@ -65,41 +69,40 @@
   .f2{bottom:6%;right:10%;width:140px;animation-delay:2s}
   .f3{top:62%;left:78%;width:110px;animation-delay:4s}
   @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
-
   .reveal{opacity:0;transform:translateY(16px);transition:.6s}
   .reveal.in{opacity:1;transform:none}
-
-  body.blur .page-wrap{filter:none !important;transform:none !important}
-  body.fade-out{opacity:1 !important}
 </style>
 </head>
 <body>
 
   <!-- HEADER -->
   <header class="header">
-    <a class="brand" href="../english.html">
-      <img class="logo-top" src="../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam">
+    <!-- về trang chủ TV: mentors -> about -> vietnamese -->
+    <a class="brand" href="../../index.html">
+      <img src="../../../assets/logo_FutureReadyVietnam.svg"
+           alt="Future Ready Việt Nam"
+           onerror="this.outerHTML='<svg width=160 height=40 xmlns=http://www.w3.org/2000/svg><rect rx=8 ry=8 width=160 height=40 fill=#a8e6cf/><text x=80 y=26 font-family=Montserrat,Arial font-size=14 text-anchor=middle fill=#2f2f2f>FUTURE READY VIETNAM</text></svg>'">
     </a>
     <nav class="nav">
-      <a href="about.html">About Us</a>
-      <a href="journey.html">Journey</a>
+      <a href="../../about.html">Về Chúng Tôi</a>
+      <a href="../../journey.html">Hành Trình</a>
       <div class="dropdown" data-dropdown>
-        <button type="button">Programs ▾</button>
+        <button type="button">Chương Trình ▾</button>
         <div class="dropdown-menu">
-          <a href="program_music.html">Music</a>
-          <a href="program_science.html">Science</a>
-          <a href="program_math.html">Math</a>
-          <a href="program_vietnamese.html">Vietnamese</a>
-          <a href="program_english.html">English</a>
-          <a href="program_compsci.html">Computer Science</a>
+          <a href="../../program_music.html">Âm Nhạc</a>
+          <a href="../../program_science.html">Khoa Học</a>
+          <a href="../../program_math.html">Toán Học</a>
+          <a href="../../program_vietnamese.html">Tiếng Việt</a>
+          <a href="../../program_english.html">Tiếng Anh</a>
+          <a href="../../program_compsci.html">Tin Học</a>
         </div>
       </div>
-      <a href="join/">Join</a>
+      <a href="../../join/">Tham Gia</a>
       <div class="dropdown align-right" data-dropdown>
-        <button type="button">Support ▾</button>
+        <button type="button">Ủng Hộ ▾</button>
         <div class="dropdown-menu">
-          <a href="help/financial.html">Support Financially</a>
-          <a href="help/supplies.html">Support with Study Supplies</a>
+          <a href="../../help/financial.html">Ủng Hộ Tài Chính</a>
+          <a href="../../help/supplies.html">Ủng Hộ Dụng Cụ Học Tập</a>
         </div>
       </div>
     </nav>
@@ -107,91 +110,71 @@
 
   <!-- MAIN -->
   <main class="wrap">
-    <h1 class="title reveal">About Us</h1>
-    <p class="lead reveal">
-      Future Ready Vietnam (FRV) is a student-led, non-profit initiative — a <em>Charity of Knowledge</em> — that shares learning by teaching. 
-      We partner with community spaces and volunteer mentors to offer free classes in Music, Science, Math, Vietnamese, English, and Computer Science.
+    <a class="backlink reveal" href="../../about.html">← Quay lại “Về Chúng Tôi”</a>
+
+    <section class="cv-header reveal">
+      <div class="cv-photo">
+        <img src="../../../assets/mentors/sally.png"
+             alt="Sally — Giảng viên Toán"
+             onerror="this.outerHTML=`<svg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='128' height='128' rx='12' fill='url(#g)'/></svg>`">
+      </div>
+      <div class="cv-meta">
+        <h1 class="cv-name">Sally</h1>
+        <p class="cv-role">Giảng viên Toán — Future Ready Vietnam</p>
+      </div>
+    </section>
+
+    <p class="intro reveal">
+      Học sinh lớp 12 tại BVIS, nền tảng Toán vững và hoạt động thiện nguyện tích cực.
+      Sally kết hợp thành tích học thuật (IGCSE Mathematics 9/9) với phong cách dạy kiên nhẫn – thân thiện,
+      giúp học sinh nhỏ xây dựng <em>sự tự tin</em> và <em>tò mò học hỏi</em>.
     </p>
 
-    <!-- OUR MENTORS -->
-    <h2 class="section-title reveal">Our Mentors</h2>
-    <p class="section-desc reveal">Dedicated volunteers who teach with heart — for free, for community, for the future.</p>
+    <div class="blocks">
+      <div class="block reveal">
+        <h3>Học vấn</h3>
+        <ul>
+          <li>Lớp 12, British Vietnamese International School (BVIS).</li>
+          <li>Chương trình BGD Việt Nam (lớp 1–9) với thành tích tốt.</li>
+          <li>IGCSE Mathematics: <strong>9/9</strong>.</li>
+        </ul>
+      </div>
+      <div class="block reveal">
+        <h3>Kinh nghiệm & Hoạt động</h3>
+        <ul>
+          <li><strong>1 năm</strong> kèm Toán cho học sinh tiểu học.</li>
+          <li>Tình nguyện dạy học tại một số địa phương & không gian cộng đồng.</li>
+          <li>Tham gia các sân chơi Toán quốc tế: <strong>UKMT</strong>, …</li>
+        </ul>
+      </div>
+    </div>
 
-    <section class="grid">
-      <!-- Mentor 1 -->
-      <article class="card reveal">
-        <img class="photo" src="../assets/mentor1.jpg" alt="Mentor 1">
-        <div class="body">
-          <h3>Mentor Name 1</h3>
-          <p class="role">Piano / Music</p>
-          <p class="bio">Short intro (1–2 sentences). E.g., “Teaches beginner piano and music theory with playful, structured lessons.”</p>
-        </div>
-      </article>
-
-      <!-- Mentor 2 -->
-      <article class="card reveal">
-        <img class="photo" src="../assets/mentor2.jpg" alt="Mentor 2">
-        <div class="body">
-          <h3>Mentor Name 2</h3>
-          <p class="role">Math</p>
-          <p class="bio">Short intro about teaching style, achievements, or focus areas.</p>
-        </div>
-      </article>
-
-      <!-- Mentor 3 -->
-      <article class="card reveal">
-        <img class="photo" src="../assets/mentor3.jpg" alt="Mentor 3">
-        <div class="body">
-          <h3>Mentor Name 3</h3>
-          <p class="role">English</p>
-          <p class="bio">Short intro about class level (e.g., primary) and approach (e.g., confidence-building).</p>
-        </div>
-      </article>
-    </section>
-
-    <!-- MARKETING TEAM -->
-    <h2 class="section-title reveal" style="margin-top:28px">Marketing Team</h2>
-    <p class="section-desc reveal">The storytellers who capture and share FRV’s journey.</p>
-
-    <section class="grid">
-      <article class="card reveal">
-        <img class="photo" src="../assets/marketing1.jpg" alt="Marketing Member 1">
-        <div class="body">
-          <h3>Member Name 1</h3>
-          <p class="role">Photography / Social</p>
-          <p class="bio">Short intro (events coverage, editing, content scheduling, etc.).</p>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <img class="photo" src="../assets/marketing2.jpg" alt="Marketing Member 2">
-        <div class="body">
-          <h3>Member Name 2</h3>
-          <p class="role">Design / Content</p>
-          <p class="bio">Short intro about design style, templates, and brand tone.</p>
-        </div>
-      </article>
-    </section>
+    <div class="note reveal">
+      <h3 style="margin:0 0 8px">Ghi chú cá nhân</h3>
+      <p><em>Rất yêu thích chăm sóc và tương tác với trẻ nhỏ — luôn dạy bằng sự thấu hiểu và nhiệt huyết để việc học vừa ý nghĩa vừa vui.</em></p>
+    </div>
   </main>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="frv">
-      <img src="../assets/logo_FRV.svg" alt="FRV"><strong>FRV</strong>
+      <img src="../../../assets/logo_FRV.svg" alt="FRV"
+           onerror="this.outerHTML='<svg width=60 height=28 xmlns=http://www.w3.org/2000/svg><rect rx=6 ry=6 width=60 height=28 fill=#a8e6cf/><text x=30 y=19 font-family=Montserrat,Arial font-size=12 text-anchor=middle fill=#2f2f2f>FRV</text></svg>'">
+      <strong>FRV</strong>
     </div>
-    <div><a href="mailto:futurereadyvn@gmail.com" style="color:inherit;text-decoration:none">futurereadyvn@gmail.com</a></div>
+    <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
   </footer>
-  <div class="copyright">© Future Ready Vietnam — A Charity of Knowledge.</div>
+  <div class="copyright">© Future Ready Việt Nam — Hành trình lan tỏa tri thức.</div>
 
-  <!-- Flowers -->
+  <!-- Pastel flowers -->
   <div class="floating">
-    <img class="f1" src="../assets/flowers.svg" alt="">
-    <img class="f2" src="../assets/leaves.svg" alt="">
-    <img class="f3" src="../assets/flowers.svg" alt="">
+    <img class="f1" src="../../../assets/flowers.svg" alt="">
+    <img class="f2" src="../../../assets/leaves.svg"  alt="">
+    <img class="f3" src="../../../assets/flowers.svg" alt="">
   </div>
 
 <script>
-  // Fade-in
+  // Fade-in reveal
   (function(){
     const io=new IntersectionObserver(es=>es.forEach(e=>{
       if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
@@ -199,7 +182,7 @@
     document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
   })();
 
-  // Dropdown: click for mobile + safe placement
+  // Dropdown click (mobile)
   document.querySelectorAll('[data-dropdown] > button').forEach(btn=>{
     btn.addEventListener('click', e=>{
       const wrap=e.currentTarget.closest('[data-dropdown]');
@@ -224,10 +207,6 @@
       if(menu.getBoundingClientRect().left<8) menu.style.left='8px';
     }
   }
-
-  // Kill any legacy blur/fade if exist
-  window.addEventListener('pageshow', ()=>document.body.classList.remove('blur','fade-out'));
-  document.addEventListener('DOMContentLoaded', ()=>document.body.classList.remove('blur','fade-out'));
 </script>
 </body>
 </html>
