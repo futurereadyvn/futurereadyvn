@@ -19,6 +19,14 @@
   .body{padding:14px 16px}
   .reveal{opacity:0;transform:translateY(16px);transition:.6s}
   .reveal.in{opacity:1;transform:none}
+  /* floating flowers fix */
+  .pastel-film{position:fixed;inset:0;background:radial-gradient(1000px 600px at 50% 50%,rgba(255,209,220,.3),rgba(255,255,255,.5));pointer-events:none;z-index:0}
+  .floating{position:fixed;inset:0;pointer-events:none;z-index:0}
+  .floating img{position:absolute;opacity:.7;animation:float 7s ease-in-out infinite}
+  .float-1{top:8%;left:5%;width:100px;animation-delay:0s}
+  .float-2{bottom:8%;right:10%;width:150px;animation-delay:2s}
+  .float-3{top:60%;left:80%;width:120px;animation-delay:4s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 </style>
 </head>
 <body>
@@ -98,7 +106,7 @@
   <div class="footer copyright">© Future Ready Việt Nam — Hành trình lan tỏa tri thức.</div>
 </div>
 
-<!-- Pastel film + flowers -->
+<!-- PASTEL FILM & FLOWERS -->
 <div class="pastel-film"></div>
 <div class="floating">
   <img class="float-1" data-asset="flowers.svg" alt="">
@@ -108,8 +116,7 @@
 
 <script src="../../app.js"></script>
 <script>
-  // reveal
-  (()=>{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));})();
+(()=>{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));})();
 </script>
 </body>
 </html>
