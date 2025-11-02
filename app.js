@@ -52,12 +52,3 @@ document.addEventListener('click', (e)=>{
     if (location.hash) history.replaceState(null,'',location.pathname);
   }
 })();
-
-/* ===== [PATCH] Chặn click của dropdown lan xuống dưới (click-through) ===== */
-(function(){
-  const els = document.querySelectorAll('.dropdown, .dropdown-menu, .dropdown > button, .dropdown-menu a');
-  els.forEach(el=>{
-    el.addEventListener('mousedown', e => e.stopPropagation(), true);
-    el.addEventListener('click',      e => e.stopPropagation(), true);
-  });
-})();
