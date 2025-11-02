@@ -29,3 +29,35 @@ document.addEventListener('click', (e)=>{
     img.onerror = ()=>{ img.onerror=null; img.src = (inVi ? 'assets/' : '../assets/') + file; };
   });
 })();
+/* ===== [PATCH] Chỉ bật CV modal ở trang About; chặn blur ở trang khác ===== */
+(function(){
+  const cvModalEl = document.getElementById('cvModal');
+  const isAboutContext = !!cvModalEl || /\/about(\/|\.html)/.test(location.pathname);
+
+  if (isAboutContext && cvModalEl) {
+    // Nếu file em đang có sẵn logic openCV(...) cho mentor,
+    // KHÔNG cần xoá; đoạn dưới chỉ đảm bảo hash/auto-open không chạy ở trang khác.
+    if (location.hash){
+      const id = location.hash.replace('#','');
+      // Chỉ auto-open khi thật sự có mentor ID và đang trong About
+      if (window.MENTORS && MENTORS[id]) {
+        // cố gắng gọi openCV nếu hàm đã có sẵn
+        try { window.openCV && window.openCV(id); } catch(_) {}
+      }
+    }
+  } else {
+    // Ở trang KHÔNG phải About: chắc chắn không còn blur/modal cũ
+    document.body.classList.remove('blur','fade-out');
+    // Xoá hash nếu có (#sally) để khỏi kích hoạt logic cũ
+    if (location.hash) history.replaceState(null,'',location.pathname);
+  }
+})();
+
+/* ===== [PATCH] Chặn click của dropdown lan xuống dưới (click-through) ===== */
+(function(){
+  const els = document.querySelectorAll('.dropdown, .dropdown-menu, .dropdown > button, .dropdown-menu a');
+  els.forEach(el=>{
+    el.addEventListener('mousedown', e => e.stopPropagation(), true);
+    el.addEventListener('click',      e => e.stopPropagation(), true);
+  });
+})();
