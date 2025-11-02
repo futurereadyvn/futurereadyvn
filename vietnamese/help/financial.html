@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FRV — Ủng Hộ Tài Chính</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css"/>
+<style>
+  .page-wrap{position:relative;z-index:5}
+  .hero{padding:120px 10% 20px}
+  .hero .title{margin-bottom:8px}
+  .hero .lead{color:var(--soft);max-width:900px}
+
+  .form-wrap{padding:20px 10% 60px}
+  form{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  @media (max-width:820px){.grid{grid-template-columns:1fr}}
+  label{font-weight:600;margin-bottom:6px;display:block}
+  input,select,textarea{width:100%;padding:10px 12px;border:1px solid #e8e8e8;border-radius:12px;font:500 14px/1.3 Montserrat,Arial}
+  textarea{min-height:100px;resize:vertical}
+  .actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+  .btn.primary{background:#fff;border:1px solid #e8e8e8;border-radius:30px;padding:12px 18px;font-weight:700;box-shadow:0 8px 18px rgba(168,230,207,.18);color:#2f2f2f;text-decoration:none}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(168,230,207,.28);background:#fafffd}
+  .note{margin-top:6px;color:#6b6b6b;font-size:12px}
+
+  /* floating flowers (giữ style đồng bộ) */
+  .pastel-film{position:fixed;inset:0;background:radial-gradient(1000px 600px at 50% 50%,rgba(255,209,220,.3),rgba(255,255,255,.5));pointer-events:none;z-index:0}
+  .floating{position:fixed;inset:0;pointer-events:none;z-index:0}
+  .floating img{position:absolute;opacity:.7;animation:float 7s ease-in-out infinite}
+  .float-1{top:8%;left:5%;width:100px;animation-delay:0s}
+  .float-2{bottom:8%;right:10%;width:150px;animation-delay:2s}
+  .float-3{top:60%;left:80%;width:120px;animation-delay:4s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:.6s}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <header class="header">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Việt Nam" style="height:40px">
+    </a>
+    <nav class="nav">
+      <a href="../about.html">Về Chúng Tôi</a>
+      <a href="../journey.html">Hành Trình</a>
+      <div class="dropdown" data-dropdown>
+        <button type="button">Chương Trình ▾</button>
+        <div class="dropdown-menu">
+          <a href="../program_music.html">Âm Nhạc</a>
+          <a href="../program_science.html">Khoa Học</a>
+          <a href="../program_math.html">Toán Học</a>
+          <a href="../program_vietnamese.html">Tiếng Việt</a>
+          <a href="../program_english.html">Tiếng Anh</a>
+          <a href="../program_compsci.html">Tin Học</a>
+        </div>
+      </div>
+      <a href="../join/">Tham Gia</a>
+      <div class="dropdown align-right" data-dropdown>
+        <button type="button">Ủng Hộ ▾</button>
+        <div class="dropdown-menu">
+          <a href="financial.html">Ủng Hộ Tài Chính</a>
+          <a href="supplies.html">Ủng Hộ Dụng Cụ Học Tập</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="title reveal">Ủng Hộ Tài Chính</h1>
+    <p class="lead reveal">
+      Mỗi khoản ủng hộ đều giúp FRV duy trì lớp học miễn phí, tài liệu, nhạc cụ, và hoạt động cộng đồng.
+      Điền thông tin dưới đây, bấm <strong>Gửi đăng ký</strong> — thiết bị sẽ mở email kèm nội dung điền sẵn để em xác nhận với bạn ngay 💗
+    </p>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-wrap">
+    <form id="financialForm" class="reveal">
+      <div class="grid">
+        <div class="field">
+          <label for="name">Họ tên *</label>
+          <input id="name" name="name" type="text" required placeholder="Nguyễn Văn A">
+        </div>
+
+        <div class="field">
+          <label for="email">Email liên hệ *</label>
+          <input id="email" name="email" type="email" required placeholder="ban@example.com">
+        </div>
+
+        <div class="field">
+          <label for="phone">Số điện thoại</label>
+          <input id="phone" name="phone" type="tel" placeholder="09xx xxx xxx">
+        </div>
+
+        <div class="field">
+          <label for="amount">Số tiền dự kiến *</label>
+          <input id="amount" name="amount" type="text" required placeholder="VD: 500,000 VND">
+        </div>
+
+        <div class="field">
+          <label for="frequency">Hình thức</label>
+          <select id="frequency" name="frequency">
+            <option value="one-time">Một lần</option>
+            <option value="monthly">Hàng tháng</option>
+            <option value="quarterly">Hàng quý</option>
+            <option value="yearly">Hàng năm</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="method">Phương thức</label>
+          <select id="method" name="method">
+            <option value="bank">Chuyển khoản ngân hàng</option>
+            <option value="cash">Tiền mặt</option>
+            <option value="other">Khác</option>
+          </select>
+        </div>
+
+        <div class="field" style="grid-column:1/-1">
+          <label for="note">Ghi chú (nếu có)</label>
+          <textarea id="note" name="note" placeholder="VD: Muốn gắn với lớp Âm Nhạc / muốn ẩn danh / thời gian thực hiện..."></textarea>
+        </div>
+
+        <div class="field" style="grid-column:1/-1">
+          <label class="pill-check" style="border-radius:12px">
+            <input type="checkbox" id="consent" required> Tôi đồng ý để FRV liên hệ xác nhận và hướng dẫn chuyển khoản.
+          </label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn primary">Gửi đăng ký</button>
+        <a class="btn" href="mailto:futurereadyvn@gmail.com">Liên hệ qua email</a>
+      </div>
+      <div class="note">
+        Sau khi gửi, bạn sẽ thấy cửa sổ email mở sẵn nội dung. Vui lòng kiểm tra thông tin rồi bấm <em>Send</em>.
+        (Nếu thiết bị không có ứng dụng email mặc định, chọn nút “Liên hệ qua email”.)
+      </div>
+
+      <!-- (Tùy chọn) Hiển thị thông tin ngân hàng khi cần -->
+      <!--
+      <div class="note" style="margin-top:10px">
+        <strong>Thông tin chuyển khoản:</strong><br/>
+        Ngân hàng: …<br/>Tên tài khoản: …<br/>Số tài khoản: …<br/>Nội dung: FRV – Họ tên – Ủng hộ
+      </div>
+      -->
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="frv"><img src="../../assets/logo_FRV.svg" alt="FRV" style="height:28px"><strong>FRV</strong></div>
+    <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+  </footer>
+  <div class="footer copyright">© Future Ready Việt Nam — Hành trình lan tỏa tri thức.</div>
+
+</div>
+
+<!-- FLOWERS -->
+<div class="pastel-film"></div>
+<div class="floating">
+  <img class="float-1" src="../../assets/flowers.svg" alt="flowers">
+  <img class="float-2" src="../../assets/leaves.svg"  alt="leaves">
+  <img class="float-3" src="../../assets/flowers.svg" alt="flowers">
+</div>
+
+<script>
+  // fade-in
+  (function(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));})();
+  // dropdown (mobile)
+  document.querySelectorAll('[data-dropdown] > button').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const wrap=e.currentTarget.closest('[data-dropdown]');
+      const open=wrap.classList.contains('open');
+      document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
+      if(!open){wrap.classList.add('open');}
+    });
+  });
+  document.addEventListener('click', e=>{
+    if(!e.target.closest('[data-dropdown]')) document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
+  });
+  // mailto compose
+  document.getElementById('financialForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const f = new FormData(this);
+    const body = encodeURIComponent(
+      `ỦNG HỘ TÀI CHÍNH - FRV\n\n` +
+      `Họ tên: ${f.get('name')}\n` +
+      `Email: ${f.get('email')}\n` +
+      `Điện thoại: ${f.get('phone')||''}\n\n` +
+      `Số tiền dự kiến: ${f.get('amount')}\n` +
+      `Hình thức: ${({ 'one-time':'Một lần','monthly':'Hàng tháng','quarterly':'Hàng quý','yearly':'Hàng năm'})[f.get('frequency')]}\n` +
+      `Phương thức: ${({ 'bank':'Chuyển khoản ngân hàng','cash':'Tiền mặt','other':'Khác'})[f.get('method')]}\n` +
+      `Ghi chú: ${f.get('note')||''}\n\n` +
+      `— Gửi từ website Future Ready Việt Nam`
+    );
+    const subject = encodeURIComponent('Ủng hộ tài chính — FRV');
+    window.location.href = `mailto:futurereadyvn@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+</body>
+</html>
