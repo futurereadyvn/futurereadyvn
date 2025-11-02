@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>FRV — About Us</title>
+  <meta name="description" content="About Future Ready Vietnam — a student-led, non-profit movement for free education."/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+    .page-wrap{position:relative;z-index:5}
+    .about-hero{padding:120px 10% 40px}
+    .about-hero .title{margin-bottom:10px}
+    .about-hero .lead{color:var(--soft);max-width:900px}
+    .section{padding:20px 10% 40px}
+    .section h2{margin:18px 0 10px}
+    .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .card{background:#fff;border:1px solid #eee;border-radius:16px;padding:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);cursor:pointer;transition:.2s}
+    .card:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.08)}
+    .avatar{width:72px;height:72px;border-radius:50%;border:2px solid rgba(0,0,0,.06);background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:10px;overflow:hidden}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .avatar svg{width:100%;height:100%}
+    .name{font-weight:700;margin:2px 0}
+    .role{color:var(--soft);font-size:13px;margin-bottom:6px}
+    .bio{color:#444;font-size:14px;line-height:1.5}
+    .pill{display:inline-block;font-size:12px;border:1px solid #eee;border-radius:999px;padding:6px 10px;margin-top:8px;background:#fff}
+    .reveal{opacity:0;transform:translateY(16px);transition:.6s}
+    .reveal.in{opacity:1;transform:none}
+
+    /* Modal CV */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:30}
+    .modal.show{display:flex}
+    .backdrop{position:absolute;inset:0;background:radial-gradient(1000px 600px at 50% 50%, rgba(255,209,220,.35), rgba(255,255,255,.6));backdrop-filter:blur(8px);animation:fadeIn .25s forwards}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .cv-card{position:relative;width:min(980px,92vw);max-height:88vh;overflow:auto;background:#fff;border:1px solid #eee;border-radius:18px;box-shadow:0 30px 70px rgba(0,0,0,.16);transform:translateY(8px);opacity:0;animation:cardIn .28s .04s forwards}
+    @keyframes cardIn{to{transform:none;opacity:1}}
+    .cv-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #f2f2f2;padding:14px 18px;display:flex;align-items:center;gap:14px;z-index:1}
+    .cv-close{margin-left:auto;border:none;background:#fff0f4;color:#b44;padding:8px 12px;border-radius:10px;cursor:pointer}
+    .cv-body{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:18px}
+    .cv-photo{width:100%;height:260px;border-radius:14px;object-fit:cover;background:#fff;border:1px solid #eee}
+    .cv-section{margin-bottom:8px}
+    .cv-section h4{margin:0 0 6px;font-size:14px;color:#6b6b6b;text-transform:uppercase;letter-spacing:.06em}
+    .cv-ach li{margin:0 0 6px 0}
+    .cv-badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{font-size:12px;border:1px solid #eee;border-radius:999px;padding:6px 10px;background:#fff}
+    .cv-actions{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+    .link{color:#2f2f2f;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- HEADER -->
+    <header class="header">
+      <a class="brand" href="../english.html"><img data-key="logo_main" alt="Future Ready Vietnam" style="height:40px"></a>
+      <nav class="nav">
+        <a class="nav-link" href="about.html">About Us</a>
+        <a class="nav-link" href="journey.html">Journey</a>
+        <div class="dropdown" data-dropdown>
+          <button type="button">Programs ▾</button>
+          <div class="dropdown-menu">
+            <a class="nav-link" href="program_music.html">Music</a>
+            <a class="nav-link" href="program_science.html">Science</a>
+            <a class="nav-link" href="program_math.html">Math</a>
+            <a class="nav-link" href="program_vietnamese.html">Vietnamese</a>
+            <a class="nav-link" href="program_english.html">English</a>
+            <a class="nav-link" href="program_compsci.html">Computer Science</a>
+          </div>
+        </div>
+        <a class="nav-link" href="join/">Join</a>
+        <div class="dropdown align-right" data-dropdown>
+          <button type="button">Support ▾</button>
+          <div class="dropdown-menu">
+            <a class="nav-link" href="help/financial.html">Support Financially</a>
+            <a class="nav-link" href="help/supplies.html">Support with Study Supplies</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="about-hero">
+      <h1 class="title reveal">About Us</h1>
+      <p class="lead reveal">
+        Future Ready Vietnam is a student-led, non-profit movement that teaches and uplifts younger learners through free education.
+        We believe knowledge should never be limited by background or finance — only by curiosity.
+        Built with kindness, creativity, and collaboration, our project empowers both mentors and students to grow together.
+      </p>
+      <div class="cta reveal" style="margin-top:14px">
+        <a class="btn" href="join/">Become a part of us</a>
+        <a class="btn" href="journey.html">Explore Journeys</a>
+      </div>
+    </section>
+
+    <!-- OUR MENTORS -->
+    <section class="section">
+      <h2 class="reveal">Our Mentors</h2>
+      <p class="slogan reveal">The heart of FRV — volunteers who teach for free and model compassion.</p>
+
+      <div class="grid">
+       <a class="card-link reveal" href="about/mentors/sally.html">
+  <article class="card">
+    <div class="avatar">
+      <img src="../assets/mentors/sally.png" alt="Sally — Mathematics Mentor">
+    </div>
+    <div class="name">Sally</div>
+    <div class="role">Mathematics Mentor</div>
+    <p class="bio">BVIS Year 12 • IGCSE Maths 9/9 • 1 year tutoring primary pupils • UKMT participant</p>
+    <span class="pill">Ho Chi Minh City</span>
+  </article>
+</a>
+     <a class="card-link reveal" href="about/mentors/vu.html">
+  <article class="card">
+    <div class="avatar">
+      <img src="../assets/mentors/vu.png"
+           onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gvu' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gvu)'/><text x='50' y='58' text-anchor='middle' font-size='36' font-family='Montserrat,Arial' fill='#2f2f2f'>VŨ</text></svg>`"
+           alt="Vũ — Music Mentor (Piano & Drums)">
+    </div>
+
+    <div class="name">Vũ</div>
+    <div class="role">Music Mentor — Piano &amp; Drums</div>
+
+    <p class="bio">
+      BVIS Year 12 • 10 years piano • 3 years drums • BVIS BOTB 2025 band drummer.
+    </p>
+
+    <span class="pill">Ho Chi Minh City</span>
+  </article>
+</a>
+        <article class="card reveal" data-mentor="tt">
+          <div class="avatar">
+            <!-- <img src="../assets/mentors/mentor03.jpg" alt="Tech Tutor"> -->
+            <svg viewBox="0 0 100 100"><rect width="100" height="100" rx="50" fill="#ffd1dc"/><text x="50" y="58" text-anchor="middle" font-size="36" font-family="Montserrat,Arial" fill="#2f2f2f">TT</text></svg>
+          </div>
+          <div class="name">Tech Tutor</div>
+          <div class="role">Computer Science</div>
+          <p class="bio">Scratch to Python — creative challenges that make logic fun.</p>
+          <span class="pill">Hybrid</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- MARKETING TEAM -->
+    <section class="section">
+      <h2 class="reveal">Marketing Team</h2>
+      <p class="slogan reveal">Telling real stories, building trust, and inviting more hearts to join.</p>
+
+      <div class="grid">
+       <!-- Marketing: Bảo Anh (Photography) -->
+<a class="card-link reveal" href="about/marketing/baoanh.html">
+  <article class="card">
+    <div class="avatar">
+      <img src="../assets/marketing/baoanh.png"
+           onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gba' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gba)'/><text x='50' y='58' text-anchor='middle' font-size='30' font-family='Montserrat,Arial' fill='#2f2f2f'>BA</text></svg>`"
+           alt="Bảo Anh — Photography">
+    </div>
+    <div class="name">Bảo Anh</div>
+    <div class="role">Photography / Media</div>
+    <p class="bio">BVIS Year 12 • A* IGCSE Art • photography & editing • media team contributor.</p>
+    <span class="pill">Ho Chi Minh City</span>
+  </article>
+</a>
+
+        <article class="card reveal" data-mentor="ds">
+          <div class="avatar">
+            <!-- <img src="../assets/team/mark02.jpg" alt="Designer"> -->
+            <svg viewBox="0 0 100 100"><rect width="100" height="100" rx="50" fill="#a8e6cf"/><text x="50" y="58" text-anchor="middle" font-size="36" font-family="Montserrat,Arial" fill="#2f2f2f">DS</text></svg>
+          </div>
+          <div class="name">Designer</div>
+          <div class="role">Brand & Visuals</div>
+          <p class="bio">Pastel, gentle motion, accessible layouts — FRV’s visual language.</p>
+        </article>
+
+        <article class="card reveal" data-mentor="sm">
+          <div class="avatar">
+            <!-- <img src="../assets/team/mark03.jpg" alt="Social Media"> -->
+            <svg viewBox="0 0 100 100"><rect width="100" height="100" rx="50" fill="#ffd1dc"/><text x="50" y="58" text-anchor="middle" font-size="36" font-family="Montserrat,Arial" fill="#2f2f2f">SM</text></svg>
+          </div>
+          <div class="name">Social Media</div>
+          <div class="role">Content</div>
+          <p class="bio">Short, warm stories; bilingual captions; consistent cadence.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="frv"><img data-key="logo_frv" alt="FRV" style="height:28px"><strong>FRV</strong></div>
+      <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+    </footer>
+    <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
+  </div>
+
+  <!-- NỀN pastel + hoa lá động -->
+  <div class="pastel-film"></div>
+  <div class="floating">
+    <img data-key="flower_floating_1" class="float-1" alt="">
+    <img data-key="leaves_floating" class="float-2"  alt="">
+    <img data-key="flower_floating_2" class="float-3" alt="">
+  </div>
+
+  <!-- ==== MODAL CV ==== -->
+  <div id="cvModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="backdrop" data-close></div>
+    <div class="cv-card" role="document">
+      <div class="cv-header">
+        <strong id="cvName">Mentor Name</strong>
+        <span id="cvRole" style="color:#6b6b6b;margin-left:8px"></span>
+        <button class="cv-close" type="button" data-close>Close ✕</button>
+      </div>
+      <div class="cv-body">
+        <div>
+          <img id="cvPhoto" class="cv-photo" alt="">
+          <div class="cv-section">
+            <h4>Subjects</h4>
+            <div id="cvBadges" class="cv-badges"></div>
+          </div>
+          <div class="cv-actions">
+            <a id="cvLink" class="btn link" href="#" target="_blank" rel="noopener">Open full profile</a>
+          </div>
+        </div>
+        <div>
+          <div class="cv-section">
+            <h4>About</h4>
+            <p id="cvAbout" style="margin:0"></p>
+          </div>
+          <div class="cv-section">
+            <h4>Achievements</h4>
+            <ul id="cvAch" class="cv-ach" style="padding-left:18px;margin:0"></ul>
+          </div>
+          <div class="cv-section">
+            <h4>Contact</h4>
+            <p id="cvContact" style="margin:0"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../app.js"></script>
+  <script>
+    // Fade-in on scroll (in case app.js doesn't handle it)
+    (function(){const els=[...document.querySelectorAll('.reveal')];
+      const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+      els.forEach(x=>io.observe(x));
+    })();
+
+    // Asset loader (logo/flowers/leaves) robust
+    (function(){
+      const bases=['../assets/','/assets/','../../assets/'];
+      const files={
+        logo_main:['logo_FutureReadyVietnam.svg','logo_future_ready_vietnam.svg','FutureReadyVietnam.svg','future.svg','logo_main.png','logo_main.svg'],
+        logo_frv:['logo_FRV.svg','frv.svg','FRV.svg','logo_frv.png'],
+        flower_floating_1:['flowers.svg','flower.svg','flowers.png'],
+        flower_floating_2:['flowers.svg','flower.svg','flowers.png'],
+        leaves_floating:['leaves.svg','leaf.svg','leaves.png','leaf.png']
+      };
+      function fb(key){
+        const map={
+          logo_main:'<svg width="160" height="40" xmlns="http://www.w3.org/2000/svg"><rect rx="8" ry="8" width="160" height="40" fill="#a8e6cf"/><text x="80" y="26" font-family="Montserrat,Arial" font-size="14" text-anchor="middle" fill="#2f2f2f">FUTURE READY VIETNAM</text></svg>',
+          logo_frv:'<svg width="60" height="28" xmlns="http://www.w3.org/2000/svg"><rect rx="6" ry="6" width="60" height="28" fill="#a8e6cf"/><text x="30" y="19" font-family="Montserrat,Arial" font-size="12" text-anchor="middle" fill="#2f2f2f">FRV</text></svg>',
+          flower:'<svg width="200" height="140" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="140" fill="#ffd1dc"/><circle cx="40" cy="70" r="16" fill="#fff"/><circle cx="90" cy="55" r="14" fill="#fff"/><circle cx="140" cy="80" r="18" fill="#fff"/></svg>',
+          leaf:'<svg width="200" height="140" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="140" fill="#a8e6cf"/><path d="M20,120 C60,20 140,20 180,120" stroke="#fff" stroke-width="12" fill="none"/></svg>'
+        };
+        const svg = key.includes('leaf')?map.leaf:(key.includes('flower')?map.flower:(key==='logo_frv'?map.logo_frv:map.logo_main));
+        const blob=new Blob([svg],{type:'image/svg+xml'});return URL.createObjectURL(blob);
+      }
+      document.querySelectorAll('img[data-key]').forEach(img=>{
+        const key=img.getAttribute('data-key'); const list=files[key]||[]; let ok=false;
+        (function tryOne(fi=0,bi=0){
+          if(ok)return;
+          if(fi>=list.length){img.src=fb(key);return;}
+          if(bi>=bases.length){tryOne(fi+1,0);return;}
+          const url=bases[bi]+list[fi]; const t=new Image();
+          t.onload=()=>{img.src=url;ok=true;}; t.onerror=()=>{tryOne(fi,bi+1);}; t.src=url;
+        })();
+      });
+    })();
+
+    // ===== Mentor CV DATA =====
+    const MENTORS = {
+      // ví dụ: đặt ảnh thật vào ../assets/mentors/*.jpg rồi sửa photo
+      mn: {
+        name: "Mentor Name",
+        role: "Music · Piano",
+        photo: "../assets/mentors/mentor01.jpg",
+        about: "Focus on tone, pedalling and storytelling. Weekly practice plans with logs. Recital prep for confidence.",
+        subjects: ["Music","Piano","Aural Skills"],
+        achievements: [
+          "3+ years teaching beginners to intermediate",
+          "Student mini-recitals at Tan Hung Church",
+          "Built bilingual worksheets for practice"
+        ],
+        contact: "Email: mentor@example.com",
+        link: "#" // sau này trỏ tới en/mentors/mn.html
+      },
+      am: {
+        name: "Another Mentor",
+        role: "Math",
+        photo: "../assets/mentors/mentor02.jpg",
+        about: "Games-first problem solving; algebra through patterns; calm and encouraging classroom tone.",
+        subjects: ["Math","Logic"],
+        achievements: [
+          "Led weekly problem clubs (KS2–KS3)",
+          "Designed 50+ puzzle worksheets",
+          "Supports exam anxiety strategies"
+        ],
+        contact: "Email: math@example.com",
+        link: "#"
+      },
+      tt: {
+        name: "Tech Tutor",
+        role: "Computer Science",
+        photo: "../assets/mentors/mentor03.jpg",
+        about: "Scratch to Python; small creative tasks; safe and inclusive classroom.",
+        subjects: ["Computer Science","Scratch","Python"],
+        achievements: [
+          "Intro CS bootcamps for 20+ kids",
+          "Built FRV practice-logging template",
+          "Guided first coding project showcases"
+        ],
+        contact: "Email: cs@example.com",
+        link: "#"
+      },
+      // marketing (cũng xem như profile ngắn)
+      lm: {
+        name: "Lead Marketer",
+        role: "Team Lead · Marketing",
+        photo: "../assets/team/mark01.jpg",
+        about: "Owns narrative, tone, and campaign planning. Ensures ethical storytelling & consent.",
+        subjects: ["Marketing","Story"],
+        achievements: ["Set bilingual voice guide","Drove partner outreach","Built media kit"],
+        contact: "Email: marketing@example.com",
+        link: "#"
+      },
+      ds: {
+        name: "Designer",
+        role: "Brand & Visuals",
+        photo: "../assets/team/mark02.jpg",
+        about: "Pastel, gentle motion, accessible layouts — FRV’s visual language.",
+        subjects: ["Design","Accessibility"],
+        achievements: ["Logo & badges system","Template library","IG carousel kit"],
+        contact: "Email: design@example.com",
+        link: "#"
+      },
+      sm: {
+        name: "Social Media",
+        role: "Content",
+        photo: "../assets/team/mark03.jpg",
+        about: "Short, warm stories; bilingual captions; consistent cadence.",
+        subjects: ["Content","Community"],
+        achievements: ["Monthly calendar","Volunteer spotlights","Journey recaps"],
+        contact: "Email: social@example.com",
+        link: "#"
+      }
+    };
+
+    // Modal controls
+    const modal = document.getElementById('cvModal');
+    const nameEl = document.getElementById('cvName');
+    const roleEl = document.getElementById('cvRole');
+    const photoEl = document.getElementById('cvPhoto');
+    const aboutEl = document.getElementById('cvAbout');
+    const achEl = document.getElementById('cvAch');
+    const badgesEl = document.getElementById('cvBadges');
+    const linkEl = document.getElementById('cvLink');
+
+    function openCV(id){
+      const m = MENTORS[id]; if(!m) return;
+      nameEl.textContent = m.name;
+      roleEl.textContent = '— ' + m.role;
+      // ảnh lớn: nếu không có file → dùng gradient fallback
+      photoEl.src = ''; photoEl.removeAttribute('src');
+      if(m.photo){ photoEl.src = m.photo; photoEl.onerror=()=>{ photoEl.removeAttribute('src'); photoEl.style.background='linear-gradient(135deg,#ffd1dc,#a8e6cf)';}; }
+      else { photoEl.style.background='linear-gradient(135deg,#ffd1dc,#a8e6cf)'; }
+      aboutEl.textContent = m.about || '';
+
+      // achievements
+      achEl.innerHTML = '';
+      (m.achievements||[]).forEach(x=>{
+        const li=document.createElement('li'); li.textContent=x; achEl.appendChild(li);
+      });
+
+      // subjects badges
+      badgesEl.innerHTML='';
+      (m.subjects||[]).forEach(s=>{
+        const b=document.createElement('span'); b.className='badge'; b.textContent=s; badgesEl.appendChild(b);
+      });
+
+      linkEl.href = m.link || '#';
+
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('blur');
+      history.replaceState(null, '', '#'+id); // deeplink
+    }
+    function closeCV(){
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('blur');
+      if(location.hash) history.replaceState(null,'',location.pathname);
+    }
+
+    document.querySelectorAll('[data-mentor]').forEach(card=>{
+      card.addEventListener('click', ()=>{ openCV(card.getAttribute('data-mentor')); });
+      card.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openCV(card.getAttribute('data-mentor')); }});
+      card.tabIndex = 0; // accessible
+      card.setAttribute('role','button');
+      card.setAttribute('aria-haspopup','dialog');
+    });
+    modal.addEventListener('click', (e)=>{ if(e.target.hasAttribute('data-close')) closeCV(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeCV(); });
+
+    // if URL has #id → open directly
+    if(location.hash){ const id = location.hash.replace('#',''); if(MENTORS[id]) openCV(id); }
+  </script>
+</body>
+</html>
