@@ -15,7 +15,7 @@
     background:linear-gradient(135deg,#fbe9e7 0%,var(--cream) 40%,#d9f7ec 100%);overflow-x:hidden;
   }
 
-  /* Header giống các trang khác */
+  /* Header (đồng bộ các trang EN) */
   .header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:20px;
           padding:0 16px 0 10px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);z-index:99999}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
@@ -29,7 +29,7 @@
   @media(hover:hover){ .dropdown:hover .dropdown-menu{display:block} }
   .dropdown.align-right .dropdown-menu{left:auto;right:8px}
 
-  /* Main */
+  /* Main container */
   .wrap{padding:120px 10% 60px;max-width:1000px;margin:auto;position:relative;z-index:1}
   .backlink{display:inline-flex;gap:8px;align-items:center;font-weight:600;text-decoration:none;color:#2f2f2f;background:#fff;border:1px solid #eee;border-radius:999px;padding:8px 12px;box-shadow:0 8px 18px rgba(168,230,207,.18)}
   .backlink:hover{transform:translateY(-1px)}
@@ -127,9 +127,9 @@
 
     <!-- Intro -->
     <p class="intro reveal">
-      Vũ is a versatile young musician with over a decade of experience at the piano and three years on drums.  
-      Comfortable on stage and in the rehearsal room, he blends live-band performance with modern production (Ableton).  
-      Campus visits to Berklee and Juilliard further shaped his artistic goals and teaching mindset.
+      BVIS Year 12 musician with <strong>10 years of piano</strong> and <strong>3 years of drums</strong>. 
+      Active performer in school and external gigs; uses Ableton for arranging and basic production. 
+      Campus visits to <strong>Berklee</strong> and <strong>Juilliard</strong> helped shape a focused, modern teaching mindset.
     </p>
 
     <!-- Blocks -->
@@ -137,46 +137,37 @@
       <div class="block reveal">
         <h3>Highlights</h3>
         <ul>
-          <li><strong>10+ years</strong> of piano; <strong>3 years</strong> of drums.</li>
-          <li>Performs regularly at school and external gigs; confident ensemble player.</li>
-          <li>Drummer for BVIS BOTB 2025 winning band <em>rootsix</em>.</li>
-          <li>Experience with <strong>Ableton</strong> for arranging and basic production.</li>
-          <li>Top-grade achievement in composition coursework.</li>
-          <li>Visited <strong>Berklee</strong> and <strong>Juilliard</strong> campuses for enrichment and inspiration.</li>
+          <li>10+ years piano; 3 years drums.</li>
+          <li>Drummer for BVIS <strong>Battle of the Bands 2025</strong> winning band <em>rootsix</em>.</li>
+          <li>Performed with school bands and groups (incl. <em>cheeseboys</em>), plus multiple gigs.</li>
+          <li>Composition coursework: top-grade achievement.</li>
+          <li>Ableton Live: arranging, performance stems, basic mixing.</li>
+          <li>Visited Berklee College of Music and Juilliard for enrichment.</li>
         </ul>
       </div>
 
       <div class="block reveal">
-        <h3>Performances & Bands</h3>
+        <h3>Skills</h3>
         <ul>
-          <li>Multiple outside gigs, concerts, and school events.</li>
-          <li>Performed with school bands; collaborated with groups such as <em>cheeseboys</em>.</li>
-          <li>Band drummer for <em>rootsix</em> — BVIS Battle of the Bands 2025 winner.</li>
-        </ul>
-      </div>
-
-      <div class="block reveal">
-        <h3>Skills & Tools</h3>
-        <ul>
-          <li>Piano technique, harmony, and expressive phrasing.</li>
-          <li>Drum kit fundamentals: timekeeping, grooves, and dynamics.</li>
-          <li>Ableton Live: arranging, basic mixing, and performance stems.</li>
+          <li>Piano: technique, harmony, expressive phrasing.</li>
+          <li>Drums: grooves, timekeeping, ensemble dynamics.</li>
+          <li>Production: Ableton workflows for practice tracks & simple arrangements.</li>
         </ul>
       </div>
 
       <div class="block reveal">
         <h3>Teaching Approach</h3>
         <ul>
-          <li>Patient, upbeat, and student-centred; builds confidence through small wins.</li>
-          <li>Combines ear-training with reading, practice logs, and simple home assignments.</li>
-          <li>Encourages creativity via mini-arrangements and duet playing.</li>
+          <li>Student-centred, calm, and encouraging.</li>
+          <li>Combines ear-training with reading; uses practice logs & mini goals.</li>
+          <li>Fosters creativity via simple arrangements and duets.</li>
         </ul>
       </div>
     </div>
 
     <div class="note reveal">
       <h3 style="margin:0 0 8px">Personal note</h3>
-      <p><em>Loves teaching and sharing music; aims to make every lesson engaging, practical, and fun — whether on keys or behind the drum kit.</em></p>
+      <p><em>I want every session to feel practical and fun — whether we’re building a groove on drums or shaping a piano phrase.</em></p>
     </div>
   </main>
 
@@ -195,16 +186,26 @@
   </div>
 
 <script>
-  (function(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));})();
+  // Fade-in reveal
+  (function(){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    }),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+  })();
+
+  // Dropdown click for mobile + close on outside
   document.querySelectorAll('[data-dropdown] > button').forEach(btn=>{
     btn.addEventListener('click', e=>{
-      const wrap=e.currentTarget.closest('[data-dropdown]');const open=wrap.classList.contains('open');
+      const wrap=e.currentTarget.closest('[data-dropdown]');
+      const open=wrap.classList.contains('open');
       document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
       if(!open){wrap.classList.add('open');}
     });
   });
   document.addEventListener('click', e=>{
-    if(!e.target.closest('[data-dropdown]')) document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
+    if(!e.target.closest('[data-dropdown]'))
+      document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
   });
 </script>
 </body>
