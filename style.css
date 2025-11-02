@@ -154,3 +154,7 @@ p.slogan{margin:0 0 24px;color:var(--soft)}
 /* Reveal animation */
 .reveal{opacity:0;transform:translateY(16px);transition:.6s}
 .reveal.in{opacity:1;transform:none}
+/* ===== [PATCH] Bảo đảm dropdown nằm trên nội dung ===== */
+.dropdown-menu{ z-index: 100000 !important; }
+.header{ z-index: 100001; }
+.page-wrap{ position: relative; z-index: 1; }
