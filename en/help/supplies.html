@@ -1,212 +1,261 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>FRV — Sally (Giảng viên Toán)</title>
+<title>FRV — Support with Study Supplies</title>
 
-<!-- style.css ở gốc repo; từ mentors/ lên 3 cấp -->
-<link rel="stylesheet" href="../../../style.css"/>
+<!-- Dùng style chung, nhưng trang này có thêm vài CSS nhỏ tự thân -->
+<link rel="stylesheet" href="../../style.css"/>
 
 <style>
-  :root{--mint:#a8e6cf;--mint-strong:#6fd8b5;--pink:#ffd1dc;--cream:#fffaf5;--ink:#2f2f2f;--soft:#6b6b6b;--white:#ffffff;}
-  *{box-sizing:border-box} html,body{height:100%}
-  body{margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);
-       background:linear-gradient(135deg,#fbe9e7 0%,var(--cream) 40%,#d9f7ec 100%);overflow-x:hidden}
+  /* --- Local additions: chỉ áp dụng cho trang này --- */
 
-  /* HEADER (giữ y chang site) */
-  .header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:20px;
-          padding:0 16px 0 10px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);z-index:99999}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-  .brand img{height:40px;width:auto;display:block}
-  .nav{margin-left:auto;display:flex;align-items:center;gap:18px}
-  .nav a,.nav button{font:600 14px/1 Montserrat,Arial;text-decoration:none;color:var(--ink);background:none;border:0;padding:10px 6px;cursor:pointer;position:relative;white-space:nowrap}
-  .nav a::after,.nav button::after{content:"";position:absolute;left:6px;right:6px;bottom:6px;height:2px;background:linear-gradient(90deg,transparent,var(--mint),transparent);transform:scaleX(0);transition:transform .25s}
-  .nav a:hover::after,.nav button:hover::after{transform:scaleX(1)}
-  .dropdown{position:relative}
-  .dropdown-menu{position:absolute;top:110%;left:0;min-width:220px;max-width:min(92vw,340px);background:#fff;border:1px solid #eee;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.08);padding:8px;display:none;z-index:100000;overflow-wrap:anywhere}
-  @media(hover:hover){ .dropdown:hover .dropdown-menu{display:block} }
-  .dropdown.align-right .dropdown-menu{left:auto;right:8px}
+  /* Bảo đảm dropdown hiện khi click (JS thêm .open) */
+  .dropdown.open .dropdown-menu{ display:block; }
 
-  /* MAIN */
-  .wrap{padding:120px 10% 60px;max-width:1000px;margin:auto;position:relative;z-index:1}
-  .backlink{display:inline-flex;gap:8px;align-items:center;font-weight:600;text-decoration:none;color:#2f2f2f;background:#fff;border:1px solid #eee;border-radius:999px;padding:8px 12px;box-shadow:0 8px 18px rgba(168,230,207,.18)}
-  .backlink:hover{transform:translateY(-1px)}
+  /* Z-index để menu không bị che */
+  .dropdown-menu{ z-index:100000 !important; }
+  .header{ z-index:100001; }
+  .page-wrap{ position:relative; z-index:1; }
 
-  /* CV header: ảnh nhỏ trái, info phải */
-  .cv-header{margin-top:16px;background:#fff;border:1px solid #eee;border-radius:18px;
-             box-shadow:0 12px 28px rgba(0,0,0,.08);padding:16px;display:flex;gap:16px;align-items:center}
-  .cv-photo{flex:0 0 auto;width:128px;height:128px;border-radius:12px;overflow:hidden;border:1px solid #eee}
-  .cv-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
-  .cv-meta{min-width:0}
-  .cv-name{margin:0 0 6px;font-size:clamp(22px,4.5vw,28px)}
-  .cv-role{margin:0;color:#444;font-weight:700}
-  @media (max-width:520px){.cv-photo{width:100px;height:100px}}
+  /* Hero & form layout */
+  .support-hero{ padding:120px 10% 24px; }
+  .support-hero .title{ margin:0 0 10px; }
+  .support-hero .lead{ color:var(--soft); max-width:900px; }
 
-  /* Content blocks */
-  .intro{color:var(--soft);margin:16px 0 18px}
-  .blocks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media (max-width:900px){ .blocks{grid-template-columns:1fr} }
-  .block{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px 20px}
-  .block h3{margin:0 0 10px;font-size:18px}
-  .block ul{margin:0;padding-left:18px}
-  .block li{margin:6px 0}
-  .note{margin-top:18px;background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px 20px;color:#444}
-  .note em{color:#666}
+  .section{ padding:12px 10% 48px; }
+  .two-col{ display:grid; grid-template-columns:1.1fr .9fr; gap:24px; }
+  @media (max-width:900px){ .two-col{ grid-template-columns:1fr; } }
 
-  /* FOOTER */
-  .footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:32px 10%;color:var(--soft)}
-  .footer .frv{display:flex;gap:8px;align-items:center}
-  .footer .frv img{height:32px;width:auto;display:block}
-  .footer .frv strong{margin-left:6px;letter-spacing:1px;font-weight:700;font-size:15px;color:#2f2f2f}
-  .copyright{flex-basis:100%;text-align:center;font-size:12px;opacity:.65;margin-top:8px}
+  .note, .card{
+    background:#fff; border:1px solid #eee; border-radius:16px;
+    box-shadow:0 10px 24px rgba(0,0,0,.06); padding:18px 20px;
+  }
+  .note h3{ margin:0 0 8px; font-size:18px; }
+  .note p{ margin:0; color:#444; }
 
-  /* Pastel flowers + reveal */
-  .pastel-film{display:none !important;}
-  .floating{position:fixed;inset:0;pointer-events:none;z-index:0}
-  .floating img{position:absolute;opacity:.65;animation:float 7s ease-in-out infinite}
-  .f1{top:8%;left:5%;width:90px;animation-delay:0s}
-  .f2{bottom:6%;right:10%;width:140px;animation-delay:2s}
-  .f3{top:62%;left:78%;width:110px;animation-delay:4s}
-  @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
-  .reveal{opacity:0;transform:translateY(16px);transition:.6s}
-  .reveal.in{opacity:1;transform:none}
+  form .row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:720px){ form .row{ grid-template-columns:1fr; } }
+  label{ font-weight:600; font-size:14px; margin:10px 0 6px; display:block; }
+  input, textarea, select{
+    width:100%; padding:12px 12px; border:1px solid #e8e8e8; border-radius:10px;
+    background:#fff; font:500 14px/1.4 Montserrat, Arial, sans-serif; color:#2f2f2f;
+  }
+  textarea{ min-height:120px; resize:vertical; }
+  .actions{ margin-top:14px; display:flex; gap:12px; flex-wrap:wrap; }
+  .btn{
+    text-decoration:none; color:#2f2f2f; background:#fff; padding:12px 18px;
+    border:1px solid #e8e8e8; border-radius:30px; transition:.25s; font-weight:700;
+    box-shadow:0 8px 18px rgba(168,230,207,.18); cursor:pointer;
+  }
+  .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(168,230,207,.28); background:#fafffd; }
+
+  /* Reveal */
+  .reveal{ opacity:0; transform:translateY(16px); transition:.6s; }
+  .reveal.in{ opacity:1; transform:none; }
 </style>
 </head>
 <body>
-
-  <!-- HEADER -->
+<div class="page-wrap">
+  <!-- HEADER (đường dẫn đã chỉnh đúng từ en/help/…) -->
   <header class="header">
-    <!-- về trang chủ TV: mentors -> about -> vietnamese -->
-    <a class="brand" href="../../index.html">
-      <img src="../../../assets/logo_FutureReadyVietnam.svg"
-           alt="Future Ready Việt Nam"
-           onerror="this.outerHTML='<svg width=160 height=40 xmlns=http://www.w3.org/2000/svg><rect rx=8 ry=8 width=160 height=40 fill=#a8e6cf/><text x=80 y=26 font-family=Montserrat,Arial font-size=14 text-anchor=middle fill=#2f2f2f>FUTURE READY VIETNAM</text></svg>'">
+    <a class="brand" href="../../english.html">
+      <img src="../../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam" style="height:40px">
     </a>
     <nav class="nav">
-      <a href="../../about.html">Về Chúng Tôi</a>
-      <a href="../../journey.html">Hành Trình</a>
+      <a class="nav-link" href="../about.html">About Us</a>
+      <a class="nav-link" href="../journey.html">Journey</a>
+
       <div class="dropdown" data-dropdown>
-        <button type="button">Chương Trình ▾</button>
+        <button type="button">Programs ▾</button>
         <div class="dropdown-menu">
-          <a href="../../program_music.html">Âm Nhạc</a>
-          <a href="../../program_science.html">Khoa Học</a>
-          <a href="../../program_math.html">Toán Học</a>
-          <a href="../../program_vietnamese.html">Tiếng Việt</a>
-          <a href="../../program_english.html">Tiếng Anh</a>
-          <a href="../../program_compsci.html">Tin Học</a>
+          <a class="nav-link" href="../program_music.html">Music</a>
+          <a class="nav-link" href="../program_science.html">Science</a>
+          <a class="nav-link" href="../program_math.html">Math</a>
+          <a class="nav-link" href="../program_vietnamese.html">Vietnamese</a>
+          <a class="nav-link" href="../program_english.html">English</a>
+          <a class="nav-link" href="../program_compsci.html">Computer Science</a>
         </div>
       </div>
-      <a href="../../join/">Tham Gia</a>
+
+      <a class="nav-link" href="../join/">Join</a>
+
       <div class="dropdown align-right" data-dropdown>
-        <button type="button">Ủng Hộ ▾</button>
+        <button type="button">Support ▾</button>
         <div class="dropdown-menu">
-          <a href="../../help/financial.html">Ủng Hộ Tài Chính</a>
-          <a href="../../help/supplies.html">Ủng Hộ Dụng Cụ Học Tập</a>
+          <a class="nav-link" href="financial.html">Support Financially</a>
+          <a class="nav-link" href="supplies.html">Support with Study Supplies</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- MAIN -->
-  <main class="wrap">
-    <a class="backlink reveal" href="../../about.html">← Quay lại “Về Chúng Tôi”</a>
-
-    <section class="cv-header reveal">
-      <div class="cv-photo">
-        <img src="../../../assets/mentors/sally.png"
-             alt="Sally — Giảng viên Toán"
-             onerror="this.outerHTML=`<svg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='128' height='128' rx='12' fill='url(#g)'/></svg>`">
-      </div>
-      <div class="cv-meta">
-        <h1 class="cv-name">Sally</h1>
-        <p class="cv-role">Giảng viên Toán — Future Ready Vietnam</p>
-      </div>
-    </section>
-
-    <p class="intro reveal">
-      Học sinh lớp 12 tại BVIS, nền tảng Toán vững và hoạt động thiện nguyện tích cực.
-      Sally kết hợp thành tích học thuật (IGCSE Mathematics 9/9) với phong cách dạy kiên nhẫn – thân thiện,
-      giúp học sinh nhỏ xây dựng <em>sự tự tin</em> và <em>tò mò học hỏi</em>.
+  <!-- HERO -->
+  <section class="support-hero">
+    <h1 class="title reveal">Support with Study Supplies</h1>
+    <p class="lead reveal">
+      Help us equip students with the essentials they need to learn with confidence:
+      notebooks, pencils, art kits, used textbooks in good condition, instrument accessories, and more.
+      Every item is a real gift to a real child.
     </p>
+  </section>
 
-    <div class="blocks">
-      <div class="block reveal">
-        <h3>Học vấn</h3>
-        <ul>
-          <li>Lớp 12, British Vietnamese International School (BVIS).</li>
-          <li>Chương trình BGD Việt Nam (lớp 1–9) với thành tích tốt.</li>
-          <li>IGCSE Mathematics: <strong>9/9</strong>.</li>
-        </ul>
-      </div>
-      <div class="block reveal">
-        <h3>Kinh nghiệm & Hoạt động</h3>
-        <ul>
-          <li><strong>1 năm</strong> kèm Toán cho học sinh tiểu học.</li>
-          <li>Tình nguyện dạy học tại một số địa phương & không gian cộng đồng.</li>
-          <li>Tham gia các sân chơi Toán quốc tế: <strong>UKMT</strong>, …</li>
-        </ul>
-      </div>
+  <!-- CONTENT -->
+  <section class="section two-col">
+    <!-- Form -->
+    <div class="card reveal">
+      <h2 style="margin:0 0 10px">Offer Study Supplies</h2>
+      <p class="slogan" style="color:var(--soft); margin:0 0 12px">
+        Fill this form and press <strong>Send</strong>. Your email app will open with details pre-filled.
+      </p>
+
+      <form id="suppliesForm">
+        <div class="row">
+          <div>
+            <label for="name">Your Name *</label>
+            <input id="name" name="name" required placeholder="e.g., Nguyen Minh Anh"/>
+          </div>
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="city">City / District</label>
+            <input id="city" name="city" placeholder="e.g., Tan Phu District, HCMC"/>
+          </div>
+          <div>
+            <label for="items">Items You Can Provide *</label>
+            <input id="items" name="items" required placeholder="Notebooks, pencils, used Math 6 textbooks, …"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="quantity">Approx. Quantity</label>
+            <input id="quantity" name="quantity" placeholder="e.g., 20 notebooks, 5 textbooks"/>
+          </div>
+          <div>
+            <label for="preference">Drop-off / Pick-up Preference</label>
+            <select id="preference" name="preference">
+              <option value="">Choose…</option>
+              <option>Drop-off at FRV meet-up</option>
+              <option>Pick-up from my address</option>
+              <option>Ship via delivery</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="message">Message (optional)</label>
+        <textarea id="message" name="message" placeholder="Any notes (condition of items, timing, etc.)"></textarea>
+
+        <div class="actions">
+          <button type="submit" class="btn">Send</button>
+          <a class="btn" href="mailto:futurereadyvn@gmail.com">Email us directly</a>
+        </div>
+      </form>
     </div>
 
+    <!-- Info / Guidelines -->
     <div class="note reveal">
-      <h3 style="margin:0 0 8px">Ghi chú cá nhân</h3>
-      <p><em>Rất yêu thích chăm sóc và tương tác với trẻ nhỏ — luôn dạy bằng sự thấu hiểu và nhiệt huyết để việc học vừa ý nghĩa vừa vui.</em></p>
+      <h3>What we can accept</h3>
+      <ul style="margin:0 0 10px 18px">
+        <li>Basic stationery: notebooks, pencils, erasers, rulers, crayons.</li>
+        <li>Textbooks/workbooks in <em>good condition</em> (recent editions preferred).</li>
+        <li>Art materials: brushes, watercolors, sketchbooks.</li>
+        <li>Music: spare strings, reeds, metronomes, stands, simple percussion.</li>
+      </ul>
+      <h3>Notes</h3>
+      <ul style="margin:0 0 0 18px">
+        <li>Please avoid damaged/illegible books or unsafe items.</li>
+        <li>We’ll follow up by email to coordinate logistics and consent.</li>
+        <li>Receipts (if any) can be noted for our internal transparency report.</li>
+      </ul>
     </div>
-  </main>
+  </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="frv">
-      <img src="../../../assets/logo_FRV.svg" alt="FRV"
-           onerror="this.outerHTML='<svg width=60 height=28 xmlns=http://www.w3.org/2000/svg><rect rx=6 ry=6 width=60 height=28 fill=#a8e6cf/><text x=30 y=19 font-family=Montserrat,Arial font-size=12 text-anchor=middle fill=#2f2f2f>FRV</text></svg>'">
-      <strong>FRV</strong>
+      <img src="../../assets/logo_FRV.svg" alt="FRV" style="height:28px"><strong>FRV</strong>
     </div>
     <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
   </footer>
-  <div class="copyright">© Future Ready Việt Nam — Hành trình lan tỏa tri thức.</div>
+  <div class="footer copyright">© Future Ready Vietnam — A Charity of Knowledge.</div>
+</div>
 
-  <!-- Pastel flowers -->
-  <div class="floating">
-    <img class="f1" src="../../../assets/flowers.svg" alt="">
-    <img class="f2" src="../../../assets/leaves.svg"  alt="">
-    <img class="f3" src="../../../assets/flowers.svg" alt="">
-  </div>
+<!-- Background blossoms -->
+<div class="floating" aria-hidden="true">
+  <img class="float-1" src="../../assets/flowers.svg" alt="">
+  <img class="float-2" src="../../assets/leaves.svg"  alt="">
+  <img class="float-3" src="../../assets/flowers.svg" alt="">
+</div>
 
 <script>
-  // Fade-in reveal
-  (function(){
-    const io=new IntersectionObserver(es=>es.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-    }),{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
-  })();
+/* ===== Reveal on scroll (local) ===== */
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+})();
 
-  // Dropdown click (mobile)
-  document.querySelectorAll('[data-dropdown] > button').forEach(btn=>{
-    btn.addEventListener('click', e=>{
-      const wrap=e.currentTarget.closest('[data-dropdown]');
-      const open=wrap.classList.contains('open');
-      document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
-      if(!open){wrap.classList.add('open');safePlace(wrap.querySelector('.dropdown-menu'),wrap);}
-    });
+/* ===== Dropdown click open (local, không đụng file general) ===== */
+document.querySelectorAll('[data-dropdown] > button').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    const wrap=e.currentTarget.closest('[data-dropdown]');
+    const open=wrap.classList.contains('open');
+    document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
+    if(!open){ wrap.classList.add('open'); }
   });
-  document.addEventListener('click', e=>{
-    if(!e.target.closest('[data-dropdown]'))
-      document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
-  });
-  function safePlace(menu, holder){
-    if(!menu) return;
-    menu.style.left=''; menu.style.right='';
-    const vw=window.innerWidth, r=menu.getBoundingClientRect();
-    if(holder && holder.classList.contains('align-right')){
-      menu.style.left='auto'; menu.style.right='8px';
-    }else{
-      const overRight=r.right - vw;
-      if(overRight>0) menu.style.left=Math.max(8, r.left - overRight - 8)+'px';
-      if(menu.getBoundingClientRect().left<8) menu.style.left='8px';
-    }
+});
+document.addEventListener('click', e=>{
+  if(!e.target.closest('[data-dropdown]')){
+    document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
   }
+});
+// Ngăn click menu lan xuống nền (chống click-through)
+document.querySelectorAll('.dropdown, .dropdown-menu, .dropdown > button, .dropdown-menu a')
+  .forEach(el=>{
+    el.addEventListener('mousedown', e=>e.stopPropagation(), true);
+    el.addEventListener('click',      e=>e.stopPropagation(), true);
+  });
+
+/* ===== Mailto submit ===== */
+document.getElementById('suppliesForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const v = (id)=> (document.getElementById(id)?.value || '').trim();
+
+  const name = v('name');
+  const email= v('email');
+  if(!name || !email){ alert('Please fill your name and email.'); return; }
+
+  const city = v('city');
+  const items= v('items');
+  const qty  = v('quantity');
+  const pref = v('preference');
+  const msg  = v('message');
+
+  const subject = encodeURIComponent('FRV — Study Supplies Offer');
+  const bodyLines = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    city ? `City/District: ${city}` : '',
+    `Items: ${items}`,
+    qty ? `Quantity: ${qty}` : '',
+    pref ? `Preference: ${pref}` : '',
+    '',
+    msg ? `Message:\n${msg}\n` : '',
+    '—',
+    'Sent via FRV website (Study Supplies)'
+  ].filter(Boolean);
+
+  const body = encodeURIComponent(bodyLines.join('\n'));
+  window.location.href = `mailto:futurereadyvn@gmail.com?subject=${subject}&body=${body}`;
+});
 </script>
 </body>
 </html>
