@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FRV — Sunny (Vietnamese & English Mentor)</title>
+<link rel="stylesheet" href="../../../style.css"/>
+
+<style>
+  :root{--mint:#a8e6cf;--pink:#ffd1dc;--cream:#fffaf5;--ink:#2f2f2f;--soft:#6b6b6b;}
+  body{margin:0;font-family:Montserrat,Arial,sans-serif;color:var(--ink);
+       background:linear-gradient(135deg,#fbe9e7 0%,var(--cream) 40%,#d9f7ec 100%);overflow-x:hidden}
+  .header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:20px;
+          padding:0 16px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);z-index:9999}
+  .brand img{height:40px}
+  .wrap{padding:120px 10% 60px;max-width:1000px;margin:auto}
+  .backlink{display:inline-flex;gap:8px;align-items:center;text-decoration:none;
+            background:#fff;border:1px solid #eee;border-radius:999px;padding:8px 12px;font-weight:600;color:#2f2f2f}
+  .cv-header{margin-top:20px;background:#fff;border:1px solid #eee;border-radius:18px;
+             box-shadow:0 12px 28px rgba(0,0,0,.08);padding:16px;display:flex;gap:16px;align-items:center}
+  .cv-photo{flex:0 0 auto;width:128px;height:128px;border-radius:12px;overflow:hidden;border:1px solid #eee}
+  .cv-photo img{width:100%;height:100%;object-fit:cover}
+  .cv-meta h1{margin:0 0 6px;font-size:26px}
+  .cv-meta p{margin:0;font-weight:700;color:#444}
+  .intro{margin:16px 0 20px;color:var(--soft)}
+  .blocks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .block{background:#fff;border:1px solid #eee;border-radius:16px;padding:18px 20px;
+         box-shadow:0 10px 24px rgba(0,0,0,.06)}
+  .block h3{margin:0 0 10px}
+  .note{margin-top:18px;background:#fff;border:1px solid #eee;border-radius:16px;
+        box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px 20px}
+  .footer{display:flex;justify-content:space-between;align-items:center;padding:32px 10%;color:#6b6b6b}
+  .footer img{height:32px}
+  .floating img{position:absolute;opacity:.6;animation:float 7s ease-in-out infinite}
+  .f1{top:10%;left:6%;width:100px}
+  .f2{bottom:8%;right:10%;width:140px;animation-delay:2s}
+  .f3{top:60%;left:80%;width:120px;animation-delay:4s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="brand" href="../../../english.html">
+    <img src="../../../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam">
+  </a>
+  <nav class="nav">
+    <a href="../../about.html">About Us</a>
+    <a href="../../journey.html">Journey</a>
+    <a href="../../join/">Join</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <a class="backlink" href="../../about.html">← Back to About Us</a>
+
+  <section class="cv-header">
+    <div class="cv-photo">
+      <img src="../../../assets/mentors/sunny.png" alt="Sunny — Vietnamese & English Mentor">
+    </div>
+    <div class="cv-meta">
+      <h1>Sunny</h1>
+      <p>Vietnamese & English Mentor — Future Ready Vietnam</p>
+    </div>
+  </section>
+
+  <p class="intro">
+    Grade 12 student at BVIS. Sunny is fluent in both Vietnamese and English, with excellent communication
+    skills and experience working with young learners. She teaches with empathy and warmth,
+    helping children grow in confidence through language.
+  </p>
+
+  <div class="blocks">
+    <div class="block">
+      <h3>Education</h3>
+      <ul>
+        <li>Grade 12, British Vietnamese International School (BVIS).</li>
+        <li>Strong English communication; native Vietnamese speaker.</li>
+        <li>Familiar with Chinese and Korean language basics.</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Experience & Activities</h3>
+      <ul>
+        <li>Volunteer mentor for Vietnamese and English programs at FRV.</li>
+        <li>Former TA for lower primary classes, supporting young learners.</li>
+        <li>Participated in multiple non-profit programs for underprivileged children.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <h3>Personal Note</h3>
+    <p><em>Sunny believes language builds bridges — she strives to teach with compassion and curiosity, creating joyful, meaningful learning moments for every child.</em></p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="frv"><img src="../../../assets/logo_FRV.svg" alt="FRV"><strong>FRV</strong></div>
+  <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+</footer>
+<div class="floating">
+  <img class="f1" src="../../../assets/flowers.svg" alt="">
+  <img class="f2" src="../../../assets/leaves.svg" alt="">
+  <img class="f3" src="../../../assets/flowers.svg" alt="">
+</div>
+
+</body>
+</html>
