@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FRV — Riley (Vietnamese Mentor)</title>
+
+<!-- shared styles at repo root -->
+<link rel="stylesheet" href="../../../style.css"/>
+
+<style>
+  :root{--mint:#a8e6cf;--pink:#ffd1dc;--cream:#fffaf5;--ink:#2f2f2f;--soft:#6b6b6b;--white:#ffffff}
+  *{box-sizing:border-box} html,body{height:100%}
+  body{
+    margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);
+    background:linear-gradient(135deg,#fbe9e7 0%,var(--cream) 40%,#d9f7ec 100%);overflow-x:hidden;
+  }
+
+  /* Header (same layout as other pages) */
+  .header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:20px;
+          padding:0 16px 0 10px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);z-index:99999}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand img{height:40px;width:auto;display:block}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:18px}
+  .nav a,.nav button{font:600 14px/1 Montserrat,Arial;text-decoration:none;color:var(--ink);background:none;border:0;padding:10px 6px;cursor:pointer;position:relative;white-space:nowrap}
+  .nav a::after,.nav button::after{content:"";position:absolute;left:6px;right:6px;bottom:6px;height:2px;background:linear-gradient(90deg,transparent,var(--mint),transparent);transform:scaleX(0);transition:transform .25s}
+  .nav a:hover::after,.nav button:hover::after{transform:scaleX(1)}
+  .dropdown{position:relative}
+  .dropdown-menu{position:absolute;top:110%;left:0;min-width:220px;max-width:min(92vw,340px);background:#fff;border:1px solid #eee;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.08);padding:8px;display:none;z-index:100000;overflow-wrap:anywhere}
+  @media(hover:hover){ .dropdown:hover .dropdown-menu{display:block} }
+  .dropdown.align-right .dropdown-menu{left:auto;right:8px}
+
+  /* Main */
+  .wrap{padding:120px 10% 60px;max-width:1000px;margin:auto;position:relative;z-index:1}
+  .backlink{display:inline-flex;gap:8px;align-items:center;font-weight:600;text-decoration:none;color:#2f2f2f;background:#fff;border:1px solid #eee;border-radius:999px;padding:8px 12px;box-shadow:0 8px 18px rgba(168,230,207,.18)}
+  .backlink:hover{transform:translateY(-1px)}
+
+  /* Compact CV header: small photo left */
+  .cv-header{margin-top:16px;background:#fff;border:1px solid #eee;border-radius:18px;
+             box-shadow:0 12px 28px rgba(0,0,0,.08);padding:16px;display:flex;gap:16px;align-items:center}
+  .cv-photo{flex:0 0 auto;width:128px;height:128px;border-radius:12px;overflow:hidden;border:1px solid #eee;background:#fff}
+  .cv-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .cv-meta{min-width:0}
+  .cv-name{margin:0 0 6px;font-size:clamp(22px,4.5vw,28px)}
+  .cv-role{margin:0;color:#444;font-weight:700}
+  @media (max-width:520px){.cv-photo{width:100px;height:100px}}
+
+  /* Blocks */
+  .intro{color:var(--soft);margin:16px 0 18px}
+  .blocks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:900px){ .blocks{grid-template-columns:1fr} }
+  .block{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px 20px}
+  .block h3{margin:0 0 10px;font-size:18px}
+  .block ul{margin:0;padding-left:18px}
+  .block li{margin:6px 0}
+  .note{margin-top:18px;background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);padding:18px 20px;color:#444}
+  .note em{color:#666}
+
+  /* Footer */
+  .footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:32px 10%;color:var(--soft)}
+  .footer .frv{display:flex;gap:8px;align-items:center}
+  .footer .frv img{height:32px;width:auto;display:block}
+  .footer .frv strong{margin-left:6px;letter-spacing:1px;font-weight:700;font-size:15px;color:#2f2f2f}
+  .copyright{flex-basis:100%;text-align:center;font-size:12px;opacity:.65;margin-top:8px}
+
+  /* Floating flowers + reveal */
+  .pastel-film{display:none !important;}
+  .floating{position:fixed;inset:0;pointer-events:none;z-index:0}
+  .floating img{position:absolute;opacity:.65;animation:float 7s ease-in-out infinite}
+  .f1{top:8%;left:5%;width:90px;animation-delay:0s}
+  .f2{bottom:6%;right:10%;width:140px;animation-delay:2s}
+  .f3{top:62%;left:78%;width:110px;animation-delay:4s}
+  @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
+  .reveal{opacity:0;transform:translateY(16px);transition:.6s}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a class="brand" href="../../../english.html">
+      <img src="../../../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam"
+           onerror="this.outerHTML='<svg width=160 height=40 xmlns=http://www.w3.org/2000/svg><rect rx=8 ry=8 width=160 height=40 fill=#a8e6cf/><text x=80 y=26 font-family=Montserrat,Arial font-size=14 text-anchor=middle fill=#2f2f2f>FUTURE READY VIETNAM</text></svg>'">
+    </a>
+    <nav class="nav">
+      <a href="../../about.html">About Us</a>
+      <a href="../../journey.html">Journey</a>
+      <div class="dropdown" data-dropdown>
+        <button type="button">Programs ▾</button>
+        <div class="dropdown-menu">
+          <a href="../../program_music.html">Music</a>
+          <a href="../../program_science.html">Science</a>
+          <a href="../../program_math.html">Math</a>
+          <a href="../../program_vietnamese.html">Vietnamese</a>
+          <a href="../../program_english.html">English</a>
+          <a href="../../program_compsci.html">Computer Science</a>
+        </div>
+      </div>
+      <a href="../../join/">Join</a>
+      <div class="dropdown align-right" data-dropdown>
+        <button type="button">Support ▾</button>
+        <div class="dropdown-menu">
+          <a href="../../help/financial.html">Support Financially</a>
+          <a href="../../help/supplies.html">Support with Study Supplies</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="wrap">
+    <a class="backlink reveal" href="../../about.html">← Back to About Us</a>
+
+    <!-- Compact header -->
+    <section class="cv-header reveal">
+      <div class="cv-photo">
+        <img src="../../../assets/mentors/riley.png"
+             alt="Riley — Vietnamese Mentor"
+             onerror="this.outerHTML=`<svg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='gr' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='128' height='128' rx='12' fill='url(#gr)'/></svg>`">
+      </div>
+      <div class="cv-meta">
+        <h1 class="cv-name">Riley</h1>
+        <p class="cv-role">Vietnamese Mentor — Future Ready Vietnam</p>
+      </div>
+    </section>
+
+    <p class="intro reveal">
+      BVIS Year 12 student and Vietnamese Mentor at FRV. Riley supports younger learners in
+      building confident, clear Vietnamese through patient guidance, practice structure, and
+      gentle feedback.
+    </p>
+
+    <div class="blocks">
+      <div class="block reveal">
+        <h3>Education</h3>
+        <ul>
+          <li>BVIS — Year 12.</li>
+          <li>Strong Vietnamese literacy; bilingual study environment.</li>
+        </ul>
+      </div>
+
+      <div class="block reveal">
+        <h3>Teaching Focus</h3>
+        <ul>
+          <li>Reading comprehension & expressive writing (age-appropriate prompts).</li>
+          <li>Pronunciation & fluency through short, fun speaking tasks.</li>
+          <li>Vocabulary ladders and mini-quizzes to track progress.</li>
+        </ul>
+      </div>
+
+      <div class="block reveal">
+        <h3>Experience & Activities</h3>
+        <ul>
+          <li>Volunteer teaching with FRV’s free community classes.</li>
+          <li>Prepared lesson handouts and practice logs for parents.</li>
+        </ul>
+      </div>
+
+      <div class="block reveal">
+        <h3>Skills</h3>
+        <ul>
+          <li>Warm, encouraging classroom tone.</li>
+          <li>Clear scaffolding for younger learners.</li>
+          <li>Bilingual explanation when needed.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note reveal">
+      <h3 style="margin:0 0 8px">Personal note</h3>
+      <p><em>
+        I believe Vietnamese is not only a language but also a bridge to culture, family,
+        and identity. I try to make every session calm, kind, and practical — so students
+        feel safe to speak, write, and grow.
+      </em></p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="frv">
+      <img src="../../../assets/logo_FRV.svg" alt="FRV"
+           onerror="this.outerHTML='<svg width=60 height=28 xmlns=http://www.w3.org/2000/svg><rect rx=6 ry=6 width=60 height=28 fill=#a8e6cf/><text x=30 y=19 font-family=Montserrat,Arial font-size=12 text-anchor=middle fill=#2f2f2f>FRV</text></svg>'">
+      <strong>FRV</strong>
+    </div>
+    <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+  </footer>
+  <div class="copyright">© Future Ready Vietnam — A Charity of Knowledge.</div>
+
+  <!-- floating flowers -->
+  <div class="floating">
+    <img class="f1" src="../../../assets/flowers.svg" alt="">
+    <img class="f2" src="../../../assets/leaves.svg"  alt="">
+    <img class="f3" src="../../../assets/flowers.svg" alt="">
+  </div>
+
+<script>
+  // reveal-on-scroll
+  (function(){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    }),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+  })();
+
+  // dropdown click (mobile-safe)
+  document.querySelectorAll('[data-dropdown] > button').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const wrap=e.currentTarget.closest('[data-dropdown]');
+      const open=wrap.classList.contains('open');
+      document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
+      if(!open){wrap.classList.add('open');safePlace(wrap.querySelector('.dropdown-menu'),wrap);}
+    });
+  });
+  document.addEventListener('click', e=>{
+    if(!e.target.closest('[data-dropdown]'))
+      document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
+  });
+  function safePlace(menu, holder){
+    if(!menu) return;
+    menu.style.left=''; menu.style.right='';
+    const vw=window.innerWidth, r=menu.getBoundingClientRect();
+    if(holder && holder.classList.contains('align-right')){
+      menu.style.left='auto'; menu.style.right='8px';
+    }else{
+      const overRight=r.right - vw;
+      if(overRight>0) menu.style.left=Math.max(8, r.left - overRight - 8)+'px';
+      if(menu.getBoundingClientRect().left<8) menu.style.left='8px';
+    }
+  }
+</script>
+</body>
+</html>
