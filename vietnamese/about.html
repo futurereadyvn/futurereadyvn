@@ -1,98 +1,20 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>FRV — Về Chúng Tôi</title>
-  <meta name="description" content="Giới thiệu Future Ready Việt Nam — dự án phi lợi nhuận do học sinh dẫn dắt, lan tỏa tri thức miễn phí."/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css"/>
-  <style>
-    .page-wrap{position:relative;z-index:5}
-    .about-hero{padding:120px 10% 40px}
-    .about-hero .title{margin-bottom:10px}
-    .about-hero .lead{color:var(--soft);max-width:900px}
-    .section{padding:20px 10% 40px}
-    .section h2{margin:18px 0 10px}
-    .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .card-link{display:block;text-decoration:none;color:inherit}
-    .card{background:#fff;border:1px solid #eee;border-radius:16px;padding:16px;box-shadow:0 10px 24px rgba(0,0,0,.06);transition:.2s}
-    .card:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.08)}
-    .avatar{width:72px;height:72px;border-radius:50%;border:2px solid rgba(0,0,0,.06);background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:10px;overflow:hidden}
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    .avatar svg{width:100%;height:100%}
-    .name{font-weight:700;margin:2px 0}
-    .role{color:var(--soft);font-size:13px;margin-bottom:6px}
-    .bio{color:#444;font-size:14px;line-height:1.5}
-    .pill{display:inline-block;font-size:12px;border:1px solid #eee;border-radius:999px;padding:6px 10px;margin-top:8px;background:#fff}
-    .reveal{opacity:0;transform:translateY(16px);transition:.6s}
-    .reveal.in{opacity:1;transform:none}
-  </style>
-</head>
-<body>
-  <div class="page-wrap">
-    <!-- HEADER (VI) -->
-    <header class="header">
-      <a class="brand" href="index.html">
-        <img data-asset="logo_FutureReadyVietnam.svg" alt="Future Ready Việt Nam" style="height:40px">
-      </a>
-      <nav class="nav">
-        <a class="nav-link" href="about.html">Về Chúng Tôi</a>
-        <a class="nav-link" href="journey.html">Hành Trình</a>
-
-        <div class="dropdown" data-dropdown>
-          <button type="button">Chương Trình ▾</button>
-          <div class="dropdown-menu">
-            <a class="nav-link" href="program_music.html">Âm Nhạc</a>
-            <a class="nav-link" href="program_science.html">Khoa Học</a>
-            <a class="nav-link" href="program_math.html">Toán Học</a>
-            <a class="nav-link" href="program_vietnamese.html">Tiếng Việt</a>
-            <a class="nav-link" href="program_english.html">Tiếng Anh</a>
-            <a class="nav-link" href="program_compsci.html">Tin Học</a>
-          </div>
-        </div>
-
-        <a class="nav-link" href="join/">Tham Gia</a>
-
-        <div class="dropdown align-right" data-dropdown>
-          <button type="button">Ủng Hộ ▾</button>
-          <div class="dropdown-menu">
-            <a class="nav-link" href="help/financial.html">Ủng Hộ Tài Chính</a>
-            <a class="nav-link" href="help/supplies.html">Ủng Hộ Dụng Cụ Học Tập</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <section class="about-hero">
-      <h1 class="title reveal">Về Chúng Tôi</h1>
-      <p class="lead reveal">
-        Future Ready Việt Nam là một hành động cộng đồng do học sinh dẫn dắt, đồng hành cùng các em nhỏ qua các lớp học miễn phí.
-        Chúng mình tin rằng tri thức không nên bị giới hạn bởi hoàn cảnh hay tài chính — mà chỉ bởi sự tò mò.
-        Với lòng tử tế, sự sáng tạo và tinh thần hợp tác, FRV giúp cả người dạy lẫn người học trưởng thành cùng nhau.
-      </p>
-      <div class="cta reveal" style="margin-top:14px">
-        <a class="btn" href="join/">Tham Gia Cùng FRV</a>
-        <a class="btn" href="journey.html">Xem Hành Trình</a>
-      </div>
-    </section>
-
-  <!-- CÁC GIẢNG VIÊN (OUR MENTORS) -->
+<!-- CÁC GIẢNG VIÊN -->
 <section class="section">
-  <h2 class="reveal">Giảng viên của chúng tôi</h2>
-  <p class="slogan reveal">Trái tim của FRV — những bạn trẻ dạy học miễn phí với lòng nhân ái và nhiệt huyết.</p>
+  <h2 class="reveal">Đội ngũ Giảng viên</h2>
+  <p class="slogan reveal">Trái tim của FRV — những tình nguyện viên dạy miễn phí và lan tỏa lòng trắc ẩn.</p>
 
   <div class="grid">
     <!-- Sally -->
     <a class="card-link reveal" href="about/mentors/sally.html">
       <article class="card">
         <div class="avatar">
-          <img src="../assets/mentors/sally.png" alt="Sally — Giảng viên Toán">
+          <img src="../assets/mentors/sally.png"
+               onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gsal' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gsal)'/><text x='50' y='58' text-anchor='middle' font-size='30' font-family='Montserrat,Arial' fill='#2f2f2f'>SA</text></svg>`"
+               alt="Sally — Giảng viên Toán">
         </div>
         <div class="name">Sally</div>
         <div class="role">Giảng viên Toán</div>
-        <p class="bio">BVIS Lớp 12 • IGCSE Toán 9/9 • 1 năm dạy học sinh tiểu học • Tham gia UKMT.</p>
+        <p class="bio">BVIS Khối 12 • IGCSE Toán 9/9 • 1 năm kèm tiểu học • Tham gia UKMT</p>
         <span class="pill">TP. Hồ Chí Minh</span>
       </article>
     </a>
@@ -102,12 +24,12 @@
       <article class="card">
         <div class="avatar">
           <img src="../assets/mentors/vu.png"
-               onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gvu' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gvu)'/><text x='50' y='58' text-anchor='middle' font-size='36' font-family='Montserrat,Arial' fill='#2f2f2f'>VŨ</text></svg>`"
+               onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gvu' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gvu)'/><text x='50' y='58' text-anchor='middle' font-size='30' font-family='Montserrat,Arial' fill='#2f2f2f'>VU</text></svg>`"
                alt="Vũ — Giảng viên Âm nhạc (Piano & Trống)">
         </div>
         <div class="name">Vũ</div>
         <div class="role">Giảng viên Âm nhạc — Piano &amp; Trống</div>
-        <p class="bio">BVIS Lớp 12 • 10 năm chơi piano • 3 năm trống • Thành viên ban nhạc BOTB 2025.</p>
+        <p class="bio">BVIS Khối 12 • 10 năm piano • 3 năm trống • Tay trống band BVIS BOTB 2025</p>
         <span class="pill">TP. Hồ Chí Minh</span>
       </article>
     </a>
@@ -122,93 +44,24 @@
         </div>
         <div class="name">Sunny</div>
         <div class="role">Giảng viên — Tiếng Việt &amp; Tiếng Anh</div>
-        <p class="bio">BVIS Lớp 12 • Thành thạo tiếng Việt & Anh (quen thuộc tiếng Trung & Hàn) • Thân thiện & kiên nhẫn.</p>
+        <p class="bio">BVIS Khối 12 • Tiếng Việt bản ngữ & tiếng Anh tốt (quen thuộc tiếng Trung/Hàn) • thân thiện & kiên nhẫn</p>
+        <span class="pill">TP. Hồ Chí Minh</span>
+      </article>
+    </a>
+
+    <!-- Riley -->
+    <a class="card-link reveal" href="about/mentors/riley.html">
+      <article class="card">
+        <div class="avatar">
+          <img src="../assets/mentors/riley.png"
+               onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gri' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#a8e6cf'/><stop offset='1' stop-color='#ffd1dc'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gri)'/><text x='50' y='58' text-anchor='middle' font-size='30' font-family='Montserrat,Arial' fill='#2f2f2f'>RI</text></svg>`"
+               alt="Riley — Giảng viên Tiếng Việt">
+        </div>
+        <div class="name">Riley</div>
+        <div class="role">Giảng viên Tiếng Việt</div>
+        <p class="bio">BVIS Khối 12 • 9 năm thành tích học tập tốt • Thi học sinh giỏi Ngữ văn cấp Quận • yêu trẻ & đam mê dạy học</p>
         <span class="pill">TP. Hồ Chí Minh</span>
       </article>
     </a>
   </div>
 </section>
-    <!-- MARKETING TEAM -->
-    <section class="section">
-      <h2 class="reveal">Đội Marketing</h2>
-      <p class="slogan reveal">Kể những câu chuyện chân thật, xây niềm tin, mời thêm nhiều trái tim đồng hành.</p>
-
-      <div class="grid">
-        <!-- Bảo Anh (Photography) -->
-        <a class="card-link reveal" href="about/marketing/baoanh.html">
-          <article class="card">
-            <div class="avatar">
-              <img src="../assets/marketing/baoanh.png"
-                   onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gba' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gba)'/><text x='50' y='58' text-anchor='middle' font-size='30' font-family='Montserrat,Arial' fill='#2f2f2f'>BA</text></svg>`"
-                   alt="Bảo Anh — Photography">
-            </div>
-            <div class="name">Bảo Anh</div>
-            <div class="role">Photography / Media</div>
-            <p class="bio">BVIS Year 12 • A* IGCSE Art • chụp & chỉnh ảnh • thành viên media team</p>
-            <span class="pill">TP. Hồ Chí Minh</span>
-          </article>
-        </a>
-
-        <article class="card reveal">
-          <div class="avatar">
-            <svg viewBox="0 0 100 100"><rect width="100" height="100" rx="50" fill="#a8e6cf"/><text x="50" y="58" text-anchor="middle" font-size="36" font-family="Montserrat,Arial" fill="#2f2f2f">DS</text></svg>
-          </div>
-          <div class="name">Designer</div>
-          <div class="role">Brand & Visuals</div>
-          <p class="bio">Pastel, chuyển động nhẹ, bố cục dễ tiếp cận — ngôn ngữ hình ảnh của FRV.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="avatar">
-            <svg viewBox="0 0 100 100"><rect width="100" height="100" rx="50" fill="#ffd1dc"/><text x="50" y="58" text-anchor="middle" font-size="36" font-family="Montserrat,Arial" fill="#2f2f2f">SM</text></svg>
-          </div>
-          <div class="name">Social Media</div>
-          <div class="role">Content</div>
-          <p class="bio">Mẩu chuyện ngắn, ấm áp; caption song ngữ; lịch đăng đều đặn.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="frv">
-        <img data-asset="logo_FRV.svg" alt="FRV" style="height:28px">
-        <strong>FRV</strong>
-      </div>
-      <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
-    </footer>
-    <div class="footer copyright">© Future Ready Việt Nam 2025 — Hành trình lan tỏa tri thức.</div>
-  </div>
-
-  <!-- NỀN pastel + hoa lá -->
-  <div class="pastel-film"></div>
-  <div class="floating">
-    <img class="float-1" data-asset="flowers.svg" alt="">
-    <img class="float-2" data-asset="leaves.svg"  alt="">
-    <img class="float-3" data-asset="flowers.svg" alt="">
-  </div>
-
-  <!-- Reveal (nhẹ, không chạm modal) -->
-  <script>
-    (function(){
-      const io=new IntersectionObserver(es=>es.forEach(e=>{
-        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-      }),{threshold:.12});
-      document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
-    })();
-
-    // Dropdown click-only
-    document.addEventListener('click', (e)=>{
-      const dd=e.target.closest('[data-dropdown]');
-      if(dd && e.target.tagName==='BUTTON'){
-        const open=dd.classList.contains('open');
-        document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
-        if(!open) dd.classList.add('open');
-      }else if(!e.target.closest('[data-dropdown]')){
-        document.querySelectorAll('[data-dropdown].open').forEach(x=>x.classList.remove('open'));
-      }
-    });
-  </script>
-  <script src="../app.js"></script>
-</body>
-</html>
