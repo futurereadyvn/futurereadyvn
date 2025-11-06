@@ -1,67 +1,138 @@
-<!-- CÁC GIẢNG VIÊN -->
-<section class="section">
-  <h2 class="reveal">Đội ngũ Giảng viên</h2>
-  <p class="slogan reveal">Trái tim của FRV — những tình nguyện viên dạy miễn phí và lan tỏa lòng trắc ẩn.</p>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FRV — Riley (Giảng viên Tiếng Việt)</title>
+<link rel="stylesheet" href="../../../style.css"/>
 
-  <div class="grid">
-    <!-- Sally -->
-    <a class="card-link reveal" href="about/mentors/sally.html">
-      <article class="card">
-        <div class="avatar">
-          <img src="../assets/mentors/sally.png"
-               onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gsal' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gsal)'/><text x='50' y='58' text-anchor='middle' font-size='30' font-family='Montserrat,Arial' fill='#2f2f2f'>SA</text></svg>`"
-               alt="Sally — Giảng viên Toán">
-        </div>
-        <div class="name">Sally</div>
-        <div class="role">Giảng viên Toán</div>
-        <p class="bio">BVIS Khối 12 • IGCSE Toán 9/9 • 1 năm kèm tiểu học • Tham gia UKMT</p>
-        <span class="pill">TP. Hồ Chí Minh</span>
-      </article>
-    </a>
+<style>
+  :root{--mint:#a8e6cf;--pink:#ffd1dc;--cream:#fffaf5;--ink:#2f2f2f;--soft:#6b6b6b;}
+  body{
+    margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:linear-gradient(135deg,#fbe9e7 0%,var(--cream) 40%,#d9f7ec 100%);
+    overflow-x:hidden;
+  }
 
-    <!-- Vũ -->
-    <a class="card-link reveal" href="about/mentors/vu.html">
-      <article class="card">
-        <div class="avatar">
-          <img src="../assets/mentors/vu.png"
-               onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gvu' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gvu)'/><text x='50' y='58' text-anchor='middle' font-size='30' font-family='Montserrat,Arial' fill='#2f2f2f'>VU</text></svg>`"
-               alt="Vũ — Giảng viên Âm nhạc (Piano & Trống)">
-        </div>
-        <div class="name">Vũ</div>
-        <div class="role">Giảng viên Âm nhạc — Piano &amp; Trống</div>
-        <p class="bio">BVIS Khối 12 • 10 năm piano • 3 năm trống • Tay trống band BVIS BOTB 2025</p>
-        <span class="pill">TP. Hồ Chí Minh</span>
-      </article>
-    </a>
+  /* Header (giữ đồng nhất với toàn site) */
+  .header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:20px;
+          padding:0 16px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);z-index:99}
+  .brand img{height:40px;width:auto;display:block}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:18px}
+  .nav a,.nav button{font:600 14px/1 Montserrat,Arial;text-decoration:none;color:var(--ink);background:none;border:0;padding:10px 6px;cursor:pointer;position:relative}
+  .dropdown{position:relative}
+  .dropdown-menu{position:absolute;top:110%;left:0;min-width:200px;background:#fff;border:1px solid #eee;
+    border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.08);padding:8px;display:none;}
+  @media(hover:hover){ .dropdown:hover .dropdown-menu{display:block} }
 
-    <!-- Sunny -->
-    <a class="card-link reveal" href="about/mentors/sunny.html">
-      <article class="card">
-        <div class="avatar">
-          <img src="../assets/mentors/sunny.png"
-               onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gsu' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ffd1dc'/><stop offset='1' stop-color='#a8e6cf'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gsu)'/><text x='50' y='58' text-anchor='middle' font-size='30' font-family='Montserrat,Arial' fill='#2f2f2f'>SY</text></svg>`"
-               alt="Sunny — Giảng viên Tiếng Việt & Tiếng Anh">
-        </div>
-        <div class="name">Sunny</div>
-        <div class="role">Giảng viên — Tiếng Việt &amp; Tiếng Anh</div>
-        <p class="bio">BVIS Khối 12 • Tiếng Việt bản ngữ & tiếng Anh tốt (quen thuộc tiếng Trung/Hàn) • thân thiện & kiên nhẫn</p>
-        <span class="pill">TP. Hồ Chí Minh</span>
-      </article>
-    </a>
+  /* Nội dung chính */
+  .wrap{padding:120px 10% 60px;max-width:1000px;margin:auto}
+  .backlink{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:600;
+    color:#2f2f2f;background:#fff;border:1px solid #eee;border-radius:999px;padding:8px 12px;
+    box-shadow:0 8px 18px rgba(168,230,207,.18);margin-bottom:20px}
+  .backlink:hover{transform:translateY(-1px)}
 
-    <!-- Riley -->
-    <a class="card-link reveal" href="about/mentors/riley.html">
-      <article class="card">
-        <div class="avatar">
-          <img src="../assets/mentors/riley.png"
-               onerror="this.outerHTML=`<svg viewBox='0 0 100 100'><defs><linearGradient id='gri' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#a8e6cf'/><stop offset='1' stop-color='#ffd1dc'/></linearGradient></defs><rect width='100' height='100' rx='50' fill='url(#gri)'/><text x='50' y='58' text-anchor='middle' font-size='30' font-family='Montserrat,Arial' fill='#2f2f2f'>RI</text></svg>`"
-               alt="Riley — Giảng viên Tiếng Việt">
-        </div>
-        <div class="name">Riley</div>
-        <div class="role">Giảng viên Tiếng Việt</div>
-        <p class="bio">BVIS Khối 12 • 9 năm thành tích học tập tốt • Thi học sinh giỏi Ngữ văn cấp Quận • yêu trẻ & đam mê dạy học</p>
-        <span class="pill">TP. Hồ Chí Minh</span>
-      </article>
-    </a>
+  /* CV Header */
+  .cv-header{background:#fff;border:1px solid #eee;border-radius:18px;box-shadow:0 10px 28px rgba(0,0,0,.06);
+    display:flex;align-items:center;gap:16px;padding:16px;margin-bottom:24px}
+  .cv-photo{width:128px;height:128px;border-radius:12px;overflow:hidden;border:1px solid #eee;flex-shrink:0}
+  .cv-photo img{width:100%;height:100%;object-fit:cover}
+  .cv-name{margin:0;font-size:26px;font-weight:700}
+  .cv-role{margin:2px 0 0;color:var(--soft);font-weight:600}
+
+  /* Các khối thông tin */
+  .blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:10px}
+  .block{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.06);
+    padding:18px 20px}
+  .block h3{margin:0 0 10px;font-size:18px}
+  .block ul{margin:0;padding-left:20px}
+  .block li{margin:6px 0;color:#333}
+
+  /* Ghi chú */
+  .note{margin-top:20px;background:#fff;border:1px solid #eee;border-radius:16px;
+        box-shadow:0 8px 24px rgba(0,0,0,.06);padding:20px;color:#444}
+  .note em{color:#666}
+
+  /* Footer */
+  .footer{display:flex;align-items:center;justify-content:space-between;padding:30px 10%;color:var(--soft)}
+  .footer img{height:28px;width:auto}
+  .copyright{text-align:center;font-size:12px;opacity:.6;margin-top:6px}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="brand" href="../../index.html"><img src="../../../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam"></a>
+  <nav class="nav">
+    <a href="../../about.html">Về Chúng Tôi</a>
+    <a href="../../journey.html">Hành Trình</a>
+    <div class="dropdown">
+      <button>Chương Trình ▾</button>
+      <div class="dropdown-menu">
+        <a href="../../program_music.html">Âm Nhạc</a>
+        <a href="../../program_science.html">Khoa Học</a>
+        <a href="../../program_math.html">Toán Học</a>
+        <a href="../../program_vietnamese.html">Tiếng Việt</a>
+        <a href="../../program_english.html">Tiếng Anh</a>
+        <a href="../../program_compsci.html">Tin Học</a>
+      </div>
+    </div>
+    <a href="../../join/">Tham Gia</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <a class="backlink" href="../../about.html">← Quay lại “Về Chúng Tôi”</a>
+
+  <section class="cv-header">
+    <div class="cv-photo">
+      <img src="../../../assets/mentors/riley.png" alt="Riley — Giảng viên Tiếng Việt">
+    </div>
+    <div>
+      <h1 class="cv-name">Riley</h1>
+      <p class="cv-role">Giảng viên Tiếng Việt — Future Ready Vietnam</p>
+    </div>
+  </section>
+
+  <p style="color:#555">
+    Riley hiện đang là học sinh lớp 12 tại BVIS, yêu thích tiếng Việt và có niềm đam mê với việc giúp các em nhỏ
+    phát triển khả năng ngôn ngữ. Với nhiều năm đạt thành tích cao trong môn Ngữ văn, cô mong muốn chia sẻ tình yêu
+    dành cho tiếng mẹ đẻ và truyền cảm hứng học tập qua từng buổi học nhẹ nhàng, gần gũi.
+  </p>
+
+  <div class="blocks">
+    <div class="block">
+      <h3>Học vấn</h3>
+      <ul>
+        <li>Học sinh lớp 12, Trường Quốc tế Song ngữ Anh – Việt (BVIS).</li>
+        <li>9 năm đạt thành tích học tập xuất sắc.</li>
+        <li>Từng là thí sinh thi học sinh giỏi Ngữ văn cấp Quận.</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Kinh nghiệm & Hoạt động</h3>
+      <ul>
+        <li>Tham gia nhiều hoạt động thiện nguyện và dự án dạy học cộng đồng.</li>
+        <li>Hỗ trợ và hướng dẫn học sinh nhỏ trong môn Tiếng Việt.</li>
+        <li>Đam mê sáng tạo các bài học thú vị, mang tính tương tác và cảm xúc.</li>
+      </ul>
+    </div>
   </div>
-</section>
+
+  <div class="note">
+    <h3 style="margin:0 0 8px">Ghi chú cá nhân</h3>
+    <p><em>“Em tin rằng mỗi đứa trẻ đều có câu chuyện riêng, và việc dạy học không chỉ là truyền kiến thức,
+    mà là cùng viết nên những trang mới đầy hy vọng.”</em></p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="frv"><img src="../../../assets/logo_FRV.svg" alt="FRV"><strong>FRV</strong></div>
+  <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
+</footer>
+<div class="copyright">© Future Ready Việt Nam — Hành trình lan tỏa tri thức.</div>
+
+</body>
+</html>
