@@ -7,10 +7,9 @@
   <meta name="description" content="Become a part of Future Ready Vietnam — volunteer or partner with us."/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css"/>
-
   <style>
     .page-wrap{position:relative;z-index:5;}
-    .join-hero{padding:120px 10% 40px;position:relative;z-index:1}
+    .join-hero{position:relative;z-index:1;padding:120px 10% 40px}
     .join-grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:14px}
     .join-card{background:#fff;border:1px solid #eee;border-radius:16px;padding:20px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
     .join-card h3{margin:10px 0 6px}
@@ -18,34 +17,27 @@
     .join-cta{display:flex;gap:12px;flex-wrap:wrap}
   </style>
 </head>
-
 <body>
   <div class="page-wrap">
-
-    <!-- HEADER (fixed & correct paths) -->
     <header class="header">
       <a class="brand" href="../../english.html">
-        <img class="logo-top" src="../../assets/logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam">
+        <img data-asset="logo_FutureReadyVietnam.svg" alt="Future Ready Vietnam Logo" style="height:40px">
       </a>
-
       <nav class="nav">
         <a class="nav-link" href="../about.html">About Us</a>
-        <a class="nav-link" href="../ourteam.html">Our Teams</a>
         <a class="nav-link" href="../journey.html">Journey</a>
-
         <div class="dropdown" data-dropdown>
           <button type="button">Programs ▾</button>
           <div class="dropdown-menu">
             <a class="nav-link" href="../program_music.html">Music</a>
+            <a class="nav-link" href="../program_science.html">Science</a>
             <a class="nav-link" href="../program_math.html">Math</a>
             <a class="nav-link" href="../program_vietnamese.html">Vietnamese</a>
             <a class="nav-link" href="../program_english.html">English</a>
-            <a class="nav-link" href="../program_kns.html">Life Skills (KNS)</a>
+            <a class="nav-link" href="../program_compsci.html">Computer Science</a>
           </div>
         </div>
-
         <a class="nav-link" href="./">Join</a>
-
         <div class="dropdown align-right" data-dropdown>
           <button type="button">Support ▾</button>
           <div class="dropdown-menu">
@@ -56,8 +48,6 @@
       </nav>
     </header>
 
-
-    <!-- MAIN CONTENT -->
     <main class="join-hero">
       <h1 class="title">Become a part of us</h1>
       <p class="slogan reveal">
@@ -68,7 +58,7 @@
         <article class="join-card">
           <img data-asset="flowers.svg" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:12px;opacity:.8;margin-bottom:8px">
           <h3>Become a Volunteer</h3>
-          <p>Share your skills — free classes, big impact.</p>
+          <p>Share your skills in Music, Science, Math, Vietnamese, English, or Computer Science — free classes, big impact.</p>
           <div class="join-cta">
             <a class="btn nav-link" href="volunteer.html">Continue</a>
           </div>
@@ -77,7 +67,7 @@
         <article class="join-card">
           <img data-asset="leaves.svg" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:12px;opacity:.8;margin-bottom:8px">
           <h3>Become a Partner</h3>
-          <p>Schools, clubs, companies — co-host workshops with us.</p>
+          <p>Individuals, schools, clubs, and companies — let’s co-host workshops or provide study resources together.</p>
           <div class="join-cta">
             <a class="btn nav-link" href="partner.html">Continue</a>
           </div>
@@ -85,8 +75,6 @@
       </section>
     </main>
 
-
-    <!-- FOOTER -->
     <footer class="footer">
       <div class="frv">
         <img data-asset="logo_FRV.svg" alt="FRV logo" style="height:28px">
@@ -95,11 +83,8 @@
       <div><a href="mailto:futurereadyvn@gmail.com">futurereadyvn@gmail.com</a></div>
     </footer>
     <div class="footer copyright">© Future Ready Vietnam 2025 — A Charity of Knowledge.</div>
-
   </div>
 
-
-  <!-- FLOATING ASSETS -->
   <div class="pastel-film"></div>
   <div class="floating">
     <img class="float-1" data-asset="flowers.svg" alt="">
@@ -107,19 +92,17 @@
     <img class="float-3" data-asset="flowers.svg" alt="">
   </div>
 
-
-  <!-- SCRIPT LOADER -->
-  <!-- <script src="../../app.js"></script> -->
+  <script src="../../app.js"></script>
   <script>
-    (function(){
-      const ASSETS='../../assets/';
-      document.querySelectorAll('img[data-asset]').forEach(img=>{
-        const f=img.dataset.asset;
-        img.src = ASSETS + f;
-        img.onerror = ()=> img.src = '../../assets/' + f;
-      });
-    })();
+  /* Local image loader: ensure all logos & vectors show */
+  (function(){
+    const ASSETS='../../assets/';
+    document.querySelectorAll('img[data-asset]').forEach(img=>{
+      const f=img.getAttribute('data-asset'); if(!f)return;
+      img.src=ASSETS+f;
+      img.onerror=()=>{img.src='../../../assets/'+f;};
+    });
+  })();
   </script>
-
 </body>
 </html>
